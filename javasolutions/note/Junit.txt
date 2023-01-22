@@ -1,0 +1,23 @@
+Dependencies:
+junit jupiter api
+junit jupiter engine 
+junit vintage engine
+
+@test informs the junit that this method is to be tested
+
+assertEquals(expected,actual)
+assertArrayEquals(expectedArray,actualArray)
+assertIterableEquals(expectedArray,actualArray)
+assertFalse(boolean condition ,string message)
+fail()
+
+stub the arguments
+
+call the parent method
+
+mock the call from different class
+
+
+ 
+
+ 

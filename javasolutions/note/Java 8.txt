@@ -1,0 +1,61 @@
+
+java 8
+
+lambdas
+functional interfaces
+method references
+
+lambdas
+
+Enables functional programming
+Support for parallel processing
+
+
+predicate is used in case an method acccepts object as an argument and returns the boolean value
+
+functional interface contains only one abstract method
+
+the lambda expression can be used for the abstract method contained in the functional interface
+
+consumer,predicate and supplier
+
+consumer is an inbuilt functional interface which donot have any return type
+    consumer.accept method is there
+
+predicate functional interface is used to check conditions ie true or false 
+
+supplier where there is no input but expecting  the return of something
+
+foreach internally uses the consumer functional interface and calls the  accept method
+
+predicate.test();
+
+stream api is used to process the collection of objects
+
+
+filter method for conditional check
+
+forEach method for iteration
+
+for array list having primitive datatype using stream api
+list.stream().sort().foreach()
+list.stream().sort(comparator.reverseorder()).foreach();
+
+
+custom sorting logic
+
+collections.sort(employees,(o1,o2)->(o1.getsalary()-o2.getsalary()));
+
+employees.stream.sorted((o1,o2)->(o1.getsalary()-o2.getsalary())).foreach()
+
+employees.stream.sorted(comparator.comparing(emp->emp.getsalary)).foreach();
+
+employeees.stream.sorted(compartor.comparing(Employee::getsalary)).foreach();
+
+
+map.entryset().stream().sorted(map.Entry.comparingByKey()).foreach())
+
+map.entryset().stream().sorted(map.Entry.comparingByKey(Comparator.comparing(Employee::getSalary))).foreach();
+
+
+

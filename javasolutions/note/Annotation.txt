@@ -1,0 +1,27 @@
+@Controller
+@RequestMapping
+@RequestMapping("/")
+@RequetMapping(value="/",method=RequestMethod.GET)
+@RequestMapping(values="/",method=RequestMethod.POST)
+@RequestParam("ssn")int SecurityNumber
+@RequestParam(required=false)String country
+@RequestParam(default="18")int age
+doLogin(@RequestParam Map<String,String>params)
+modelView.addObject("",    )
+return new ModelAndView("redirect:\login");
+@Service
+@Entity
+@RestController
+@SpringBootApplication
+@PathVariable
+@RequestMapping
+method=RequestMethod.Get
+@RequestBody
+@RequestMapping(values="new",method=RequestMethod.GET)
+@Id
+@Autowired
+@bean
+@document
+
+
+

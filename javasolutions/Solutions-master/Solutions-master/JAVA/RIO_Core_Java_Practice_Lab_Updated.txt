@@ -1,0 +1,1976 @@
+1	
+ 
+Which of the following statements are true? (Choose TWO) 
+
+
+Selected Option:
+
+Both wait() and notify() must be called from a synchronized context.
+A thread will resume execution as soon as its sleep duration expires.
+
+Correct Answer:
+
+The wait() method is overloaded to accept a duration 
+A thread will resume execution as soon as its sleep duration expires. 
+Both wait() and notify() must be called from a synchronized context. 
+2	
+
+Consider the code below  & select the correct  ouput from the options:
+public class Test{
+ public static void main(String[] args) {
+  String []colors={"orange","blue","red","green","ivory"};
+  Arrays.sort(colors);
+ int s1=Arrays.binarySearch(colors, "ivory");
+  int s2=Arrays.binarySearch(colors, "silver");
+  System.out.println(s1+" "+s2); }}
+
+
+Selected Option:
+
+2 -6
+
+Correct Answer:
+
+2 -6 
+3	
+ 
+Which method will return boolean when we try to execute SQL Query from a JDBC program? 
+
+
+Selected Option:
+
+execute()
+
+Correct Answer:
+
+execute() 
+4	
+
+What will be the output of following code? 
+
+import java.util.*; 
+class I 
+{
+    public static void main (String[] args) 
+    {
+        Object i = new ArrayList().iterator(); 
+        System.out.print((i instanceof List)+","); 
+        System.out.print((i instanceof Iterator)+","); 
+        System.out.print(i instanceof ListIterator); 
+    } 
+}
+
+
+Selected Option:
+
+Prints: false, true, false
+
+Correct Answer:
+
+Prints: false, true, false 
+5	
+
+Which digit,and in what order,will be printed when the following program is run?
+
+Public class MyClass {
+  public static void main(String[] args) {
+   int k=0;
+  try {
+         int i=5/k;
+        }
+catch(ArithmeticException e) {
+   System.out.println("1");
+    }
+catch(RuntimeException e) {
+   System.out.println("2");
+  return;
+    }
+catch(Exception e) {
+   System.out.println("3");
+    }
+finally{
+System.out.println("4");
+}
+System.out.println("5");
+}
+}
+
+
+Selected Option:
+
+The program will only print 1 ,4 and 5 in order
+
+Correct Answer:
+
+The program will only print 1 ,4 and 5 in order 
+6	
+ 
+import java.util.StringTokenizer;
+class ST{
+public static void main(String[] args){
+String input = "Today is$Holiday";
+StringTokenizer st = new StringTokenizer(input,"$");
+while(st.hasMoreTokens()){
+System.out.println(st.nextElement());
+}} 
+
+
+Selected Option:
+
+Today is Holiday
+
+Correct Answer:
+
+Today is
+Holiday 
+7	
+
+public class MyAr {
+ static int i1;
+ public static void main(String argv[]) {
+  MyAr m = new MyAr();
+  m.amethod();
+ }
+ public void amethod() {
+  System.out.println(i1);
+ }
+}
+What is the output of the program?
+
+
+Selected Option:
+
+0
+
+Correct Answer:
+
+0 
+8	
+
+class PingPong2 {
+synchronized void hit(long n) {
+for(int i = 1; i < 3; i++)
+System.out.print(n + "-" + i + " ");
+}
+}
+ public class Tester implements Runnable {
+ static PingPong2 pp2 = new PingPong2();
+ public static void main(String[] args) {
+ new Thread(new Tester()).start();
+ new Thread(new Tester()).start();
+ }
+ public void run() { pp2.hit(Thread.currentThread().getId()); }
+ }
+Which statement is true?
+
+
+Selected Option:
+
+The output could be 6-1 6-2 5-1 5-2
+
+Correct Answer:
+
+The output could be 6-1 6-2 5-1 5-2 
+9	
+
+Which of the following statement gives the use of CLASSPATH?
+
+
+Selected Option:
+
+Holds the location of User Defined classes, packages and JARs
+
+Correct Answer:
+
+Holds the location of User Defined classes, packages and JARs 
+10	
+
+Given :
+public class MainOne {
+    public static void main(String args[]) {
+      String str = "this is java";
+      System.out.println(removeChar(str,'s'));
+    }
+
+    public static String removeChar(String s, char c) {
+      String r = "";
+      for (int i = 0; i < s.length(); i++) {
+        if (s.charAt(i) != c)
+          r += s.charAt(i);
+      }
+      return r;
+    }
+  } What would be the result?
+
+
+Selected Option:
+
+Thi i java
+
+Correct Answer:
+
+Thi i java 
+11	
+
+Consider the following code and choose the correct option:
+public class Test{
+  public static void main(String[] args) throws IOException {
+  File file = new File("d:/temp.txt");
+  FileReader reader=new FileReader(file);
+  reader.skip(7);  int ch;
+  while((ch=reader.read())!=-1){
+   System.out.print((char)ch);  }  }}
+
+
+Selected Option:
+
+Skip the first seven characters and then starts reading file and display it on console
+
+Correct Answer:
+
+Skip the first seven characters and then starts reading file and display it on console 
+12	
+
+Which of the following is not a valid relation between classes?
+
+
+Selected Option:
+
+Segmentation
+
+Correct Answer:
+
+Segmentation 
+13	
+
+Consider the following code and choose the correct option:
+class Test{ private static void display(){
+System.out.println("Display()");}
+private static  void show() { display();
+System.out.println("show()");}
+public static void main(String arg[]){
+show();}}
+
+
+Selected Option:
+
+Compiles and prints Display() show()
+
+Correct Answer:
+
+Compiles and prints 
+Display()
+show() 
+14	
+
+Consider the following code and choose the correct option:
+interface A{
+ int i=3;} 
+interface B{
+ int i=4;}
+class Test implements A,B{
+ public static void main(String[] args) {
+  System.out.println(i);
+ }
+}
+
+
+Selected Option:
+
+compilation error
+
+Correct Answer:
+
+compilation error 
+15	
+
+Which of the following lines of code will compile without warning or error? 
+1) float f=1.3; 
+2) char c="a"; 
+3) byte b=257; 
+4) boolean b=null; 
+5) int i=10;
+
+
+Selected Option:
+
+Line 5
+
+Correct Answer:
+
+Line 5 
+16	
+
+What will be the output of the program? 
+
+class SuperClass 
+{ 
+    public Integer getLength() 
+    {
+        return new Integer(4); 
+    } 
+} 
+
+public class SubClass extends SuperClass 
+{ 
+    public Long getLength() 
+    {
+        return new Long(5); 
+    } 
+
+    public static void main(String[] args) 
+    { 
+        SuperClass sp = new SuperClass(); 
+        SubClass sb = new SubClass(); 
+        System.out.println( 
+        sp.getLength().toString() + "," + sub.getLength().toString() ); 
+    } 
+}
+
+
+Selected Option:
+
+5, 4
+
+Correct Answer:
+
+Compilation fails 
+17	
+
+class CreateFile{
+public static void main(String[] args) {
+try {
+File directory = new File("c"); //Line 13
+File file = new File(directory,"myFile");
+if(!file.exists()) {
+file.createNewFile();  //Line 16
+}}
+catch(IOException e) {
+e.printStackTrace }
+}}}
+If the current direcory does not consists of directory "c", Which statements are true ? (Choose TWO)
+
+
+Selected Option:
+
+Line 13 creates a File object named “c”
+An exception is thrown at runtime
+
+Correct Answer:
+
+An exception is thrown at runtime 
+Line 13 creates a File object named “c” 
+18	
+
+Custom annotations can be created using
+
+
+Selected Option:
+
+@interface
+
+Correct Answer:
+
+@interface 
+19	
+
+Which  of the following methods are defined in class Thread? (Choose TWO)
+
+
+Selected Option:
+
+run()
+start()
+
+Correct Answer:
+
+start() 
+run() 
+20	
+
+Consider the following code and choose the correct option:
+public class Test {
+ public static void main(String[] args) {
+  String name="vikaramaditya";
+  System.out.println(name.substring(2, 5).toUpperCase().charAt(2));}}
+
+
+Selected Option:
+
+R
+
+Correct Answer:
+
+R 
+---------------------------------------------------------------------------------
+1	
+
+Which of the following statement gives the use of CLASSPATH?
+
+
+Selected Option:
+
+Holds the location of User Defined classes, packages and JARs
+
+Correct Answer:
+
+Holds the location of User Defined classes, packages and JARs 
+2	
+
+class CreateFile{
+public static void main(String[] args) {
+try {
+File directory = new File("c"); //Line 13
+File file = new File(directory,"myFile");
+if(!file.exists()) {
+file.createNewFile();  //Line 16
+}}
+catch(IOException e) {
+e.printStackTrace }
+}}}
+If the current direcory does not consists of directory "c", Which statements are true ? (Choose TWO)
+
+
+Selected Option:
+
+An exception is thrown at runtime
+Line 16 is never executed
+Line 13 creates a directory named “c” in the file system.
+Line 13 creates a File object named “c”
+
+Correct Answer:
+
+An exception is thrown at runtime 
+Line 13 creates a File object named “c” 
+3	
+
+Consider the following code and choose the correct option:
+class Test{
+  public static void main(String args[]){
+   TreeSet<Integer> ts=new TreeSet<Integer>();
+   ts.add(1);
+   ts.add(8);
+   ts.add(6);
+   ts.add(4);
+   SortedSet<Integer> ss=ts.subSet(2, 10);
+   ss.add(9);
+   System.out.println(ts);
+   System.out.println(ss);
+ }}
+
+
+Selected Option:
+
+[1,4,6,8,9] [4,6,8,9]
+
+Correct Answer:
+
+[1,4,6,8,9]
+[4,6,8,9] 
+4	
+
+Consider the following code and choose the correct option:
+class Test{
+ public static void parse(String str) {
+   try {   int num = Integer.parseInt(str);
+   } catch (NumberFormatException nfe) {
+   num = 0;   } finally {   System.out.println(num);
+   } }  public static void main(String[] args) {
+   parse("one");   }
+
+
+Selected Option:
+
+Compilation fails
+
+Correct Answer:
+
+Compilation fails 
+5	
+
+Consider the following code and choose the correct option:
+abstract class Fun{
+ void time(){
+  System.out.println("Fun Time"); }}
+class Run extends Fun{
+ void time(){
+  System.out.println("Fun Run"); }
+ public static void main(String[] args) {
+  Fun f1=new Run();
+  f1.time(); }}
+
+
+Selected Option:
+
+Fun Run
+
+Correct Answer:
+
+Fun Run 
+6	
+
+interface interface_1 {
+ void f1();
+}
+class Class_1 implements interface_1 {
+ void f1() {
+  System.out.println("From F1 funtion in Class_1 Class");
+ }
+}
+public class Demo1 {
+ public static void main(String args[]) {
+  Class_1 o11 = new Class_1();
+  o11.f1();
+ }
+}
+
+
+Selected Option:
+
+Compile time error
+
+Correct Answer:
+
+Compile time error 
+7	
+
+What is the output of the following: 
+
+int a = 0;
+int b = 10;
+
+a = --b ;
+System.out.println("a: " + a + "  b: " + b );
+
+
+Selected Option:
+
+a: 9 b:9
+
+Correct Answer:
+
+a: 9 b:9 
+8	
+
+Select the Uses of annotations. (Choose THREE)
+
+
+Selected Option:
+
+Runtime processing
+Compile time and deploytime processing
+Information For the Compiler
+
+Correct Answer:
+
+Information For the Compiler 
+Compile time and deploytime processing 
+Runtime processing 
+9	
+
+public class While 
+{
+    public void loop() 
+    {
+        int x= 0;
+        while ( 1 ) /* Line 6 */
+        {
+            System.out.print("x plus one is " + (x + 1)); /* Line 8 */
+        }
+    }
+}
+
+Which statement is true?
+
+
+Selected Option:
+
+There is a syntax error on line 6
+
+Correct Answer:
+
+There is a syntax error on line 6 
+10	
+
+Which interface does java.util.Hashtable implement?
+
+
+Selected Option:
+
+Java.util.Map
+
+Correct Answer:
+
+Java.util.Map 
+11	
+
+The following block of code creates a Thread using a Runnable target: 
+
+Runnable target = new MyRunnable();
+Thread myThread = new Thread(target);
+
+Which of the following classes can be used to create the target, so that the preceding code compiles correctly?
+
+
+Selected Option:
+
+public class MyRunnable implements Runnable{public void run(){}}
+
+Correct Answer:
+
+public class MyRunnable implements Runnable{public void run(){}} 
+12	
+
+Consider the following code and choose the correct option:
+public class X 
+{
+    public static void main(String [] args) 
+    {
+        X x = new X();
+        X x2 = m1(x); /* Line 6 */
+        X x4 = new X();
+        x2 = x4; /* Line 8 */
+        doComplexStuff();    }
+    static X m1(X mx)     {
+        mx = new X();
+        return mx;    }}
+After line 8 runs. how many objects are eligible for garbage collection?
+
+
+Selected Option:
+
+1
+
+Correct Answer:
+
+1 
+13	
+
+Given:
+ String test = "This is a test";
+ String[] tokens = test.split("\s");
+ System.out.println(tokens.length);
+What is the result?
+
+
+Selected Option:
+
+Compilation fails.
+
+Correct Answer:
+
+Compilation fails. 
+14	
+
+Which of the following is not a valid relation between classes?
+
+
+Selected Option:
+
+Segmentation
+
+Correct Answer:
+
+Segmentation 
+15	
+ 
+Which of the following methods are needed for loading a database driver in JDBC? 
+
+
+Selected Option:
+
+registerDriver() method and Class.forName()
+
+Correct Answer:
+
+registerDriver() method and Class.forName() 
+16	
+
+What will be printed out if you attempt to compile and run the following code ? 
+public class AA {
+ public static void main(String[] args) {
+  int i = 9;
+  switch (i) {
+  default:
+   System.out.println("default");
+  case 0:
+   System.out.println("zero");
+   break;
+  case 1:
+   System.out.println("one");
+  case 2:
+   System.out.println("two");
+  }
+ }
+}
+
+
+Selected Option:
+
+default zero
+
+Correct Answer:
+
+default
+zero 
+17	
+
+Consider the following code and choose the correct option:
+package aj; class S{ int roll =23;
+private S(){} }
+package aj; class T 
+{ public static void main(String ar[]){ 
+System.out.print(new S().roll);}}
+
+
+Selected Option:
+
+Compilation error
+
+Correct Answer:
+
+Compilation error 
+18	
+
+Consider the following code and choose the correct option:
+public class Test {
+ public static void main(String[] args) throws IOException {  
+  File file=new File("D:/jlist.lst");
+  byte buffer[]=new byte[(int)file.length()+1];
+  FileInputStream fis=new FileInputStream(file);
+  fis.read(buffer);
+  System.out.println(new String(buffer)); }}
+
+
+Selected Option:
+
+reads data from file named jlist.lst in byte form and display it on console.
+
+Correct Answer:
+
+reads data from file named jlist.lst in byte form and display it on console. 
+19	
+
+What will the output of following code?
+
+try 
+{ 
+    int x = 0; 
+    int y = 5 / x; 
+} 
+catch (Exception e) 
+{
+    System.out.println("Exception"); 
+} 
+catch (ArithmeticException ae) 
+{
+    System.out.println(" Arithmetic Exception"); 
+} 
+System.out.println("finished");
+
+
+Selected Option:
+
+compilation fails
+
+Correct Answer:
+
+compilation fails 
+20	
+
+public class MyRunnable implements Runnable 
+{
+    public void run() 
+    {
+        // some code here
+    }
+}
+which of these will create and start this thread?
+
+
+Selected Option:
+
+new Thread(new MyRunnable()).start();
+
+Correct Answer:
+
+new Thread(new MyRunnable()).start(); 
+----------------------------------------------------------------------------
+1	
+
+Given two programs:
+1. package pkgA;
+2. public class Abc {
+3. int a = 5;
+4. protected int b = 6;
+5. public int c = 7;
+6. }
+
+3. package pkgB;
+4. import pkgA.*;
+5. public class Def {
+6. public static void main(String[] args) {
+7. Abc f = new Abc();
+8. System.out.print(" " + f.a);
+9. System.out.print(" " + f.b);
+10. System.out.print(" " + f.c);
+11. }
+12. }
+What is the result when the second program is run? (Choose all that apply)
+
+
+Selected Option:
+
+Compilation fails with an error on line 9
+Compilation fails with an error on line 8
+
+Correct Answer:
+
+Compilation fails with an error on line 8 
+Compilation fails with an error on line 9 
+2	
+
+class A, B and C are in multilevel inheritance hierarchy repectively . In the main method of some other class if class C object is created, in what sequence the three constructors execute?
+
+
+Selected Option:
+
+Constructor of A executes first, followed by the constructor of B and C
+
+Correct Answer:
+
+Constructor of A executes first, followed by the constructor of B and C 
+3	
+
+All annotation types should maually extend the Annotation interface. State TRUE/FALSE
+
+
+Selected Option:
+
+true
+
+Correct Answer:
+
+false 
+4	
+
+Which of the following options give the valid package names? (Choose 3)
+
+
+Selected Option:
+
+$$.$$.$$
+dollorpack.$pack.$$pack
+_score.pack.__pack
+
+Correct Answer:
+
+dollorpack.$pack.$$pack 
+$$.$$.$$ 
+_score.pack.__pack 
+5	
+
+Which three are legal array declarations? (Choose THREE)
+
+
+Selected Option:
+
+Dog myDogs [];
+char [] myChars;
+int [] myScores [];
+
+Correct Answer:
+
+int [] myScores []; 
+char [] myChars; 
+Dog myDogs []; 
+6	
+
+Given:
+interface A { public void methodA(); }
+interface B { public void methodB(); }
+interface C extends A,B{ public void methodC(); } //Line 3
+class D implements B {
+public void methodB() { } //Line 5
+}
+class E extends D implements C { //Line 7
+public void methodA() { }
+public void methodB() { } //Line 9
+public void methodC() { }
+}
+What would be the result?
+
+
+Selected Option:
+
+If you define D e = (D) (new E()), then e.methodB() invokes the version of methodB() defined at line 5
+
+Correct Answer:
+
+If you define D e = (D) (new E()), then e.methodB() invokes the version of methodB() defined at line 9 
+7	
+
+Given :
+public class MainOne {
+    public static void main(String args[]) {
+      String str = "this is java";
+      System.out.println(removeChar(str,'s'));
+    }
+
+    public static String removeChar(String s, char c) {
+      String r = "";
+      for (int i = 0; i < s.length(); i++) {
+        if (s.charAt(i) != c)
+          r += s.charAt(i);
+      }
+      return r;
+    }
+  } What would be the result?
+
+
+Selected Option:
+
+Thi i java
+
+Correct Answer:
+
+Thi i java 
+8	
+
+public class SwitchTest 
+{  
+    public static void main(String[] args) 
+    {
+        System.out.println("value =" + switchIt(4)); 
+    } 
+    public static int switchIt(int x) 
+    {
+        int j = 1;  
+        switch (x) 
+        { 
+            case 1: j++; 
+            case 2: j++;  
+            case 3: j++; 
+            case 4: j++; 
+            case 5: j++; 
+            default: j++; 
+            } 
+        return j + x;  
+    } 
+}
+What will be the output of the program?
+
+
+Selected Option:
+
+value = 8
+
+Correct Answer:
+
+value = 8 
+9	
+
+Given :
+What would be the result of compiling and running the following program?
+// Filename: MyClass.java
+public class MyClass {
+public static void main(String[] args) {
+C c = new C();
+System.out.println(c.max(13, 29));
+}
+}
+class A {
+int max(int x, int y) { if (x>y) return x; else return y; }
+}
+class B extends A{
+int max(int x, int y) { return super.max(y, x) - 10; }
+}
+class C extends B {
+int max(int x, int y) { return super.max(x+10, y+10); }
+}
+
+
+Selected Option:
+
+The code will compile and print 29, when run.
+
+Correct Answer:
+
+The code will compile and print 29, when run. 
+10	
+
+Which of the following is an example of  IS A relationship?
+
+
+Selected Option:
+
+Ford - Car
+
+Correct Answer:
+
+Ford - Car 
+11	
+
+What happens when the constructor for FileInputStream fails to open a file for reading?
+
+
+Selected Option:
+
+throws a FileNotFoundException
+
+Correct Answer:
+
+throws a FileNotFoundException 
+12	
+
+Cosider the following code & select the correct output.
+String sql ="select rollno, name from student"; 
+  PreparedStatement pst=cn.prepareStatement(sql);
+  System.out.println(pst.toString());
+  ResultSet rs=pst.executeQuery();
+   while(rs.next()){
+   System.out.println(rs.getString(3));  }
+
+
+Selected Option:
+
+Compiles but error at run time
+
+Correct Answer:
+
+Compiles but error at run time 
+13	
+
+Consider the following code and select the correct output:
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+public class Lists {
+public static void main(String[] args) {
+List<String> list=new ArrayList<String>();
+list.add("1");
+list.add("2");
+list.add(1, "3");
+List<String> list2=new LinkedList<String>(list);
+list.addAll(list2);
+list2 =list.subList(2,5);
+list2.clear();
+System.out.println(list);
+}
+}
+
+
+Selected Option:
+
+[1,3,2]
+
+Correct Answer:
+
+[1,3,2] 
+14	
+
+What will be the result when you attempt to compile and run the following code?. 
+public class Conv
+ {
+    public static void main(String argv[]){
+ Conv c=new Conv();
+ String s=new String("ello");
+ c.amethod(s);
+    }
+
+    public void amethod(String s){
+ char c='H';
+ c+=s;
+ System.out.println(c);
+    }
+}
+
+
+Selected Option:
+
+Compile time error
+
+Correct Answer:
+
+Compile time error 
+15	
+
+Consider the following code and choose the correct option:
+class A{ private void display(){ System.out.print("Hi");}
+public static void main(String ar[]){
+display();}}
+
+
+Selected Option:
+
+Compilation fails
+
+Correct Answer:
+
+Compilation fails 
+16	
+
+Given:
+ public class Venus {
+ public static void main(String[] args) {
+ int [] x = {1,2,3};
+ int y[] = {4,5,6};
+ new Venus().go(x,y);
+ }
+ void go(int[]... z) {
+ for(int[] a : z)
+ System.out.print(a[0]);
+ }
+ } What is the result?
+
+
+Selected Option:
+
+14
+
+Correct Answer:
+
+14 
+17	
+ 
+Which of the following methods are static? 
+
+
+Selected Option:
+
+sleep()
+yield()
+
+Correct Answer:
+
+yield() 
+sleep() 
+18	
+
+getConnection() is method available in?
+
+
+Selected Option:
+
+DriverManager Class
+
+Correct Answer:
+
+DriverManager Class 
+19	
+
+The following block of code creates a Thread using a Runnable target: 
+
+Runnable target = new MyRunnable();
+Thread myThread = new Thread(target);
+
+Which of the following classes can be used to create the target, so that the preceding code compiles correctly?
+
+
+Selected Option:
+
+public class MyRunnable implements Runnable{public void run(){}}
+
+Correct Answer:
+
+public class MyRunnable implements Runnable{public void run(){}} 
+20	
+
+class PingPong2 {
+synchronized void hit(long n) {
+for(int i = 1; i < 3; i++)
+System.out.print(n + "-" + i + " ");
+}
+}
+ public class Tester implements Runnable {
+ static PingPong2 pp2 = new PingPong2();
+ public static void main(String[] args) {
+ new Thread(new Tester()).start();
+ new Thread(new Tester()).start();
+ }
+ public void run() { pp2.hit(Thread.currentThread().getId()); }
+ }
+Which statement is true?
+
+
+Selected Option:
+
+The output could be 5-1 6-1 6-2 5-2
+
+Correct Answer:
+
+The output could be 6-1 6-2 5-1 5-2 
+----------------------------------------------------
+1	
+
+Give Code snipet:
+{// Somecode
+ResultSet rs = st.executeQuery("SELECT * FROM survey");
+
+    while (rs.next()) {
+      String name = rs.getString("name");
+      System.out.println(name);
+    }
+
+    rs.close();
+// somecode
+} What should be imported related to ResultSet?
+
+
+Selected Option:
+
+java.sql.ResultSet
+
+Correct Answer:
+
+java.sql.ResultSet 
+2	
+
+Which of the following declarations are correct? (Choose TWO)
+
+
+Selected Option:
+
+boolean b = TRUE;
+byte b = 256;
+
+Correct Answer:
+
+String s = “null”; 
+int i = new Integer(“56”); 
+3	
+
+Which of the following are true about packages? (Choose 2)
+
+
+Selected Option:
+
+Packages can contain non-java elements such as images, xml files etc.
+Packages can contain both Classes and Interfaces (Compiled Classes)
+
+Correct Answer:
+
+Packages can contain both Classes and Interfaces (Compiled Classes) 
+Packages can contain non-java elements such as images, xml files etc. 
+4	
+
+Which of the following is not a valid relation between classes?
+
+
+Selected Option:
+
+Segmentation
+
+Correct Answer:
+
+Segmentation 
+5	
+
+Which four can be thrown using the throw statement? 
+
+1.Error 
+2.Event 
+3.Object 
+4.Throwable 
+5.Exception 
+6.RuntimeException
+
+
+Selected Option:
+
+2, 3, 4 and 5
+
+Correct Answer:
+
+1, 4, 5 and 6 
+6	
+
+Which of the following methods registers a thread in a thread scheduler?
+
+
+Selected Option:
+
+start();
+
+Correct Answer:
+
+start(); 
+7	
+
+Given:
+interface A { public void methodA(); }
+interface B { public void methodB(); }
+interface C extends A,B{ public void methodC(); } //Line 3
+class D implements B {
+public void methodB() { } //Line 5
+}
+class E extends D implements C { //Line 7
+public void methodA() { }
+public void methodB() { } //Line 9
+public void methodC() { }
+}
+What would be the result?
+
+
+Selected Option:
+
+Compilation fails, due to an error in line 3
+
+Correct Answer:
+
+If you define D e = (D) (new E()), then e.methodB() invokes the version of methodB() defined at line 9 
+8	
+
+Consider the code below  & select the correct  ouput from the options:
+
+ public class Test {
+ public static void main(String [] args) {
+ int x = 5;
+ boolean b1 = true;
+ boolean b2 = false;
+ if ((x == 4) && !b2 )
+ System.out.print("1 ");
+ System.out.print("2 ");
+ if ((b2 = true) && b1 )
+ System.out.print("3 "); }
+
+
+Selected Option:
+
+2 3
+
+Correct Answer:
+
+2 3 
+9	
+
+What will be the output of the program? 
+
+class MyThread extends Thread 
+{ 
+    MyThread() {} 
+    MyThread(Runnable r) {super(r); } 
+    public void run() 
+    { 
+        System.out.print("Inside Thread ");
+    } 
+} 
+class MyRunnable implements Runnable 
+{ 
+    public void run() 
+    { 
+        System.out.print(" Inside Runnable"); 
+    } 
+} 
+class Test 
+{  
+    public static void main(String[] args) 
+    { 
+        new MyThread().start(); 
+        new MyThread(new MyRunnable()).start(); 
+    } 
+}
+
+
+Selected Option:
+
+Prints "Inside Thread Inside Thread"
+
+Correct Answer:
+
+Prints "Inside Thread Inside Thread" 
+10	
+
+Which of the following opens the file "myData.stuff" for output first deleting any file with that name?
+
+
+Selected Option:
+
+FileOutputStream fos = new FileOutputStream( new BufferedOutputStream( "myData.stuff") )
+
+Correct Answer:
+
+FileOutputStream fos = new FileOutputStream( "myData.stuff") 
+11	
+
+A) By default, all JDBC transactions are auto commit
+B) PreparedStatement suitable for dynamic sql and requires one time compilation
+C) with JDBC it is possible to fetch information about the database
+
+
+Selected Option:
+
+All are TRUE
+
+Correct Answer:
+
+All are TRUE 
+12	
+
+A)A string buffer is a mutable sequence of characters.
+B) sequece of characters in the string buffer can not be changed.
+
+
+Selected Option:
+
+Only A is TRUE
+
+Correct Answer:
+
+Only A is TRUE 
+13	
+
+Consider the following code and choose the correct option:
+interface Output{
+ void display();
+ void show();
+}
+class Screen implements Output{
+ void show() {System.out.println("show");}
+  void display(){ System.out.println("display"); }public static void main(String[] args) {
+  new Screen().display();}}
+
+
+Selected Option:
+
+Compilation error
+
+Correct Answer:
+
+Compilation error 
+14	
+
+static int binarySearch(List list, Object key) is a method of __________
+
+
+Selected Option:
+
+Collections class
+
+Correct Answer:
+
+Collections class 
+15	
+ 
+class One{
+int var1;
+One (int x){
+var1 = x;
+}}
+class Derived extends One{
+int var2;
+Derived(){
+super(10);
+var2=10;
+}
+void display(){
+System.out.println("var1="+var1+" , var2="+var2);
+}}
+class Main{
+public static void main(String[] args){
+Derived obj = new Derived();
+obj.display();
+}}
+consider the code above & select the proper output from the options. 
+
+
+Selected Option:
+
+var1=10 , var2=10
+
+Correct Answer:
+
+var1=10 , var2=10 
+16	
+
+int I = 0;
+    outer:
+    while (true) 
+    {
+        I++;
+        inner:
+        for (int j = 0; j < 10; j++) 
+        {
+            I += j;
+            if (j == 3)
+                continue inner;
+            break outer;
+        }
+        continue outer;
+    }
+System.out.println(I);
+
+What will be thr result?
+
+
+Selected Option:
+
+1
+
+Correct Answer:
+
+1 
+17	
+
+Given two programs:
+1. package pkgA;
+2. public class Abc {
+3. int a = 5;
+4. protected int b = 6;
+5. public int c = 7;
+6. }
+
+3. package pkgB;
+4. import pkgA.*;
+5. public class Def {
+6. public static void main(String[] args) {
+7. Abc f = new Abc();
+8. System.out.print(" " + f.a);
+9. System.out.print(" " + f.b);
+10. System.out.print(" " + f.c);
+11. }
+12. }
+What is the result when the second program is run? (Choose all that apply)
+
+
+Selected Option:
+
+Compilation fails with an error on line 8
+Compilation fails with an error on line 9
+
+Correct Answer:
+
+Compilation fails with an error on line 8 
+Compilation fails with an error on line 9 
+18	
+
+Consider the code below  & select the correct  ouput from the options:
+public class Test{
+ public static void main(String[] args) {
+  String []colors={"orange","blue","red","green","ivory"};
+  Arrays.sort(colors);
+ int s1=Arrays.binarySearch(colors, "ivory");
+  int s2=Arrays.binarySearch(colors, "silver");
+  System.out.println(s1+" "+s2); }}
+
+
+Selected Option:
+
+2 -6
+
+Correct Answer:
+
+2 -6 
+19	
+
+Select the variable which are in java.lang.annotation.RetentionPolicy class. (Choose THREE)
+
+
+Selected Option:
+
+SOURCE
+RUNTIME
+CLASS
+
+Correct Answer:
+
+SOURCE 
+RUNTIME 
+CLASS 
+20	
+
+Which of the following allows a programmer to destroy an object x?
+
+
+Selected Option:
+
+Only the garbage collection system can destroy an object.
+
+Correct Answer:
+
+Only the garbage collection system can destroy an object. 
+-----------------------------------------------------------------------------------------
+1	
+
+Consider the code below  & select the correct  ouput from the options:
+
+ public class Test {
+ public static void main(String [] args) {
+ int x = 5;
+ boolean b1 = true;
+ boolean b2 = false;
+ if ((x == 4) && !b2 )
+ System.out.print("1 ");
+ System.out.print("2 ");
+ if ((b2 = true) && b1 )
+ System.out.print("3 "); }
+
+
+Selected Option:
+
+2 3
+
+Correct Answer:
+
+2 3 
+2	
+
+Which Man class properly represents the relationship "Man has a best friend who is a Dog"?
+A)class Man extends Dog { }
+B)class Man implements Dog { }
+C)class Man { private BestFriend dog; }
+D)class Man { private Dog bestFriend; }
+
+
+Selected Option:
+
+D
+
+Correct Answer:
+
+D 
+3	
+
+Which of the following statements are true regarding java.lang.Object class? (Choose 2)
+
+
+Selected Option:
+
+Object class provides the method for Set implementation in Collection framework
+Object class has the core methods for thread synchronization
+
+Correct Answer:
+
+Object class has the core methods for thread synchronization 
+Object class provides the method for Set implementation in Collection framework 
+4	
+
+What is the output :
+class One{
+ public static void main(String[] args) {
+  int a=100;  
+  if(a>10)     
+   System.out.println("M.S.Dhoni");  
+  else if(a>20)       
+   System.out.println("Sachin");  
+  else if(a>30)        
+   System.out.println("Virat Kohli");}
+ }
+
+
+Selected Option:
+
+M.S.Dhoni
+
+Correct Answer:
+
+M.S.Dhoni 
+5	
+
+Cosider the following code & select the correct output.
+String sql ="select rollno, name from student"; 
+  PreparedStatement pst=cn.prepareStatement(sql);
+  System.out.println(pst.toString());
+  ResultSet rs=pst.executeQuery();
+   while(rs.next()){
+   System.out.println(rs.getString(3));  }
+
+
+Selected Option:
+
+Compiles but error at run time
+
+Correct Answer:
+
+Compiles but error at run time 
+6	
+
+Which of the following is a checked exception?
+
+
+Selected Option:
+
+IOException
+
+Correct Answer:
+
+IOException 
+7	
+
+Given:
+ public static Iterator reverse(List list) {
+ Collections.reverse(list);
+ return list.iterator();
+ }
+ public static void main(String[] args) {
+ List list = new ArrayList();
+ list.add("1"); list.add("2"); list.add("3");
+ for (Object obj: reverse(list))
+ System.out.print(obj + ", ");
+ }
+What is the result?
+
+
+Selected Option:
+
+Compilation fails.
+
+Correct Answer:
+
+Compilation fails. 
+8	
+
+Consider the following code and select the correct output:
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+public class Lists {
+public static void main(String[] args) {
+List<String> list=new ArrayList<String>();
+list.add("1");
+list.add("2");
+list.add(1, "3");
+List<String> list2=new LinkedList<String>(list);
+list.addAll(list2);
+list2 =list.subList(2,5);
+list2.clear();
+System.out.println(list);
+}
+}
+
+
+Selected Option:
+
+[1,3,2]
+
+Correct Answer:
+
+[1,3,2] 
+9	
+
+Which of the following is an example of  IS A relationship?
+
+
+Selected Option:
+
+Ford - Car
+
+Correct Answer:
+
+Ford - Car 
+10	
+
+What will be the output of the program? 
+
+class MyThread extends Thread 
+{ 
+    MyThread() {} 
+    MyThread(Runnable r) {super(r); } 
+    public void run() 
+    { 
+        System.out.print("Inside Thread ");
+    } 
+} 
+class MyRunnable implements Runnable 
+{ 
+    public void run() 
+    { 
+        System.out.print(" Inside Runnable"); 
+    } 
+} 
+class Test 
+{  
+    public static void main(String[] args) 
+    { 
+        new MyThread().start(); 
+        new MyThread(new MyRunnable()).start(); 
+    } 
+}
+
+
+Selected Option:
+
+Prints "Inside Thread Inside Thread"
+
+Correct Answer:
+
+Prints "Inside Thread Inside Thread" 
+11	
+
+public class MyRunnable implements Runnable 
+{
+    public void run() 
+    {
+        // some code here
+    }
+}
+which of these will create and start this thread?
+
+
+Selected Option:
+
+new Thread(new MyRunnable()).start();
+
+Correct Answer:
+
+new Thread(new MyRunnable()).start(); 
+12	
+
+Consider the following code and choose the correct option:
+interface employee{
+ void saldetails();
+ void perdetails();
+}
+abstract class perEmp implements employee{
+ public void perdetails(){
+  System.out.println("per details"); }}
+ class Programmer extends perEmp{ 
+ public static void main(String[] args) {
+  perEmp emp=new Programmer();
+  emp.saldetails(); }}
+
+
+Selected Option:
+
+compilation error
+
+Correct Answer:
+
+compilation error 
+13	
+
+Which digit,and in what order,will be printed when the following program is run?
+
+Public class MyClass {
+  public static void main(String[] args) {
+   int k=0;
+  try {
+         int i=5/k;
+        }
+catch(ArithmeticException e) {
+   System.out.println("1");
+    }
+catch(RuntimeException e) {
+   System.out.println("2");
+  return;
+    }
+catch(Exception e) {
+   System.out.println("3");
+    }
+finally{
+System.out.println("4");
+}
+System.out.println("5");
+}
+}
+
+
+Selected Option:
+
+The program will only print 5
+
+Correct Answer:
+
+The program will only print 1 ,4 and 5 in order 
+14	
+
+What is the use of wasNull() in ResultSet interface?
+
+
+Selected Option:
+
+It returns true when last read column contain SQL NULL else returns false
+
+Correct Answer:
+
+It returns true when last read column contain SQL NULL else returns false 
+15	
+
+Which of the following sentences is true?
+A)  Access to data member depends on the scope of the class and the scope of data members
+B) Access to data member depends only on the scope of the data members
+C) Access to data member depends on the scope of the method from where it is accessed
+
+
+Selected Option:
+
+Only A is TRUE
+
+Correct Answer:
+
+Only A is TRUE 
+16	
+
+What happens when the constructor for FileInputStream fails to open a file for reading?
+
+
+Selected Option:
+
+throws a ArrayIndexOutOfBoundsException
+
+Correct Answer:
+
+throws a FileNotFoundException 
+17	
+
+Select the Uses of annotations. (Choose THREE)
+
+
+Selected Option:
+
+Compile time and deploytime processing
+Runtime processing
+Information For the Compiler
+
+Correct Answer:
+
+Information For the Compiler 
+Compile time and deploytime processing 
+Runtime processing 
+18	
+
+What will happen if a main() method of a "testing" class tries to access a private instance variable of an object using dot notation?
+
+
+Selected Option:
+
+The compiler will find the error and will not make a .class file
+
+Correct Answer:
+
+The compiler will find the error and will not make a .class file 
+19	
+
+Which statement is true?
+A. A class's finalize() method CANNOT be invoked explicitly.
+B. super.finalize() is called implicitly by any overriding finalize() method.
+C. The finalize() method for a given object is called no more than once by the garbage collector.
+D. The order in which finalize() is called on two objects is based on the order in which the two
+objects became finalizable.
+
+
+Selected Option:
+
+C
+
+Correct Answer:
+
+C 
+20	
+
+Examine this code: 
+
+String stringA = "Hello ";
+String stringB = " World";
+String stringC = " Java";
+String result;
+Which of the following puts a reference to "Hello World Java" in result?
+
+
+Selected Option:
+
+result = stringA.concat( stringB.concat( stringC ) );
+
+Correct Answer:
+
+result = stringA.concat( stringB.concat( stringC ) ); 

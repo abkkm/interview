@@ -1,0 +1,4 @@
+primitive  data structures 
+non primitive data structures
+    linear(arrays,list,queues,stacks) 
+    non linear (graph,tree)

@@ -1,0 +1,87 @@
+1. How will you concat three strings in sql?
+SELECT emp_name||' ' || job_name AS "Employee & Job" FROM employees ;
+
+2. Display all employess with 15% hike in salary
+select emp_name, concat('$ ',salary+salary*.15) as new_salary FROM employees ;
+
+3. Display employees whose hire_date is in Jan month
+SELECT *
+FROM employees
+WHERE to_char(hire_date, 'mon')='jan';
+
+select * from employees where to_char(hire_date,'YYYY') = '1991'
+
+
+4. Same time contains emp_id and manager_id(who is another employee), find the employees and their corresponding manager_id - do a self join
+select a.emp_name as Employee, b.emp_name as Manager from employees a INNER JOIN employees b ON a.manager_id = b.emp_id
+
+5. Add unique and not null, primary key constraints to a tab<#if show_header>
+ALTER TABLE DEPARTMENT
+CHANGE COLUMN LOCATION LOCATION VARCHAR(33) NOT NULL;
+
+ALTER TABLE DEPARTMENT
+CHANGE COLUMN DeptName DeptName VARCHAR(15) UNIQUE;
+
+ALTER TABLE EMPLOYEE
+ADD PRIMARY KEY (EmpCode);
+
+6. Drop a column from the TABLE
+ALTER TABLE employee
+DROP column DOB;
+
+7. Add a column to the TABLE - adds a column after a column in the table
+ALTER TABLE Employee
+ADD column DOB DATE 
+AFTER Emp_Name
+
+8. Change a column
+ALTER TABLE EMPLOYEE
+CHANGE COLUMN Salary Salary DECIMAL(6,2);
+
+
+9. query all names where second letter starts with a  
+select * from employee where name like '_a%';
+
+10. query all names where the second letter is either a or c or f
+select * from employee where name like '_[acf]%'
+
+11. query all names where the second letter is between a and f
+select * from employee where name like '_[a-f]'
+
+12. Query all names where the first letter should not be a
+select * from employee where name like '[!a]%'
+
+13. Inner join query
+select E.EMPFNAME, E.EMPLNAME, E.DEPTCODE, D.DEPTNAME, D.LOCATION 
+from EMPLOYEE as E INNER JOIN DEPARTMENT as D ON 
+E.DEPTCODE = D.DEPTCODE 
+ORDER BY E.EMPFNAME,D.LOCATION
+
+if we dont give d. or e. or employee. near DEPTCODE --> it'll lead to ambiguous error
+
+
+14. Concat queries and addition
+ select concat(EMPFNAME,' ' ,EMPLNAME) as EmployeeName, Salary+Commission from employee order by EmployeeName
+
+ 15. where should come before group by
+ 16. All columns present in the where (not the columns present in aggregrate functions like count, sum etc) must be present in the group by list
+
+17. Create a view - view is nothing but a virtual table, it has columns and rows like a normal table and can be queried upon. 
+We can create a view and have complex queries/functions being called inside the view. 
+
+create view Manager_Details
+as
+select e.empCode, concat(e.empfname, ' ', e.emplname) as Employee_Name,d.deptname, concat(e1.empfname, ' ', e1.emplname) as Manager_Name
+from employee as e 
+JOIN 
+employee as e1 
+ON e.Manager = e1.empCode
+INNER JOIN
+department as d
+ON d.deptcode = e.deptcode
+
+Now we can query the Manager_Details like any other normal table.
+
+View disadvantages
+Each time the view is queried, the select statement is executed because the view has to return up to date results
+Creating views for large tables will lead to usage of large amount of physical memory

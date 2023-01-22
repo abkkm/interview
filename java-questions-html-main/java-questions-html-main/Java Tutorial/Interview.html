@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Inteview Questions</title>
+<link rel="stylesheet" href="style/style.css" type="text/css">
+<style>
+li{
+margin-top:10px;}
+.answer{
+	border:1px solid grey;	
+	margin-top:10px;
+	padding:10px;}
+}
+</style>
+</head>
+<body>
+<div class = "ans">
+<h2>Vitech - Downtown, Columbus
+<h3>Round1 - Java </h3>
+<ol>
+<li> Difference between Abstract class and interface </li>
+<li>Difference between Final, finally, finalize </li>
+<li>Difference between linked list, arraylist (which stores the order of insertion) </li>
+<li>Difference between Overriding, Overloading </li>
+<li>Difference between Equals, EqualsTo </li>
+<li>Difference between yield,sleep </li>
+<li>Difference between Checked, UNchecked exceptions; how to handle unchecked exceptions </li>
+<li>When object will be garbage collected? who decides it, how to call it.</li>
+<li>How many strings will be created in string a="hello"; String b = "hello"; what is the value of a==b?; why "name".equals(a) is better than a.equals("name")</li>
+<li>What is connection pool? </li>
+<li>Why not entired method in try/catch block </li>
+<li>In Subversion context, what is branch, tag? Can we update code in a tag(yes when we want to do some prod fix on a partical tag) </li>
+<li>What is Serialization? </li>
+<li> Life cycle of a servlet </li>
+<li> Why we need Ajax, explain what ajax you have used in your project </li>
+</ol>
+<h3> Round1 - Spring </h3>
+<ol>
+<li> What is IOC?</li>
+<li> Different modules of Spring?</li>
+<li> Define Bean scopes</li>
+<li> What is autowiring?</li>
+<li> Different types of injection? </li>
+<li>Explain MVC flow </li>
+</ol>
+<h3>Round1 - Hibernate </h3>
+<ol>
+<li> HQL -> From Person where some condition - is this a valid query in HQL or do we need select * ?</li>
+<li> Different config files in hibernate</li>
+<li> Caching in Hibernate, what is first level and second level cache</li>
+<li> Hava you heard of evict? When and why do you need it?</li>
+<li> What are different fetching strategies or will associated collections be fetched when i fetch a class?</li>
+<li> What kind of performance tuning you have done in your project?</li>
+</ol>
+<h3> Round 2 - General and SQL </h3>
+<ol>
+<li> SQL query to select address of a person. Person table has name, address table has homeaddress, office address etc</li>
+<li> Page design to get Person Name, and differnt kind of addresses</li>
+<li> Write a basic stored procedure, just the skeleton will be enough</li>
+<li> More discussion about project, other teams you interacted with</li>
+</ol>
+<h3> Round3 - PL/SQL and Ajax </h4>
+<ol>
+<li> What are PL/SQL Objects?</li>
+<li> Why do we need templates in PL/SQL?</li>
+<li> What is row-level and statement-level trigger</li>
+<li> Have you used cursor in your project?</li>
+<li> Difference between equijoin and outerjoin</li>
+<li> What do you know about JSON?</li>
+<li> A scenario - there are 2 dropdowns, based on what we select in first drop down, second drop down should display a certain set of values. how will you implement it? - using ajax</li>
+<li> Explain how you used agile in your project</li>
+<li> What is your project structure, whom do you report to?</li>
+<li> Important - How will you find the angle between two hands of an analog clock? Come up with an algorithm</li>
+
+
+<h3>Transplace interview questions</h3>
+
+    <li>Design Pattern related questions - how have you used in your project
+    <div class="answer">
+    Used following design patterns in my project 1. Singleton design pattern - only one instance of the bean should be returned when ever its initialized. Can be used for datasource objects, connection objects
+    <br/> MVC Pattern <br/>Front Controller Pattern <br/> MVC Pattern <br/> DAO pattern - APIs/methods that access data will be in separate class. tables will be represented as POJOs
+    <br/>Facade pattern - it hides all the complexities of the application and exposes only the interface for the client applications to access.
+    <br/>What is a factory pattern - we dont directly instantiate a class, instead we have a factory that will instantiate and return the object's instance to other methods. This is used to not expose the creation logic to the client
+    </div></li>
+    
+    <li>Are Default parameters allowed in java? 
+    <div class="answer"> No Default parameters are not allowed in java, we can easily build functionalities to achieve that </div></li>
+    <li>Java solid principals - how have you used in your project</li>
+    <li>Algorithm related questions</li>
+    
+    <li>Difference between POST and PUT
+    <div class="answer">
+    	Always use PUT method to UPDATE an existing resource. PUT methods are idempotent. Even when we call the PUT method multiple times, result will be same.
+    	<br>POST methods are generally used for CREATING resources. Its not idempotent, so if you call it multiple times, its going to create multiple resources.
+    </div>
+    </li>
+    <li>Difference between git pull and git fetch
+        <div class="answer">
+            git pull is git fetch + git merge. git fetch will not merge the incoming changes with local repo, whereas git pull will fetch + merge.
+        </div>
+    </li>
+    <li>How do you debug, what tools you used for debugging
+    <div class="answer"> Take thread dumps using the command <i> <b> jstack pid </b></i>
+    <br/>A thread dump will have the thread name, thread id, priority, thread state and call stack information. Analyse the thread dump, check for any threads with more wait time, check for any dead locks, check for really more number of threads created at the same time that will deplete the CPU (take the tiff file thumbnail example)
+    <br/>When an application is slow, look for blocked threads. One thread will be holding a shared object, and other threads will be blocked, this will cause the application to slow down.
+    <br/>Look for any deadlocks - see if 2 thread are waiting for each other's locks. 
+    <br/> Check if any thread is in WAITING state for a long time
+    </div> </li>
+    <li>How you improved performance - did you use any tool?
+    <div class="answer"> 
+    When CPU Usage is abnormally more.
+    First get the process id that uses the most of CPU. Check thread dumps to find the status of the threads that using the CPU the most
+    </div>
+    <div class="answer"> 
+    When performance is very slow
+    Get several thread dumps in an hr, find the list of threads with BLOCKED status for so long. Then analyse the stack trace to check whats blocking that thread.
+    </div>
+    <div class="answer">
+    Always its a good practice to name your threads, it'll be easy to analyse it in the thread dumps. Whenever you create a thread, give it a custom name.
+    </div>
+    </li>
+    <li>Any scenario you did performance improvement in your project 
+    <div class="answer">
+    1. Did performance improvement of admin pages - through code review. DB calls were being made from inside a loop in JSP code in legacy application. Modified that code to improve performance of the page.
+	2. Integrated S3 bucket as content store for Alfresco application. Upload and download speeds were less, researched about it and came up with the solution to use accelerated access feature available in AWS s3 and updated the code to use S3 acceleration and performance was improved.
+	3. Left tree loading - Alfresco limitation. Modified code, added logic to split the calls based on number of folders, made multiple calls asynchronously and loaded the left tree.
+	Improved SQL query performance - 
+	</div>
+    </li>
+    <li>What is a memory leak? How to overcome it?
+    <div class="answer">
+    Java objects holding up a lot of memory and those objects are not being garbage collected leads to memory leak
+    <br/>1.Using lots of static objects can lead to memory leak. (Especially large static collections). Static objects live in memory as long as the application runs, so it'll not be garbage collected and hence will lead to memory leak
+    <br/>2. Opening resources, connections and sessions and not closing them will also lead to memory leak. Garbage collector will think those objects are still being used since its open and hence will not garbage collect it.
+    </div>
+    <div class="answer">
+    To overcome memory leak, minimize use of static objects, always use finally block to close any resources or sessions that is opened. Use lazy loading design pattern where objects are initialized only when called for the first time.
+    <br/>There are tools like jProfiler and Java Visual VM to identify memory leaks.
+    </div>
+    </li>
+    <li> How to find tune sql queries?
+        <div class="answer">
+            <br> 1. Use select field names instead of select *
+            <br> 2. Select * from table1,table2 where table1.id = table2.id.  this is called Cartesian join or cross join. Avoid this kind of query, always use inner join with on. 
+            <br> 3. Avoid Select distinct, that's costly, Instead use select with more fields 
+            <br> 4. Use where whenever you use having. Having should only be used on aggrevating results along with where
+            <br> 5. Use indexing/filters when necessary
+            <br> 6. Aggregate the data as much as possible
+            <br> 7. Avoid using OR on inner join condition, it'll read lots of rows even for 2 simple tables, instead use union 
+        </div>
+    </li>
+    <li>How do you make threads be called in a sequence?
+        <div class="answer">
+            Using join method. Start a thread and call join method on the same thread. It'll make it to wait until the thread stops executing. This way all the threads will be called in order
+            <br>t1.start(); t1.join();
+            <br>t2.start(); t2.join();
+            <br>t3.start();t3.join();
+        </div>
+    </li>
+    <li>How do you handle rollbacks in your project?
+        
+    </li>
+    <li>How do you do git merge?</li>
+    <li>Whats view and trigger (Stored procedure) </li>
+    
+    <li>Whats something you have done above and beyond your scope for success of your project
+    <div class="answer">
+        Had issue starting the application, I enabled tomcat debug and found the issue was due to insufficient AWS permissions. The DevOps team member responsible was on PTO, so I configured AWS CLI and tried if I could grant permissions using the credentials I had and I could do it, even though I had not worked much on AWS CLI at that point of time
+    <br> fixed a small bug in a page, noticed it was very slow than usual, so I reviewed all the related files, came up with a solution and dicussed with the team, made the changes within the scope of the bug ticket. If its going to take more time, then I would ve brought it to the team's notice and created a tickeet in baglog and will take it up when there is time</div>
+</li>
+
+<li>What are your positives
+    <div class="answer">
+        I go above and beyond to fix any issue. Always adapt to different project/work environments pretty fast and can ramp up to speed with good productivity within weeks.
+        I like to document everything I work on (atleast in my local) so that I can refer back to whenver needed. Even if I do some manual developer testing, I'll document the steps in the Jira tickets. Multiple times it has helped my team members or client team or even me.         I do not shy away from helping other team members. 
+        I come from a testing background in initial phase of my career, so whenever I write a code, I always test that for happy path scenarios, failure scenarios. 
+        
+    </div>
+</li>
+
+<li>What are your negatives</li>
+
+
+</ol>
+</div>
+</body>
+</html>

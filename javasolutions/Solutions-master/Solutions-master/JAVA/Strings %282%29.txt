@@ -1,0 +1,2485 @@
+							SET-1
+
+12.A time input is received as stirng. Find if the hour format is in 12 hour format. the suffix am/pm is case insensitive.
+input:"09:36 am"
+output:true
+
+
+
+package Set1;
+import java.text.*;
+import java.util.*;
+public class ClassSet12 {
+	public static boolean hourFormat(String s) throws ParseException{
+		boolean b=false;
+		StringTokenizer st=new StringTokenizer(s," ");
+		String s1=st.nextToken();
+		String s2=st.nextToken(); 	
+		StringTokenizer st1=new StringTokenizer(s1,":");
+		int n1=Integer.parseInt(st1.nextToken()); 
+		int n2=Integer.parseInt(st1.nextToken()); 
+		if((s2.equalsIgnoreCase("am"))|| (s2.equalsIgnoreCase("pm")))
+			if((n1<=12)&&(n2<=59))
+				b=true; 
+		return b;
+	}
+	public static void main(String[] args) throws ParseException {
+		String s="19:36 am";
+		boolean b=hourFormat(s);
+		if(b==true)
+			System.out.println("the time is in 12 hr format");
+		else
+			System.out.println("the time is in 24 hr format");
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+14.find the max length-word in a given string and return the max-length word. if two words are of same length return the first occuring word of max-length
+input:"hello how are you aaaaa"
+output:hello(length-5)
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet14 {
+	public static String lengthiestString(String s1){
+		int max=0;
+	    String s2=null;
+        StringTokenizer t=new StringTokenizer(s1," ");
+        while(t.hasMoreTokens()){
+        	s1=t.nextToken();
+        	int n=s1.length();
+        	if(n>max){
+        		max=n;
+        		s2=s1; 	}
+        	}
+        return s2;
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the String:");
+		String s1=s.nextLine();
+		System.out.println("the lengthiest string is:"+lengthiestString(s1));
+		}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+15. Get a input string. reverse it and parse it with '-'.
+input:computer
+output:r-e-t-u-p-m-o-c
+
+
+
+package Set1;
+import java.util.Scanner;
+public class ClassSet15 {
+	public static String reversedAndParsedString(String s1){
+		StringBuffer sb=new StringBuffer(s1);
+		sb.reverse();
+		StringBuffer sb1=new StringBuffer();
+		for(int i=0;i<(2*s1.length())-1;i++)
+			if(i%2!=0)
+				sb1=sb.insert(i, '-');
+		return sb1.toString();
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the String:");
+		String s1=s.next();
+		System.out.println("the formatted string is:"+reversedAndParsedString(s1));
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+18.Two input strings are accepted. If the two strings are of same length concat them and return, if they are not of same length, reduce the longer string to size of smaller one, and concat them
+input1:"hello"
+input2:"hi" 
+output:"lohi"
+input1:"aaa"
+input2:"bbb"
+output:"aaabbb"
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet18 {
+	public static String concatStrings(String s1,String s2){
+		StringBuffer sb=new StringBuffer();
+		if(s1.length()==s2.length())
+			sb.append(s1).append(s2);
+		else if(s1.length()>s2.length()){
+			s1=s1.substring(s1.length()-s2.lengtgh, s1.length());
+			sb.append(s1).append(s2);
+		}
+		else if(s1.length()<s2.length()){
+			s2=s2.substring(s2.length()/2, s2.length());
+			sb.append(s1).append(s2);
+		}
+		return sb.toString();
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String s1=s.next();
+		String s2=s.next();
+		System.out.println(concatStrings(s1,s2));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+21.Find the extension of a given string file.
+input: "hello.jpeg"
+output: "jpeg"
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet21 {
+	public static String extensionString(String s1){
+		StringTokenizer t=new StringTokenizer(s1,".");
+		t.nextToken();
+		String s2=t.nextToken();
+		return s2;
+	}
+	public static void main(String[] args) {
+		String s1="hello.jpeg";
+		System.out.println(extensionString(s1));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+23.Find if a given pattern appears in both the input strings at same postions.
+input1: "hh--ww--"
+input2: "rt--er--"
+output: true(false otherwise)
+
+
+
+
+
+package Set1;
+public class ClassSet23 {
+	public static boolean stringPattern(String s1,String s2){
+		String st1=s1.length()<s2.length()?s1:s2;
+	    String st2=s1.length()>s2.length()?s1:s2;
+        boolean b=true;
+        String s=st2.substring(st1.length());
+	    if(s.contains("-"))
+	    	 b=false;
+	    else{
+        loop:
+	    for(int i=0;i<st1.length();i++)
+	    	if((st1.charAt(i)=='-') || (st2.charAt(i)=='-'))
+	    		if(st1.charAt(i)!=st2.charAt(i)){
+	    			 b=false;
+	    			 break loop;  }
+	    	} 
+	    return b;
+	}
+	public static void main(String[] args) {
+		String s1="he--ll--";
+		String s2="we--ll--";
+		boolean b=stringPattern(s1,s2);
+		if(b==true)
+			System.out.println("same pattern");
+		else
+			System.out.println("different pattern");
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+25. Check whether a given string is palindrome also check whether it has atleast 2 different vowels
+input: "madam"
+output: false(no 2 diff vowels)
+
+
+
+
+package Set1;
+public class ClassSet25 {
+	public static boolean palindromeAndVowelCheck(String s){
+		boolean b=true;
+		int c=0;
+		String s1="aeiou";
+		StringBuffer sb=new StringBuffer(s);
+		String s2=sb.reverse().toString();
+		if(!s2.equals(s))
+			b=false;
+		else{
+		loop:
+		for(int i=0;i<s1.length();i++)
+			for(int j=0;j<s.length();j++)
+				if(s1.charAt(i)==s.charAt(j)){
+					c++; 
+					continue loop; }
+		if(c<2)
+			b=false;
+		}	
+		return b;
+	}
+public static void main(String[] args) {
+		String s="deed";
+		System.out.println(palindromeAndVowelCheck(s));
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+26. Find no of characters in a given string which are not repeated.
+input: "hello"
+output: 3
+
+
+
+
+package Set1;
+public class ClassSet26 {
+public static int noOfnonRepeatedCharacters(String s1){
+		StringBuffer sb=new StringBuffer(s1);
+		for(int i=0;i<sb.length();i++){
+			int n=0;
+			for(int j=i+1;j<sb.length();j++)
+				if(sb.charAt(i)==sb.charAt(j)){
+					sb.deleteCharAt(j);
+					n++; }
+				if(n>0){
+					sb.deleteCharAt(i);
+					i--;}		}
+		return sb.length();
+	}
+public static void main(String[] args) {
+		String s1="preethi";
+		System.out.println(noOfnonRepeatedCharacters(s1));
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+27. Get a input string. Find if it is a negative number, if true return the absolute value, in other cases return -1.
+input: "-123"
+output: 123
+input: "@123"
+output: -1
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet27 {
+	public static int negativeString(String s1){
+		int n1=0;
+		if(s1.startsWith("-")){
+		int n=Integer.parseInt(s1);
+		if(n<0)
+			n1=Math.abs(n);}
+		else
+			n1=-1;
+		return n1;
+	}
+public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String s1=s.next();
+		System.out.println(negativeString(s1));
+	}
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+31.Enter yout name and return a string "print the title first and then comma and then first letter of initial name.
+
+package Set1;
+import java.util.*;
+public class ClassSet31 {
+	public static String retrieveName(String s1){
+		StringTokenizer t=new StringTokenizer(s1," ");
+		String s2=t.nextToken();
+		String s3=t.nextToken();
+		StringBuffer sb=new StringBuffer(s2);
+		sb.append(',').append(s3.charAt(0));
+		return sb.toString();
+	}
+	public static void main(String[] args) {
+		String s1="Bhavane Raghupathi";
+		System.out.println(retrieveName(s1));
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+32.Write a Program that accepts a string and removes the duplicate characters.
+
+package Set1;
+public class ClassSet32 {
+	public static String removalOfDuplicateCharacters(String s1){
+		StringBuffer sb=new StringBuffer(s1);
+		for(int i=0;i<s1.length();i++)
+			for(int j=i+1;j<s1.length();j++)
+				if(s1.charAt(i)==s1.charAt(j))
+					sb.deleteCharAt(j);
+		return sb.toString();
+	}
+	public static void main(String[] args) {
+		String s1="bhavane";
+		System.out.println(removalOfDuplicateCharacters(s1));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+36. find the three consecutive characters in a string. if the string consists any three 
+   consecutive characters return 1 else return -1
+   like AAAxyzaaa will return true.
+
+
+
+
+
+package Set1;
+public class ClassSet36 {
+public static void main(String[] args) {
+	String s1="aaaaxyzAAA";
+	boolean b=consecutiveCharactersCheck(s1);
+	if(b==true)
+		System.out.println("presence of consecutive characters");
+	else
+		System.out.println("absence of consecutive characters");
+	}
+
+public static boolean consecutiveCharactersCheck(String s1) {
+	boolean b=false;
+	int c=0;
+	for(int i=0;i<s1.length()-1;i++)
+		if((s1.charAt(i+1)-s1.charAt(i))==1)
+				c++;
+	if(c>=2)
+		b=true;
+	return b;
+}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+37.String encrption. replace the odd-index character with next character(if it is 'z' replace with 'a'..if 'a' with 'b' as such), 
+leave the even index as such. return the encrypted string.
+
+
+
+
+package Set1;
+public class ClassSet37 {
+public static void main(String[] args) {
+	String s="preethi";
+	System.out.println(oddEncryptionOfString(s));
+	}
+public static String oddEncryptionOfString(String s) {
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<s.length();i++){
+		char c=s.charAt(i);
+		if(c%2!=0){
+			c=(char)(c+1);
+			sb.append(c);  }
+		else
+			sb.append(c);   }
+	return sb.toString();
+}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+39.GIVEN A STRING 555-666-1234
+DISPLAY AS 55-56-661-234?
+
+
+
+
+package Set1;
+import java.util.StringTokenizer;
+public class ClassSet39 {
+public static void main(String[] args) {
+	String s="555-666-1234";
+	System.out.println(display(s));
+	}
+public static String display(String s) {
+	StringTokenizer t=new StringTokenizer(s,"-");
+	String s1=t.nextToken();
+	String s2=t.nextToken();
+	String s3=t.nextToken();
+		
+	StringBuffer sb=new StringBuffer();
+	sb.append(s1.substring(0, s1.length()-1)).append('-');
+	sb.append(s1.charAt(s1.length()-1)).append(s2.charAt(0)).append('-');
+	sb.append(s2.substring(1, s2.length())).append(s3.charAt(0)).append('-');
+	sb.append(s3.substring(1, s3.length()));
+	
+	return sb.toString();
+}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+40.input1="Rajasthan";
+input2=2;
+input3=5;
+output=hts;
+
+
+
+
+
+package Set1;
+public class ClassSet40 {
+	public static void main(String[] args) {
+		String input1="Rajasthan";
+		int input2=2, input3=5;
+		System.out.println(retrieveString(input1,input2,input3));
+	}
+	public static String retrieveString(String input1, int input2, int input3) {
+		StringBuffer sb=new StringBuffer(input1);
+		sb.reverse();
+		String output=sb.substring(input2, input3);
+		return output;
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+42. input1=commitment;
+  output=cmmitmnt;
+c be the first index position 
+remove even vowels from the string
+
+
+
+
+
+package Set1;
+public class ClassSet42 {
+	public static void main(String[] args) {
+		String s1="cOmmitment";
+		System.out.println(removeEvenElements(s1));
+	}
+	public static String removeEvenElements(String s1) {
+		StringBuffer sb1=new StringBuffer();
+		for(int i=0;i<s1.length();i++)
+			if((i%2)==0)
+				sb1.append(s1.charAt(i));
+			else if((i%2)!=0)
+				if(s1.charAt(i)!='a' && s1.charAt(i)!='e' && s1.charAt(i)!='i' && s1.charAt(i)!='o' && s1.charAt(i)!='u')
+					if(s1.charAt(i)!='A' && s1.charAt(i)!='E' && s1.charAt(i)!='I' && s1.charAt(i)!='O' && s1.charAt(i)!='U')
+					 sb1.append(s1.charAt(i));
+		return sb1.toString();
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+							SET-2
+
+1) compare two strings, if the characters in string 1 are present in
+   string 2, then it should be put as such in output, else '+' should be
+   put in output...ignore case difference.
+
+	input 1:"New York"
+	input 2:"NWYR"
+
+	output:N+w+Y+r+
+
+
+
+
+
+package Set2;
+public class ClassSET1 {
+public static void main(String[] args) {
+		String s1="New York";
+		String s2="NWYR";
+		System.out.println(StringFormatting(s1,s2));
+	}
+public static String StringFormatting(String s1, String s2) {
+	StringBuffer s4=new StringBuffer();
+	String s3=s1.toUpperCase();
+	for(int i=0;i<s2.length();i++)
+		for(int j=0;j<s3.length();j++)
+			if(s2.charAt(i)==s3.charAt(j))
+				s4.append(s1.charAt(j)).append('+');
+	return s4.toString();
+}
+}
+----------------------------------------------------------------------------------------------------------||
+2) input:
+	Searchstring s1="GeniusRajkumarDev";
+	String s2="Raj";
+	String s3="Dev";
+   output:
+        Return 1 if s2 comes before s3 in searchstring else return 2
+
+
+
+
+
+package Set2;
+public class ClassSET2 {
+public static void main(String[] args) {
+	String srch="MaanVeerSinghKhurana";
+	String s1="Veer";
+	String s2="Singh";
+	int n=searchString(srch,s1,s2);
+	if(n==1)
+		System.out.println(s1+" comes before "+s2);
+	else
+		System.out.println(s2+" comes before "+s1);
+}
+public static int searchString(String srch, String s1, String s2) {
+	int n=0;
+	int n1=srch.indexOf(s1);
+	int n2=srch.indexOf(s2);
+	if(n1<n2)
+		n=1;
+	else
+		n=2;
+	return n;
+}
+}
+----------------------------------------------------------------------------------------------------------||
+||
+4)  intput="xyzwabcd"
+    intput2=2;
+    input3=4;
+    output=bawz
+
+
+
+
+
+package Set2;
+public class ClassSET4 {
+public static void main(String[] args) {
+	String s1="xyzwabcd";
+	int n1=2,n2=4;
+	System.out.println(retrievalOfString(s1,n1,n2));
+}
+
+public static String retrievalOfString(String s1, int n1, int n2) {
+	StringBuffer sb=new StringBuffer(s1);
+	sb.reverse();
+	String s2=sb.substring(n1, n1+n2);
+	return s2;
+}
+}
+--------------------------------------------------------------------------------------------------------||
+
+
+6)	input1="abc2012345"
+	input2="abc2112660"
+	input 3=4
+here "abc**" refers to customer id.
+12345 refers to last month eb reading and 12660 refers to this month eb reading
+find the difference between two readings and multiply it by input3
+
+ie., output=(12660-12345)*4
+
+
+
+
+
+package Set2;
+public class ClassSET6 {
+public static void main(String[] args) {
+	String input1="abc2012345";
+	String input2="abc2112660";
+	int input3=4;
+	System.out.println(meterReading(input1,input2,input3));
+}
+public static int meterReading(String input1, String input2, int input3) {
+	int n1=Integer.parseInt(input1.substring(5, input1.length()));
+	int n2=Integer.parseInt(input2.substring(5, input2.length()));
+	int n=Math.abs((n2-n1)*input3);
+	return n;
+}
+}
+-------------------------------------------------------------------------------------------------------||
+
+11)  input={"1","2","3","4"}
+    output=10
+ie,if string elements are nos,add it.
+    input={"a","b"}
+    output=-1;
+
+
+
+
+
+package Set2;
+public class ClassSET11 {
+public static void main(String[] args) {
+	String s[]={"1","2","3","4"};
+	//String s[]={"a","b","3","4"};
+	System.out.println(checkForStringElements(s));
+}
+public static int checkForStringElements(String[] s) {
+	int n=0;
+	boolean b=false;
+	for(int i=0;i<s.length;i++){
+		String s1=s[i];
+		for(int j=0;j<s1.length();j++){
+			char c=s1.charAt(j);
+			if(Character.isDigit(c))
+				b=true;
+			else{
+				b=false;
+				break;}		}
+		if(b==true)
+			n+=Integer.parseInt(s1);
+		else{
+			n=-1;
+			break;}		}
+	return n;
+}
+}
+-----------------------------------------------------------------------------------------------------------||
+
+13) count the number of times the second word in second string occurs in first string-case sensitive
+
+input1=hai hello hai where hai Hai;
+input2=what hai
+output=3;
+
+
+
+
+
+package Set2;
+import java.util.StringTokenizer;
+public class ClassSET13 {
+public static void main(String[] args) {
+	String input1="hai hello how are you?? hai hai";		
+	String input2="what hai";
+	System.out.println(stringOccurance(input1,input2));
+}
+
+public static int stringOccurance(String input1, String input2){
+	int count=0;
+	StringTokenizer t1=new StringTokenizer(input2," ");
+	String s1=t1.nextToken();
+	String s2=t1.nextToken();
+	StringTokenizer t2=new StringTokenizer(input1," ");
+	while(t2.hasMoreTokens()){
+		if(t2.nextToken().equals(s2))
+			count++;	}
+	return count;
+}
+}
+------------------------------------------------------------------------------------------------------------||
+14) find the no.of charcters,that has repeated 3 consecutive times
+input1:"aaabbccc"
+ouput1=2;
+
+
+
+
+
+package Set2;
+public class ClassSET14 {
+public static void main(String[] args) {
+	String input1="aaabbccc";
+	System.out.println(consecutiveRepeatitionOfChar(input1));
+}
+
+public static int consecutiveRepeatitionOfChar(String input1) {
+	int c=0;
+	int n=0;
+	for(int i=0;i<input1.length()-1;i++){
+		if(input1.charAt(i)==input1.charAt(i+1))
+			n++;
+		else 
+			n=0;
+		
+		if(n==2)
+			c++; }
+	return c;
+}
+}
+-----------------------------------------------------------------------------------------------------------||
+
+16)Get all the numbers alone from the string and return the sum.
+
+Input"123gif"
+Output:6
+
+
+
+
+
+package Set2;
+public class ClassSET16 {
+public static void main(String[] args) {
+	String s="1234gif";
+	System.out.println(summationOfNosInaString(s));
+}
+public static int summationOfNosInaString(String s) {
+	int n=0;
+	for(int i=0;i<s.length();i++){
+		char c=s.charAt(i);
+		if(Character.isDigit(c)){
+			String s1=String.valueOf(c);
+			n+=Integer.parseInt(s1);} }
+	return n;
+}
+}
+---------------------------------------------------------------------------------------------------------||
+
+18)String a="a very fine day"
+output:A Very Fine Day
+
+
+
+
+
+package Set2;
+import java.util.StringTokenizer;
+public class ClassSET18 {
+public static void main(String[] args){
+	String s1="its a very fine day";	
+	System.out.println(capsStart(s1));
+}
+public static String capsStart(String s1){
+	StringBuffer s5=new StringBuffer();
+	StringTokenizer t=new StringTokenizer(s1," ");
+	while(t.hasMoreTokens()){
+		String s2=t.nextToken();
+		String s3=s2.substring(0,1);
+		String s4=s2.substring(1, s2.length());
+		s5.append(s3.toUpperCase()).append(s4).append(" ");	}
+	return s5.toString();
+}
+}
+--------------------------------------------------------------------------------------------------------||
+19)Take the word with a max length in the given sentance
+ in that check for vowels if so count the no.of occurances !
+  Input 1="Bhavane is a good girl"
+  Output =3
+  Input 1="Bhavanee is a good girl"
+  Output =4
+
+
+
+
+
+package Set2;
+import java.util.StringTokenizer;
+public class ClassSET19 {
+public static void main(String[] args) {
+	String s1="Bhavane is a good girl";
+	System.out.println(countVowelsInMaxLengthString(s1));
+}
+public static int countVowelsInMaxLengthString(String s1) {
+	int n1=0, max=0;
+	String s4="AEIOUaeiou";
+	String s3=new String();
+	StringTokenizer t=new StringTokenizer(s1," ");
+	while(t.hasMoreTokens()){
+	String s2=t.nextToken();
+	int n2=s2.length();
+	if(n2>max){
+		max=n2;
+		s3=s2;}	}
+	for(int i=0;i<s3.length();i++)
+		for(int j=0;j<s4.length();j++)
+			if(s3.charAt(i)==s4.charAt(j))
+				n1++;
+	return n1;
+}
+}
+--------------------------------------------------------------------------------------------------------||
+20) for the given string display the middle 2 value, case satisfies only if string is of even length
+ip - java
+op - av
+
+
+
+
+
+package Set2;
+public class ClassSET20 {
+public static void main(String[] args) {
+	String s1="sumithra";
+	System.out.println(printingSubstringOfMiddleChars(s1));
+}
+public static String printingSubstringOfMiddleChars(String s1) {
+	String s2=s1.substring((s1.length()/2)-1, (s1.length()/2)+1);
+	return s2;
+}
+}
+--------------------------------------------------------------------------------------------------------||
+							SET-3
+
+1) Find the sum of the numbers in the given input string array
+   Input{“2AA”,”12”,”ABC”,”c1a”)
+   Output:6 (2+1+2+1)
+   Note in the above array 12 must not considered as such
+   i.e,it must be considered as 1,2
+
+package Set3;
+public class ClassSeT01 {
+public static void main(String[] args) {
+	String[] s1={"2AA","12","A2C","C5a"};
+	getSum(s1);	}
+public static void getSum(String[] s1) {
+	int sum=0;
+	for(int i=0;i<s1.length;i++)
+		for(int j=0;j<s1[i].length();j++){
+			char c=s1[i].charAt(j);
+			if(Character.isDigit(c)){
+				String t=String.valueOf(c);
+				int n=Integer.parseInt(t);
+				sum=sum+n; } }
+	System.out.println(sum);	}
+} 
+----------------------------------------------------------------------------------------------------||
+
+3) String[] input1=["Vikas","Lokesh",Ashok]
+   expected output String: "Vikas,Lokesh,Ashok"
+
+package Set3;
+public class ClassSeT03 {
+public static void main(String[] args) {
+	String[] ip={"Vikas","Lokesh","Ashok"};
+	System.out.println(getTheNamesinGivenFormat(ip));
+}
+public static String getTheNamesinGivenFormat(String[] ip) {
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<ip.length;i++)
+		sb.append(ip[i]).append(',');
+	sb.deleteCharAt(sb.length()-1);
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+8) INPUT1= helloworld
+   INPUT2= 2. delete the char,if rpted twice.
+   if occurs more than twice,leave the first occurence and delete the duplicate
+   O/P= helwrd;
+
+package Set3;
+public class ClassSeT08 {
+public static void main(String[] args) {
+	String input1="HelloWorld";
+	int input2=2; 
+    System.out.println(deletingtheCharOccuringTwice(input1,input2));
+}
+public static String deletingtheCharOccuringTwice(String input1, int input2) {
+	StringBuffer sb=new StringBuffer(input1);
+	int c=1;
+	for(int i=0;i<sb.length();i++){
+		c=1;
+		for(int j=i+1;j<sb.length();j++)
+			if(sb.charAt(i)==sb.charAt(j))
+				c++;
+		if(c>=input2){	
+			for(int j=i+1;j<sb.length();j++)
+				if(sb.charAt(i)==sb.charAt(j))
+					sb.deleteCharAt(j);
+			sb.deleteCharAt(i);
+			i--;   }	}
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+
+11) input="hello"
+    output="hlo"; Alternative positions...
+
+package Set3;
+public class ClassSeT11 {
+public static void main(String[] args) {
+	String s="Hello";	
+	System.out.println(alternatingChar(s));
+}
+public static String alternatingChar(String s){
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<s.length();i++)
+		if(i%2==0)
+			sb.append(s.charAt(i));
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+12) Input1=”Hello World”;  output-------à  “dello WorlH”.
+
+package Set3;
+public class ClassSeT12 {
+public static void main(String[] args) {
+	String s="Hello World";	
+	System.out.println(reArrangingWord(s));
+}
+public static String reArrangingWord(String s) {
+	StringBuffer sb=new StringBuffer();
+	sb.append(s.substring(s.length()-1));
+	sb.append(s.substring(1, s.length()-1));
+	sb.append(s.substring(0, 1));
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+14) String array will be given.if a string is Prefix of an any other string in that array means count.
+
+package Set3;
+public class ClassSeT14 {
+public static void main(String[] args) {
+	String[] a={"pinky","preethi","puppy","preeth","puppypreethi"};
+	System.out.println(namesWithPreFixes(a));
+}
+public static int namesWithPreFixes(String[] a) {
+	int n=0;
+	for(int i=0;i<a.length;i++)
+		for(int j=i+1;j<a.length;j++){
+		String s1=a[i];
+		String s2=a[j];
+		if(s2.startsWith(s1)||s1.startsWith(s2))
+			n++;	}
+	return n;
+}
+}
+----------------------------------------------------------------------------------------------------||
+15) count the number of words in the string
+    Input string="i work in cognizant.";
+    output=4;
+
+package Set3;
+import java.util.StringTokenizer;
+public class ClassSeT15 {
+public static void main(String[] args) {
+	String s="I work for cognizant";
+	System.out.println(noOfWordsInString(s));
+}
+public static int noOfWordsInString(String s) {
+	StringTokenizer t=new StringTokenizer(s," "); 
+	return t.countTokens();
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+
+18) Input1=”cowboy”; Output1=”cowcow”;
+    Input1=”so”;output1=”sososo”; 
+    HINT: if they give 3 letter word u have to display 2 time;
+
+package Set3;
+
+public class ClassSeT18 {
+public static void main(String[] args) {
+	String ip1="cowboy";
+	String ip2="cow";
+	System.out.println(printingStringDependingOncharCount(ip1,ip2));
+}
+public static String printingStringDependingOncharCount(String ip1,String ip2) {
+	StringBuffer sb=new StringBuffer();
+	int n1=ip2.length();
+	if(n1==3)
+		for(int i=0;i<n1-1;i++)
+			sb.append(ip1.substring(0, n1));
+	else if(n1==2)
+		for(int i=0;i<n1+1;i++)
+			sb.append(ip1.substring(0, n1));
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+21) input1-- Hello*world
+    output-- boolean(true or false)
+    operation-- if the character before and after * are same return true else false
+                if there in no star in the string return false(Ignore case)
+
+package Set3;
+import java.util.*;
+public class ClassSeT21 {
+public static void main(String[] args) {
+	String input="Hello*world";	
+	System.out.println(characterCheck(input));
+}
+public static boolean characterCheck(String input) {
+	boolean b=false;
+	StringTokenizer t=new StringTokenizer(input,"*");
+	String s1=t.nextToken();
+	String s2=t.nextToken();
+	String s3=s1.substring(s1.length()-1);
+	String s4=s2.substring(0,1);
+	if(s3.equalsIgnoreCase(s4))
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+22) input --String input1 ="xaXafxsd"
+    output--String output1="aXafsdxx"
+    operation-- remove the character "x"(only lower case) from string and place at the end
+
+package Set3;
+public class ClassSeT22 {
+public static void main(String[] args) {
+	String input="xaXafxsd";
+	System.out.println(removalOfx(input));
+}
+public static String removalOfx(String input) {
+	StringBuffer sb=new StringBuffer(input);
+	int j=0;
+	for(int i=0;i<sb.length();i++)
+		if(sb.charAt(i)=='x'){
+			sb.deleteCharAt(i);
+			j++;}
+	for(int i=0;i<j;i++)
+		sb.append('x');
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+24) String i/p1=2012;
+    sTRING i/p2=5
+    IF EXPERIENCE IS GREATER THAN INPUT 2 THEN TRUE;
+
+package Set3;
+import java.text.*;
+import java.util.*;
+public class ClassSeT24 {
+public static void main(String[] args) throws ParseException {
+	String ip1="2012";	
+	String ip2="5";
+	System.out.println(experienceCalc(ip1,ip2));
+}
+public static boolean experienceCalc(String ip1, String ip2) throws ParseException {
+	boolean b=false;
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
+		Date d1=sdf.parse(ip1);
+		Date d2=new Date();
+	int n1=d1.getYear();
+	int n2=d2.getYear();
+	int n3=Integer.parseInt(ip2);
+	if((n2-n1)>n3)
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+25) input string="hello", n=2
+    output: lolo
+
+package Set3;
+public class ClassSeT25 {
+public static void main(String[] args) {
+	String s1="hello";
+	int n1=2;
+	System.out.println(formattingOfString(s1,n1));
+}
+public static String formattingOfString(String s1, int n1) {
+	String s2=s1.substring(s1.length()-n1, s1.length());
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<n1;i++)
+		sb.append(s2);
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+26) prove whether a number is ISBN number or not
+    input="0201103311"
+    ISBN number:  sum=0*10 +2*9+ 0*8 +1*7+ 1*6 +0*5+ 3*4 +3*3+ 1*2 +1*1
+    sum%11==0 then it is ISBN number
+
+package Set3;
+public class ClassSeT26 {
+public static void main(String[] args) {
+	String ip="0201103311";
+	boolean b=ISBNnumber(ip);
+	if(b==true)
+		System.out.println("valid ISBN number");
+	else
+		System.out.println("check ur data");
+}
+public static boolean ISBNnumber(String ip) {
+	boolean b=false;
+	int sum=0;
+	for(int i=0,j=ip.length();i<ip.length();i++,j--){
+		String s=String.valueOf(ip.charAt(i));
+		int n=Integer.parseInt(s);
+		sum+=(n*j);	}
+	//System.out.println(sum);
+	if(sum%11==0)
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+30) Return 1 if the last & first characters of a string are equal else 
+    return -1. Consider case.
+    Eg: Input = "this was great"
+        Output= 1
+
+package Set3;
+public class ClassSeT30 {
+public static void main(String[] args) {
+	String input="this was great";
+	System.out.println(checkForFirstAndLastChar(input));
+}
+public static int checkForFirstAndLastChar(String input) {
+	int n=0;
+	if(input.charAt(0)==input.charAt(input.length()-1))
+		n=1;
+	else n=-1;
+	return n;
+}
+}
+----------------------------------------------------------------------------------------------------||
+31) concat two string if length of two string is equal.
+    if length of one string is greater, then remove the character from 
+    largest string and then add. The number of characters removed from 
+    largest string is equal to smallest string's length
+    for example: input 1="hello";
+                 input 2="helloworld";
+                 output="worldhello";
+
+package Set3;
+public class ClassSeT31 {
+public static void main(String[] args) {
+	String ip1="hello";
+	String ip2="helloworld";
+	System.out.println(removalOfCharFromLargestString(ip1,ip2));
+}
+public static String removalOfCharFromLargestString(String ip1,String ip2){
+	StringBuffer sb=new StringBuffer();
+	int n1=ip1.length();
+	int n2=ip2.length();
+	if(n1<n2)
+		sb.append(ip2.substring(n1, n2)).append(ip1);
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+32) i/p: Honesty is my best policy
+    o/p: Honesty
+    Return the maximum word length from the given string.
+    If there are two words of same length then,
+    return the word which comes first based on alphabetical order.
+
+package Set3;
+import java.util.*;
+public class ClassSeT32 {
+public static void main(String[] args) {
+	String s1="is a poppppy preethi";	
+	System.out.println(lengthiestString(s1));
+}
+public static String lengthiestString(String s1) {
+	int max=0;
+	String s2=new String();
+	StringTokenizer t=new StringTokenizer(s1," ");
+	loop:
+	while(t.hasMoreTokens()){
+		String s3=t.nextToken();
+		int n=s3.length();
+		if(n>max){
+			max=n;
+			s2=s3;}
+		if(n==max)
+			for(int i=0;i<s3.length();i++){
+				char c1=s2.charAt(i);
+				char c2=s3.charAt(i);
+				if(c1!=c2){				
+					if(c2<c1)
+						s2=s3;
+					continue loop;}	  }
+	}
+	return s2;
+}
+}
+----------------------------------------------------------------------------------------------------||
+33) In a string check whether all the vowels are present
+    if yes return 1 else 2.
+    ex: String 1="education"
+        output=1.
+
+package Set3;
+public class ClassSeT33 {
+public static void main(String[] args) {
+	String s1="education";
+	System.out.println(vowelsCheck(s1));
+}
+public static boolean vowelsCheck(String s1) {
+	boolean b=false;
+	int n1=0,n2=0,n3=0,n4=0,n5=0;
+	for(int i=0;i<s1.length();i++){
+		char c=s1.charAt(i);
+		if(c=='a' || c=='A')
+			n1++;
+		if(c=='e' || c=='E')
+			n2++;
+		if(c=='i' || c=='I')
+			n3++;
+		if(c=='o' || c=='O')
+			n4++;
+		if(c=='u' || c=='U')
+			n5++;}
+	if(n1==1 && n2==1 && n3==1 && n4==1 && n5==1)
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+34) swap the every 2 chrecters in the given string 
+    If size is odd number then keep the last letter as it is.
+    Ex:- input: forget
+	 output: ofgrte
+    Ex:- input  : NewYork
+         output : eNYwrok
+
+package Set3;
+public class ClassSet34 {
+public static void main(String[] args) {
+	String s1="newyork";
+	System.out.println(formattingGivenString(s1));
+}
+public static String formattingGivenString(String s1) {
+	StringBuffer sb=new StringBuffer();
+	int j=0;
+	if(s1.length()%2==0)
+		j=s1.length();
+	else
+		j=s1.length()-1;
+	
+	for(int i=0;i<j;i=i+2){
+		String s2=(s1.substring(i, i+2));
+		StringBuffer sb1=new StringBuffer(s2);
+		sb.append(sb1.reverse());}
+	
+	String s3=new String();
+	if(s1.length()%2==0)
+		s3=sb.toString();
+	else
+		s3=sb.append(s1.charAt(s1.length()-1)).toString();
+	return s3;
+}
+}
+----------------------------------------------------------------------------------------------------||
+35) i/p: bengal
+    o/p: ceogbl
+    if z is there replace with a
+
+package Set3;
+public class ClassSeT35 {
+public static void main(String[] args) {
+	String s1="bengal";
+	System.out.println(stringFormatting(s1));
+}
+public static String stringFormatting(String s1) {
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<s1.length();i++){
+		char c=s1.charAt(i);
+		if(i%2==0){
+			if(c==122)
+				c=(char) (c-25);
+			else{
+				c=(char) (c+1);}
+				sb.append(c);}
+		else
+			sb.append(c);}
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+36) find the maximum chunk of a given string
+    i/p: this isssss soooo good
+    o/p=5
+
+package Set3;
+import java.util.*;
+public class ClassSeT36 {
+public static void main(String[] args) {
+	String s1="this is sooo good";	
+	System.out.println(maxChunk(s1));
+}
+public static int maxChunk(String s1) {
+	int max=0;
+	StringTokenizer t=new StringTokenizer(s1," ");
+	while(t.hasMoreTokens()){
+		String s2=t.nextToken();
+		int n=0;
+		for(int i=0;i<s2.length()-1;i++)
+			if(s2.charAt(i)==s2.charAt(i+1))
+				n++;
+		if(n>max)
+			max=n;
+	}
+	return (max+1);
+}
+}
+----------------------------------------------------------------------------------------------------||
+37) i/p1: new york
+    i/p2: new jersey
+    o/p: new y+r+
+
+solution:
+package Set3;
+public class ClassSeT37 {
+public static void main(String[] args) {
+	String s1="New york";
+	String s2="New jersey";
+	System.out.println(commonCharsinAstring(s1,s2));
+}
+private static String commonCharsinAstring(String s1, String s2) {
+	int f;
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<s1.length();i++){
+		f=0;
+		char c1=s1.charAt(i);
+		for(int j=0;j<s2.length();j++)
+			if(c1==s2.charAt(j))
+				f=1;
+		if(f!=0)
+			sb.append(c1);
+		else
+			sb.append('+');}
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+39) input1="the sun raises in the east";
+    output1=raises;
+    count no vowels in each word and print the word which has max
+    no of vowels if two word has max no of vowel print the first one
+
+package Set3;
+import java.util.*;
+public class ClassSeT39 {
+public static void main(String[] args) {
+	String s1="the sun rises in the east";	
+	System.out.println(wordWithMaxVowelCount(s1));
+}
+public static String wordWithMaxVowelCount(String s1) {
+	int max=0;
+	String s2="aeiouAEIOU";
+	String s3=new String();
+	StringTokenizer t=new StringTokenizer(s1," ");
+	while(t.hasMoreTokens()){
+		String s4=t.nextToken();
+		int c=0;
+		for(int i=0;i<s4.length();i++)
+			for(int j=0;j<s2.length();j++)
+				if(s4.charAt(i)==s2.charAt(j))
+					c++;
+		if(c>max){
+			max=c;
+			s3=s4;}	}
+	return s3;
+}
+}
+----------------------------------------------------------------------------------------------------||
+40) String format : CTS-LLL-XXXX
+    ip1: CTS-hyd-1234
+    ip2: hyderabad
+    -> LLL must be first 3 letters of ip2.
+    -> XXXX must be a 4-digit number
+
+package Set3;
+import java.util.*;
+public class ClassSeT41 {
+public static void main(String[] args) {
+	String s1="CTS-hyd-1234";
+	String s2="hyderabad";
+	boolean b=formattingString(s1,s2);
+	if(b==true)
+		System.out.println("String format:CTS-LLL-XXXX");
+	else
+		System.out.println("not in required format");
+}
+public static boolean formattingString(String s1, String s2) {
+	String s3=s2.substring(0, 3);
+	boolean b=false;
+	StringTokenizer t=new StringTokenizer(s1,"-");
+	String s4=t.nextToken();
+	String s5=t.nextToken();
+	String s6=t.nextToken();
+	if(s4.equals("CTS") && s5.equals(s3) && s6.length()==4)
+		for(int i=0;i<s6.length();i++){
+			if(Character.isDigit(s6.charAt(i)))
+				b=true;
+			else{
+				b=false;}}
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+41) ip: "this is sample test case"
+    op: "this amplec"
+    remove the duplicates in the given string
+
+package Set3;
+import java.util.*;
+public class ClassSeT42 {
+public static void main(String[] args) {
+	String s1="this is sample test case";
+	System.out.println(removeDuplicates(s1));
+}
+public static String removeDuplicates(String s1) {
+	StringBuffer sb=new StringBuffer();
+	Set<Character> c1=new LinkedHashSet<Character>();
+	for(int i=0;i<s1.length();i++)
+		c1.add(s1.charAt(i));
+	for(char c2:c1)
+		sb.append(c2);
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+5) Getting the first and last n letters from a word where wordlength > 2n.
+    Ex: Input: california,3.
+        output: calnia.
+
+package Set3;
+public class ClassSeT46 {
+public static void main(String[] args) {
+	String s1="california";
+	int n1=3;
+	System.out.println(subStringOfgivenString(s1,n1));
+}
+public static String subStringOfgivenString(String s1, int n1) {
+	StringBuffer sb=new StringBuffer();
+	sb.append(s1.substring(0, n1)).append(s1.substring(s1.length()-n1,s1.length()));
+	return sb.toString();
+}
+}
+----------------------------------------------------------------------------------------------------||
+46) input1="aBrd";
+    input2="aqrbA";
+    input3=2;
+    output1=boolean true;
+    2nd char of ip1 and last 2nd char of ip2 show be equal
+
+package Set3;
+public class ClassSeT46 {
+public static void main(String[] args) {
+	String ip1="aBrd";
+	String ip2="aqrbA";
+	int ip3=2;
+	System.out.println(charCheck(ip1,ip2,ip3));
+}
+public static boolean charCheck(String ip1, String ip2, int ip3){
+	boolean b=false;
+	String s1=String.valueOf(ip1.charAt(ip3-1));
+	String s2=String.valueOf(ip2.charAt(ip2.length()-ip3));
+	if(s1.equalsIgnoreCase(s2))
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+						SILK
+
+
+2) Given a methodtaking a person name in the formate-"FirstName
+lastName".write code to return the person name in the following
+formate-"LastName","InitialOfName".
+Example:
+Input:Jessica Miller
+output:Miller,J
+import java.util.StringTokenizer;
+public class B {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="vishal jadiya";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1,"
+");
+String s2=st.nextToken();
+String s3=st.nextToken();
+sb.append(s3).append(",").append(s2.substri
+ng(0,1));
+System.out.println(sb);
+}
+}
+...............................................................................
+
+5) Given a method taking string as input.Write code to check if
+given string contains exactly five vowels and the vowels
+should be alphabetical order.return 1 if condition is satisfied else
+return 2.assume there is no repetition of any vowel in any given
+string.
+Example:
+Input=acebisouzz
+output=1
+package com.Packas;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+public class Dd {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="ecabisouzz";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+String s2="aeiou";
+StringBuffer sb=new StringBuffer();
+for(int i=0;i<s1.length();i++)
+{
+for(int j=0;j<s2.length();j++)
+{
+if(s1.charAt(i)==s2.charAt(j))
+{
+sb.append(s1.charAt(i));
+}
+}
+}
+if(sb.toString().equals(s2))
+{
+System.out.println("true");
+}
+else
+System.out.println("false");
+}
+}
+................................................................................................................
+6) Given a method with 3 strings say search string ,Str1 and str 2 as input.write code to find out if str2 comes after str1 in the searchstring,if yes return 1 else return 2.
+Example-
+input1=geniousRajKumarDev
+input2=Raj
+input3=Dev
+output=1
+package Final;
+public class E {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="geniousRajKumarDev";
+String s2="Raj";
+String s3="Dev";
+geyvalues(s1,s2,s3);
+}
+public static void geyvalues(String s1, Strings2, String s3) {
+if(s1.contains(s2)&& s1.contains(s3))
+{
+if(s1.indexOf(s2)<s1.indexOf(s3))
+{
+System.out.println(1);
+}
+else
+System.out.println(2);
+}
+}
+}
+..............................................................................................
+7) Given a method with a string input.Write code to get the sum of all the digits present in the given String.Return the sum as output.If there is no digit in the given string return -1 as output.
+Example:
+Input=good23bad4
+output=2+3+4=9
+package Final;
+public class F {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="goodba1d";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+int sum=0;
+for(int i=0;i<s1.length();i++)
+{
+char a=s1.charAt(i);
+if(Character.isDigit(a))
+{
+int b=Integer.parseInt(String.valueOf(a));
+sum=sum+b;
+}
+}
+if(sum==0)
+{
+System.out.println(-1);
+}
+else
+System.out.println(sum);
+}
+}
+.....................................
+
+9) Given a method with pan card no as string input .Write code to validate PAN no against following rules:
+1)there must be 8 characters
+2)first 3 letters must be alphabets followed by 4 digit number and ends with alphabet.
+3)all alphabets should be in capital case
+If pan card no is valid return 1as output else return 2 as output
+Example
+input=ALD3245E
+out=1
+package Final;
+public class I {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="ALD324A";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+if(s1.matches("[A-Z]{3}[0-9]{3}[A-Z]{1}"))
+{
+System.out.println(1);
+}
+else
+System.out.println(2);
+}
+}
+.....................................................................................................
+10) Given a method with two sentence as string input. Write code to count the number of occurances of second word of second sentence in the first sentence. Return the count as output. Note-Consider case.
+Example:
+Input=Hi this is cognizant Academy
+output=Hello this is a trainee
+package Final;
+import java.util.StringTokenizer;
+public class J {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="Hi This is cognizant academy";
+String s2="hello this is a trainee";
+getvalues(s1,s2);
+}
+public static void getvalues(String s1, String
+s2) {
+int count=0;
+StringTokenizer st=new StringTokenizer(s2," ");
+String s3=st.nextToken();
+String s4=st.nextToken();
+//System.out.println(s4);
+StringTokenizer st1=new StringTokenizer(s1,
+" ");
+while(st1.hasMoreTokens())
+{
+String s5=st1.nextToken();
+if(s4.equals(s5))
+{
+count++;
+}
+}
+System.out.println(count);
+}
+}
+......................................................................
+
+12) Given a method with two strings as input.if strings are of some length simply append them together and return the final.if given strings are of different lenght,remove starting characters from the ponger string so that both string are of length then append them together and return the final string.
+Example1:
+input1=Hello
+input2=hi
+output=lohi
+Example2:
+input1=Hello;
+input2=delhi
+output2=HelloDelhi
+public class L {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="he";
+String s2="hi";
+getvalues(s1,s2);
+}
+public static void getvalues(String s1, String
+s2) {
+StringBuffer sb=new StringBuffer();
+int l1=s1.length();
+int l2=s2.length();
+if(l1==l2)
+{
+sb.append(s1).append(s2);
+}
+if(l1>l2)
+{
+sb.append(s1.substring(s1.length()-s2.l
+ength(),s1.length())).append(s2);
+}
+System.out.println(sb);
+}
+}
+.......................................................
+
+
+16) Given a method with a string,startindex and length.write code to extract substring from right to left.Assume the last character has index0.
+Example
+input1="Rajasthan";
+input2=2.
+input3=3.
+output=hts.
+package com.Packas;
+import java.util.ArrayList;
+public class Dd {
+public static void main(String[] args) {
+String s1="Rajasthan";
+int n1=2;
+int n2=3;
+getvalues(s1,n1,n2);
+}
+public static void getvalues(String s1,int n1,
+int n2) {
+StringBuffer sb=new StringBuffer(s1);
+sb.reverse();
+System.out.println(sb);
+String s2=sb.substring(n1,n1+n2);
+System.out.println(s2);
+}
+}
+.................................................................................................................
+
+
+20 )Given a method with with a negative number as string input.Write code to overdate the number.if the given string conatins a valid negative number return corresponding positive number as a string output else return-1.
+Example:
+input:"-94923"
+output:"94923"
+package com.Packas;
+public class B {
+public static void main(String[] args) {
+String a = "902";
+getvalues(a);
+}
+public static void getvalues(String a) {
+if (a.charAt(0) != '-') {
+System.out.println(-1);
+System.exit(0);
+}
+for (int i = 1; i < a.length(); i++) {
+if (!(Character.isDigit(a.charAt(i))) && a.charAt(0) == '-') {
+System.out.println(-1);
+System.exit(0);
+}
+}
+int b = Integer.parseInt(a);
+if (b < 0) {
+System.out.println(Math.abs(b));
+}
+}
+}
+..........................................................................
+22) Given a method with two string input.First being the sourse string and second one is a delimiter.Source string contains multiple substrings separated by the given delimiter.write a code to return the substring with maximum number of character.if two or more substring have maximum number of characters return the substring which appears first in the alphabetical order.
+Example:
+input1:"delhi-pune-patna"
+input2:"_"
+output="delhi"
+
+
+package images66;
+import java.util.Arrays;
+public class C 
+{
+
+
+
+public static void main(String[] args) 
+{
+String s="Pune-Patna-Delhi";
+String arr[]=s.split("-");
+int max=0;
+String result = null;
+Boolean b=false;
+for(int i=0;i<arr.length;i++)
+{
+if(max<arr[i].length())
+{
+max=arr[i].length();
+result=arr[i];
+}
+}
+for(int i=0;i<arr.length;i++)
+{
+if(result.length()==arr[i].length() && result!=arr[i])
+{
+b=true;
+}
+}
+if(b==true)
+{
+Arrays.sort(arr);
+System.out.println(arr[0]);
+}
+else
+{
+System.out.println(result);
+}
+}
+}
+...............................................................................................................................
+23) Write a method that takes a string and returns the number of unique characters in the string. If the given string does not contain any unique characters return _1.
+Example
+Input : "HelloWorld"
+Output: 5
+Input: "coco"
+Output: -1
+
+
+
+package com.Packas;
+public class B {
+
+public static void main(String[] args) 
+{
+String s1="HelloWorld";
+getvalues(s1);
+}
+
+
+public static void getvalues(String s1) {
+String s2=s1.toLowerCase();
+StringBuffer sb=new StringBuffer(s2);
+int l=sb.length();
+int count=0;
+for(int i=0;i<l;i++)
+{ count=0;
+for(int j=i+1;j<l;j++)
+{
+if(sb.charAt(i)==sb.charAt(j))
+{
+sb.deleteCharAt(j);
+count++;
+j--;
+l--;
+j=i;
+}
+}
+if(count>0)
+{
+sb.deleteCharAt(i);
+i--;
+l--;
+}
+}
+if(sb.length()==0)
+{
+System.out.println(-1);
+}
+else
+System.out.println(sb.length());
+}
+}
+.....................................................................................
+24) Given a method that accepts a string as a parameter and returns the string with each pair of adjacent letters reversed. If the string has an odd numbers of letters, the last letter is unchenged.
+Example:
+The call swapPairs("forger") should return "ofgrte"
+and
+the call swapPairs("NEw York") should return "eN woYkr".
+public static void main(String[] args) {
+String s1="New York";
+getvalues(s1);
+}
+public static void getvalues(String s1)
+{
+StringBuffer sb=new StringBuffer();
+int l=s1.length();
+if(l%2==0)
+{
+for(int i=0;i<s1.length()-1;i=i+2)
+{
+char a=s1.charAt(i);
+char b=s1.charAt(i+1);
+sb.append(b).append(a);
+}
+System.out.println(sb);
+}
+else
+{
+for(int i = 0;i<s1.length()-1;i=i+2)
+{
+char a=s1.charAt(i);
+char b=s1.charAt(i+1);
+sb.append(b).append(a);
+System.out.println(sb);
+}
+sb.append(s1.charAt(l-1));
+System.out.println(sb);
+}
+}
+}
+....................................................................................
+25) Given a method with a string and a positive int (say n) as input. Write code to construct a string with first n and last n characters in the given string. Note- the given string length is >= 2n.
+Example:
+Input1=California
+Input2=3
+output=Calnia
+public class B {
+public static void main(String[] args) {
+String s1="California";
+int n=3;
+getvalues(s1,n);
+}
+public static void getvalues(String s1, int n)
+{
+StringBuffer sb=new StringBuffer();
+sb.append(s1.substring(0, n)).append(s1.substring(s1.length()-n,s1.length()));
+System.out.println(sb);
+}
+}
+....................................................................................
+
+
+29) Given a method with sentence as string input. Write code to fetch the word with maximum number of vowels. Return this world as output. In case there is two or more words with maximum number of vowels, return the first word.
+Example:
+Input: Appreciation is the best way to motivate.
+Output: Appreciation(total vowels =6)
+public class B {
+public static void main(String[] args) {
+String s1 = "Appreciation is the best Abhishek Ashutosh ShivamBhatnagar";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+int i = 0;
+StringTokenizer st = new StringTokenizer(s1," ");
+int len = 0;
+int count = 0;
+int count2 = 0;
+String s6 = null;
+while (st.hasMoreTokens()) {
+String s5 = st.nextToken();
+len = s5.length();
+count=0;
+for (i = 0; i < len; i++) {
+if (s5.charAt(i) == 'a' || s5.charAt(i) == 'e'|| s5.charAt(i) == 'i' || s5.charAt(i) == 'o'|| s5.charAt(i) == 'u'
+||s5.charAt(i) == 'A' ||s5.charAt(i) == 'E' ||s5.charAt(i) == 'I' ||s5.charAt(i) == 'O' ||s5.charAt(i) == 'U')
+count++;
+}
+if (count > count2) {
+count2 = count;
+s6 = s5;
+}
+}
+System.out.println(s6);
+}
+}
+............................................................................
+37) Given a method with a string input.Write code to check total number of vowels in the given string.
+Return it as output.
+Example:
+input = "avinash"
+ouptut = 3
+package com.Packas;
+public class A {
+public static void main(String[] args) {
+String s1="avinash";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+String s2=s1.toLowerCase();
+String s3="aeiou";
+int count=0;
+for(int i=0;i<s2.length();i++)
+{
+for(int j=0;j<s3.length();j++)
+{
+if(s2.charAt(i)==s3.charAt(j))
+{
+count++;
+}
+}
+}
+System.out.println(count);
+}
+}
+..............................................................................
+
+41) Given a method with a string as input .this string is expected to contain
+a 10 digit no in the format XXX-XXX-XXXX where X is a digit
+return 1 if the given string meets this format else return -1
+example-
+input-123-456-7895
+output-1
+package com.Packas;
+public class A {
+public static void main(String[] args) {
+String s1="123-456-7890";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+if(s1.matches("[0-9]{3}[-]{1}[0-9]{3}[-]{1}[0-9]{4}"))
+{
+System.out.println(1);
+}
+else
+System.out.println(-1);
+}
+}
+......................................................................
+43) Given a method with a password as string input. Apply following validations:
+1. Minimum length should be 8 characters.
+2. Must contain any one of these three special characters @ or _ or #
+3. May contain numbers or alphabets.
+4. Should not statr with special character or number.
+5.Should not end with special character.
+Return 1 if its satisfy above validations else return -1.
+Example:
+Input= ashok_23
+Output=1
+Input= 1980_200
+Output=-1.
+package com.Packas;
+import java.util.*;
+public class A {
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+String s1=s.next();
+boolean b=passwordValidation(s1);
+if(b==true)
+System.out.println("1 or valid password");
+else
+System.out.println("-1 or not a valid password");
+}
+public static boolean passwordValidation(String s1) {
+boolean b=false,b1=false,b2=false;
+if(s1.length()>=8)
+if(!Character.isDigit(s1.charAt(0)))
+if(s1.charAt(0)!='@' && s1.charAt(0)!='_' && s1.charAt(0)!='#')
+if(s1.charAt(s1.length()-1)!='@' && s1.charAt(s1.length()-1)!='_' && s1.charAt(s1.length()-1)!='#')
+b1=true;
+if(b1==true)
+for(int i=0;i<s1.length();i++)
+if(Character.isAlphabetic(s1.charAt(i)) || Character.isDigit(s1.charAt(i)) || s1.charAt(i)=='#' || s1.charAt(i)=='@' || s1.charAt(i)=='_')
+b2=true;
+if(b2==true)
+if(s1.contains("#") || s1.contains("@") || s1.contains("_"))
+b=true;
+return b;
+}
+}
+......................................................................
+44) Given a method with a sentence as a string input. Write code to find out the largest
+word in the given sentence and return it as output. In case there are two words of maximum length return
+the wrod which comes first in the sentence.
+Example:
+Input = Honesty is the best policy.
+Output=Honesty (length=7)
+package com.Packas;
+import java.util.StringTokenizer;
+public class A {
+public static void main(String[] args) {
+String s1="honesty is the best policy";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+//int count=0;
+int max=0;
+String s2=new String();
+StringTokenizer st=new StringTokenizer(s1," ");
+while(st.hasMoreTokens())
+{
+String s3=st.nextToken();
+int l=s3.length();
+if(l>max)
+{
+max=l;
+s2=s3;
+}
+}
+System.out.println(s2);
+}
+}
+......................................................................
+45) Given a method with a password in string format as input. Write code to validate the password
+using following rules:
+-Must contain at least one digit.
+- Must contain at least one of the following special characters @,#,$
+- Length should be between 6 to 20 characters
+-If the password is as per the given rules return 1 else return -1.
+package com.Packas;
+import java.util.StringTokenizer;
+import java.util.*;
+public class A {
+public static void main(String[] args) {
+Scanner s = new Scanner(System.in);
+String st = s.next();
+boolean b = validatingPassword(st);
+if (b == true)
+System.out.println("valid password");
+else
+System.out.println("Invalid Password");
+}
+public static boolean validatingPassword(String st) {
+boolean b1 = false, b2 = false;
+// if(Character.isUpperCase(st.charAt(0)))
+// if(Character.isLowerCase(st.charAt(st.length()-1)))
+if (st.length() >= 6 && st.length() <= 20)
+for (int i = 0; i < st.length(); i++) {
+char c = st.charAt(i);
+if (Character.isDigit(c)) {
+b1 = true;
+break;
+}
+}
+int x = 0, y = 0;
+for (int i = 0; i < st.length(); i++)
+// if(Character.isUpperCase(st.charAt(i)))
+// x++;
+// else if(Character.isLowerCase(st.charAt(i)))
+// y++;
+if (b1 == true)
+// if(x>y)
+for (int i1 = 0; i1 < st.length(); i1++) {
+char c = st.charAt(i1);
+if (c == '#' || c == '@' || c == '$') {
+b2 = true;
+break;
+}
+}
+return b2;
+}
+}
+..................................................................................
+46) Given a method with a 10 digit positive number in the format xxx-xxx-xxxx as string
+input. Write code to convert this number to the format xx-xx-xxx-xxx. Return the new
+number as output.
+Example:
+input = 555-666-1234
+output=55-56-661-234
+package com.Packas;
+import java.util.StringTokenizer;
+public class A {
+public static void main(String[] args) {
+String s="555-666-1234";
+System.out.println(display(s));
+}
+public static String display(String s) {
+StringTokenizer t=new StringTokenizer(s,"-");
+String s1=t.nextToken();
+String s2=t.nextToken();
+String s3=t.nextToken();
+StringBuffer sb=new StringBuffer();
+sb.append(s1.substring(0, s1.length()-1)).append('-');
+sb.append(s1.charAt(s1.length()-1)).append(s2.charAt(0)).append('-');
+sb.append(s2.substring(1, s2.length())).append( s3.charAt(0)).append('-');
+sb.append(s3.substring(1, s3.length()));
+return sb.toString();
+}
+}
+................................................................................
+47) Given a method with a string input. Write code to check that given string is palindrome
+and contains at least two different vowels. Return 1 if the condition is satified else reurn -1.
+Note: A palindrome string is a string whose reverse string is equal to original string. Eg. nayan
+package com.Packas;
+public class A {
+public static void main(String[] args) {
+String s="nayan";
+display(s);
+}
+public static void display(String s)
+{
+String reverse="";
+int length=s.length();
+for ( int i = length - 1 ; i >= 0 ; i-- )
+reverse = reverse + s.charAt(i);
+if (s.equals(reverse))
+{ int c=0;
+for(int i=0;i<s.length();i++)
+{
+if(s.charAt(i)=='a'||s.charAt(i)=='e'||s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='u'||s.charAt(i)=='A'||s.charAt(i)=='E'||s.charAt(i)=='I'||s.charAt(i)=='O'||s.charAt(i)=='U')
+{
+c++;
+}
+}
+if(c>=2)
+{
+System.out.println(1);
+}
+}
+else
+System.out.println("-1");
+}
+}
+.............................................................................
+48) Given a method with a string input. Write code to replace every appearance of the word
+'is" by "is not". If the word "is" is immediately preceeded or followed by a letter no change should be made to the string.
+Example:
+input = This is just a misconception
+output=This is not just a misconception
+package com.Packas;
+import java.util.StringTokenizer;
+public class A {
+public static void main(String[] args) {
+String s1="this is just a misconception";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1," ");
+
+
+while(st.hasMoreTokens())
+{
+String s2=st.nextToken();
+if(s2.equals("is"))
+{
+String s3=s2.replace("is", "is not");
+
+sb.append(s3).append(" ");
+}
+else
+sb.append(s2);
+sb.append(" ");
+}
+sb.delete(sb.length()-1, sb.length());
+System.out.println(sb);
+}
+}
+.........................................................................
+49) Given a method with a string input. Write code to check if the given string is in the fromat
+"CTS-XXX" where XXX is a three digit number. Return 1 if it is in the given format else return -1.
+Example:
+Input = CTS-215
+Output=1
+package com.Packas;
+public class A {
+public static void main(String[] args) {
+String s1="CTS-214";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+if(s1.matches("(CTS)[-]{1}[0-9]{3}"))
+{
+System.out.println(1);
+}
+else
+System.out.println(-1);
+}
+}
+....................................................................
+
+
+52) Given method taking a sentence in string variable.Write code tio convert the first letter of each word to capital case and return the final String.
+Note- only the first letter in each word should be in capital case in return string.
+Example-
+INPUT- "Now is the time to act!"
+OUPUT-"Now Is The Time To Act!"
+package com.Packas;
+import java.util.StringTokenizer;
+public class A {
+public static void main(String[] args) {
+String s1="Now is the time to act";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1," ");
+while(st.hasMoreTokens())
+{
+String s2=st.nextToken();
+sb.append(s2.substring(0,1).toUpperCase
+());
+sb.append(s2.substring(1,s2.length()));
+sb.append(" ");
+}
+sb.delete(sb.length()-1, sb.length());
+System.out.println(sb);
+}
+}
+.............................................................
+55) Given method with a string of even lenfth as input.Write code to fetch two middle most characters and return it as string output.
+Example:
+input = this
+output= hi
+package shivam;
+public class B {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="this";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+StringBuffer sb=new StringBuffer();
+if(s1.length()%2==0)
+{
+sb.append(s1.substring((s1.length()/2)-1, (
+s1.length()/2)+1));
+System.out.println(sb);
+}
+}
+}
+.....................................................................
+56) Given a method with a string as input.Write code to count the number of characters which gets repeated 3 times consecutively and return that count(ignore case).
+If no character gets repets 3 times consecutively retutn -1.
+Example1:
+input : abcXXXabc
+output=1
+Example2:
+Input= aaaxxyzAAAx
+output =2
+package shivam;
+public class B {
+public static void main(String[] args) {
+String s1="abcXXXabcxxx";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+int count=0;
+for(int i=0;i<s1.length()-2;i++)
+{
+if((s1.charAt(i)==s1.charAt(i+1))&&(s1.
+charAt(i+1)==s1.charAt(i+2)))
+{
+count++;
+i=i+2;
+}
+}
+System.out.println(count);
+}
+}
+.....................................................................
+
+61) Given a method with two string inputs. First strinf is ID and Second string is location. ID is in the format CTS-LLL-XXXX where LLL is the first three letters of given location and XXXX is a four digit number. If the given ID meets the format return 1 else return -1.
+Example:
+Input1= CTS-hyd-1234
+Input2= hyderabad
+output=1
+package shivam;
+import java.util.StringTokenizer;
+public class B {
+public static void main(String[] args) {
+String s1="CTS-hyd-1234";
+String s2="hyderabad";
+getvalues(s1,s2);
+}
+public static void getvalues(String s1,String s2) {
+if(s1.matches("[A-Z]{3}[-]{1}[a-z]{3}[-]{1}[0-9]{4}"))
+{
+boolean b=false;
+StringBuffer sb=new StringBuffer();
+StringTokenizer st=new StringTokenizer(s1,"-");
+String s3=st.nextToken();
+String s4=st.nextToken();
+String s5=st.nextToken();
+String s6=s2.substring(0,3);
+if(s3.equals("CTS")&&s4.equals(s6) && (s5.length()==4) )
+{
+for(int i=0;i<s5.length();i++)
+{
+if(Character.isDigit(s5.charAt(
+i)))
+{
+b=true;
+}
+}
+}
+if(b==true)
+{
+System.out.println(1);
+}
+else
+System.out.println(-1);
+}
+else
+System.out.println(-1);
+}
+}
+.......................................................................................
+62) Given a merhod with a string input. Write code to test if first and last charachters are same. Incase they are same return 1 else return -1 as output. Note - Consider case.
+Example:
+Input="the picture was great"
+first charachter='t'
+last charachter='t'
+Output=1
+package shivam;
+public class B {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="the picture was great";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+String a=s1.substring(0,1);
+String b=s1.substring(s1.length()-1, s1.length());
+if(a.equals(b))
+{
+System.out.println(1);
+}
+else
+System.out.println(-1);
+}
+}
+........................................................................................
+
+64) Given a method with a string input. Write code to encrypt the given string using following rules and return the encrypter string:
+1. Replace the characters at odd positions by next character in alphabet.
+2. Leave the characters at even positions unchanged.
+Note:
+- If an odd position character is 'z' replace it by 'a'.
+- Assume the first character in the string is at position 1.
+Example:
+input = curiosity
+output= dusipsjtz
+package shivam;
+public class B {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+String s1="curiosity";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+StringBuffer sb=new StringBuffer();
+for(int i=0;i<s1.length();i++)
+{
+char b=s1.charAt(i);
+if(i%2==0)
+{
+if(b!='z')
+{
+char a=(char) (b+1);
+sb.append(a);
+}
+else
+{
+char a=(char) (b-25);
+sb.append(a);
+}
+}
+else
+sb.append(b);
+}
+System.out.println(sb);
+}
+}
+...............................................................................
+65) Given a method with two strings as input. Write code to modify the first string such that all the characters are replaced by plus sign(+) except the characters which are present in the second string. That is, if one or more characters of first string appear in second string, they will not be replaced by +. return the modified string as output. Note - ignore casse.
+Example:
+input1= NewYork
+input2= NewJersy
+output= New Y+r+
+package shivam;
+public class B {
+public static void main(String[] args) {
+String s1="New york";
+String s2="New Jersy";
+getvalues(s1,s2);
+}
+public static void getvalues(String s1, String s2) {
+StringBuffer sb=new StringBuffer();
+int flag;
+for(int i=0;i<s1.length();i++)
+{ flag=0;
+char c=s1.charAt(i);
+for(int j=0;j<s2.length();j++)
+{
+if(c==s2.charAt(j))
+{
+flag=1;
+}
+}
+if(flag!=0)
+{
+sb.append(c);
+}
+else
+sb.append('+');
+}
+System.out.println(sb);
+}
+}
+...................................................................................
+
+

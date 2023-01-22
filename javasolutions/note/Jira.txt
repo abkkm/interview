@@ -1,0 +1,12 @@
+Sprint burn down chart
+   as a user i want
+  
+ideal line 
+capacity line 
+actual line
+
+confluence--used for developing the blue print knowledge management tool;
+requirements documents,release notes and road maps
+
+maintaining the reuirements documents and epic related documents
+

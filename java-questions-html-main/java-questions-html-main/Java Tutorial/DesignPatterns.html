@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boots</title>
+    <style>
+        body{
+            background:#fff;
+            line-height: 1.5em;
+        }
+        h1{
+            background:#f4f4f4;
+            padding:20px 10px;
+            margin:10px;
+            text-align: center;
+        }
+        main{
+            counter-reset: css-counter 0;
+        }
+        main .question{
+            background:#f4f4f4;
+            margin:10px;
+            padding:10px;
+            font-weight: bold;
+            counter-increment: css-counter;
+        }
+
+        main .question:before {
+            content: counter(css-counter) ". "; /* Apply counter before children's content. */
+        }
+
+        .answer{
+            border: 1px solid lightgrey;
+            margin:10px;
+            padding:10px;
+        }
+
+        .answer ul{
+            list-style: none;
+            padding-inline-start: 0px;
+        }
+
+        .article-title {
+            background-image: url(https://www.eclipse.org/community/eclipse_newsletter/assets/public/images/article-title-bg.jpg);
+            background-size: cover;
+            padding: 40px 20px;
+            margin-top: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="article-title">Design Pattern questions</h1>
+    </header>
+    <main>
+        <div class="question">
+            Name some design patterns you have used in your project.
+        </div>
+        <div class="answer">
+           Factory design pattern, singleton, MVC, Front controller
+        </div>
+
+        <div class="question">
+           Whats factory design pattern?
+        </div>
+        <div class="answer">
+           In factory design pattern, the actual implementation of the object is not exposed. Its exposed using an interface. A factory class is configured to get instance of the object.
+           Widely used design pattern. Its a creation design pattern since it advocates best practices for object creation.
+           
+ 			public interface Shape(){
+ 			}
+ 			
+ 			public class Rectangle implements Shape
+ 			public class Square implements Shape
+ 			
+ 			public class ShapeFactory{
+ 			
+ 			public void getShape(String type){
+ 				if(type == "sq"){
+ 				return new Square();
+ 			}
+ 			}
+ 			
+ 			Shape sh = shapeFactory.getShape("sq"); (the actual object and its implementation is not exposed here)
+ 			
+ 			}
+ 			      </div>
+    
+        <div class="question">
+            Whats singleton design pattern?
+        </div>
+        <div class="answer">
+            <p>
+               Only one instance of a class is created/used through out the application
+            </p>
+            <p>In order to achieve this, make the constructor private(So that the class cannot be instantiated anywhere) and then create a private static instance variable in the class 
+            public class SingletonClass{
+            	private static myobj = new SingletonClass();
+            	private SingletonClass(){}
+            	public SingletonClass getInstance(){
+            		return myobj;
+            	}
+            }
+            
+            <p>Get instance of the class using getInstance method. Always the same instance will be returned.
+        </div>
+        
+        <div class="question">
+            Advantages of spring boot - Starter dependencies
+        </div>
+        <div class="answer">
+            If we specify the type of project/application, spring boot will add all the starter dependencies with right and compatible versions
+        </div>     
+        <div class="question">
+            Advantage of spring boot - Actuator
+        </div>
+        <div class="answer">
+            There is an actuator framework used for debugging purpose where you can see the beans configured/environment variables etc., Mainly used for debugging, not to be used in PROD
+        </div>
+
+        <div class="question">
+            How to create a spring boots Rest API application?
+        </div>
+        <div class="answer">
+            Go to Spring initializer (or eclipse marketplace plugin can also be used). Specify some properties and the type of project you want, speicify the dependencies that has to be included. 
+            <br/> Spring Initializer will generate a template project. Download that and import it as a maven project (or gradle depending on the option you select in spring initializer)
+            <br/> Then write your own controller with route methods and run the application. Your rest API is ready.
+        </div>
+
+        <div class="question">
+            What are some of the important annotations of Spring Boots - Rest API?
+        </div>
+        <div class="answer">
+            <ul>
+                <li>@SpringBootApplication - its a meta annotation - it does component scanning, autoconfiguration and property support</li>
+                <li>@RestController - This is the annotation for Controller, Adding this annotation means data returned by all the methods inside this class will be written in to a response body</li>
+                <li>@GetMapping - we can add a GET route for the method inisde this annotation</li>
+                <li>Similar to @GetMapping - @PostMapping, @PutMapping and @DeleteMapping for other HTTP methods</li>
+                <li>@RequestBody - annotation for incoming post request</li>
+                <li>@PathVariable - annotation for incoming path parameter</li>
+                <li>@RequestParam - annotation for incoming query params</li>
+                <li>@ResponseBody - it will make the response to be written in http response body</li>
+                <li>@ResponseEntity - to pack response entity and http status in single entity</li>
+            </ul>
+
+            
+        </div>
+
+        
+        <div class="question">
+            How to associate a method with route?
+        </div>
+
+        <div class="answer">
+            We can use @RequestMapping("/route1, method="RequestMethod.GET")
+            (or) Add @GetMapping annotation or any other corresponding annotation of the HTTP method in the method header. 
+            
+        </div>
+
+        <div class="question">
+            How to pass path parameters to the api?
+        </div>
+        <div class="answer">
+            <pre> 
+                @GetMapping("/greeting/{name}")
+                public String getGreeting(@PathVariable String name){
+                    return "Hello" + name + ". Good Morning!";
+                }
+            </pre>
+        </div>
+
+
+        <div class="question">
+            How to pass query parameters?
+        </div>
+        <div class="answer">
+            <pre>
+                //How to pass queryParams
+                @RequestMapping("/details")
+                public String ageMessage(@RequestParam("age") String ageStr) {
+                    try {
+                        int age = Integer.valueOf(ageStr);
+                    } catch (NumberFormatException e) {
+                        throw e;
+                    }
+                    
+                    return "Glad that you are " + ageStr;
+                }
+            </pre>
+        </div>
+
+        <div class="question">
+            Post Request example?
+        </div>
+        <div class="answer">
+            <pre>
+                @RestController
+                public class StudentController {
+                    
+                    @Autowired
+                    StudentService studentService;
+                    
+                    @PostMapping("/createStudent")
+                    @ResponseBody
+                    public ResponseEntity<String> createStudent(@RequestBody Student student) {
+                        boolean result = studentService.createStudent(student);
+                        
+                        if(StringUtils.isEmpty(student.getName())) {
+                            return new ResponseEntity<String>("Student name is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(StringUtils.isEmpty(student.getGrade())) {
+                            return new ResponseEntity<String>("Student grade is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(student.getSchool().isEmpty()) {
+                            return new ResponseEntity<String>("Student school is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(result) {
+                            return new ResponseEntity<String>("Student created", HttpStatus.CREATED);
+                        }else {
+                            return new ResponseEntity<String>("Student not created", HttpStatus.NOT_ACCEPTABLE);
+                        }
+                    }
+                
+                }
+            </pre>
+        </div>
+
+        <div class="question">
+            How to do exception handling in Spring Boots - Rest API
+        </div>
+        <div class="answer">
+            Add a class with @ControllerAdvice annotation and in a method, add the @ExceptionHandler(EmployeeNotFoundException.class) with the exception class. When this EmployeeNotFoundException
+            is thrown, then the corresponding method in controlleradvice class is called. 
+            <pre>
+                @ControllerAdvice
+                public class ExceptionHandlerClass {
+                    
+                    @ResponseStatus(HttpStatus.BAD_REQUEST)
+                    @ResponseBody
+                    @ExceptionHandler(NumberFormatException.class)
+                    public String exceptionHandler(NumberFormatException e) {
+                        return "Incorrect input - Age should be a number";
+                    }
+                }     
+            </pre>
+        </div>
+
+
+        <div class="question">
+            What to do when the controller is not automtically detected by SpringBootApplication?
+        </div>
+        <div class="answer">
+            One of the reasons will be controller not present in the same package or child package as the SpringBootApplication class (The main class with @SpringBootApplication annotation).
+            <br/> To tell Spring boot where your controllers reside, use @ComponentScan annotation.
+            <br> @ComponentScan({"com.example.test"})- this will resolve the issue of controller not being detected
+            <br> If one controller is given in basePackageClasses, all other controllers in the same package will be automatically detected by Spring boots
+
+        </div>
+    </main>
+</body>
+</html>

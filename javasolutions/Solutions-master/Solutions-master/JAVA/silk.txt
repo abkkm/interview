@@ -1,0 +1,620 @@
+
+							SET-1
+
+2.Find the day(Friday) of a date input given as MM-dd-yyyy (format)
+input:12-27-2012
+output:Thursday
+
+
+
+package Set1;
+import java.util.*;
+import java.text.*;
+public class ClassSet2 {
+	public static String getDay(Date d1){
+		String s1;
+		SimpleDateFormat sdf=new SimpleDateFormat("EEEEE");
+		s1=sdf.format(d1);
+		return s1;
+	}
+	public static void main(String[] args) {
+		Date d1=new Date(2012/12/27);
+		System.out.println("day is:"+getDay(d1));
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+8. Given date in dd-MM-yyyy format.return the month in full name format(January)
+input:"23-01-2012"
+output:January
+
+
+
+
+package Set1;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class ClassSet8 {
+	public static String monthDiff(Date d1){
+		SimpleDateFormat sdf=new SimpleDateFormat("MMMM");
+		String s=(sdf.format(d1));
+		return s;
+	}
+	public static void main(String[] args) {
+		Date d1=new Date(23/01/2012);
+		System.out.println(monthDiff(d1));
+	}
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9. Two dates are given as input in "yyyy-MM-dd" format. Find the number of months between the two dates
+input1:"2012-12-01"
+input2:"2012-01-03"
+output:11
+
+
+
+
+package Set1;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+public class ClassSet9 {
+	public static int monthDiff(String s1,String s2) throws ParseException{
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		Calendar c=Calendar.getInstance();
+		Date d1=sdf.parse(s1);
+		Date d2=sdf.parse(s2);
+		c.setTime(d1);
+		int m1=c.get(Calendar.MONTH);
+		int y1=c.get(Calendar.YEAR);
+		c.setTime(d2);
+		int m2=c.get(Calendar.MONTH);
+		int y2=c.get(Calendar.YEAR);
+		int n=(y1-y2)*12+(m1-m2);
+		return n;
+	}
+	public static void main(String[] args) throws ParseException {
+		String s1=new String("2013-12-01");
+		String s2=new String("2012-01-03");
+		System.out.println(monthDiff(s1,s2));
+	}
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+19.accept a string and find if it is of date format "dd/mm/yyyy".
+input:01/13/2012
+output:false
+
+
+
+
+package Set1;
+import java.util.StringTokenizer;
+public class ClassSet19 {
+	public static boolean formattingDate(String s){
+		boolean b1=false;
+		StringTokenizer t=new StringTokenizer(s,"/");
+		int n1=Integer.parseInt(t.nextToken());
+		int n2=Integer.parseInt(t.nextToken());
+		String s2=t.nextToken();
+		int n3=Integer.parseInt(s2);
+		int n4=s2.length();
+		if(n4==4)
+		{
+			if(n3%4==0)
+			{
+				if((n2==2)&&(n1<=29))
+					b1=true;
+				else if((n2==4)||(n2==6)||(n2==9)||(n2==11)&&(n1<=30))
+					b1=true;
+				else if((n2==1)||(n2==3)||(n2==5)||(n2==7)||(n2==8)||(n2==10)||(n2==12)&&(n1<=31))
+					b1=true; 
+			}
+			else 
+			{
+				if((n2==2)&&(n1<=28))
+					b1=true;
+				else if((n2==4)||(n2==6)||(n2==9)||(n2==11)&&(n1<=30))
+					b1=true;
+				else if((n2==1)||(n2==3)||(n2==5)||(n2==7)||(n2==8)||(n2==10)||(n2==12)&&(n1<=31))
+					b1=true; 
+			}
+		}
+		return b1;
+	}
+	public static void main(String[] args) {
+	String s="31/5/2012";
+	boolean b=formattingDate(s);
+	if(b==true)
+		System.out.println("date is in dd/MM/yyyy format");
+	else
+		System.out.println("date is not in dd/MM/yyyy format");
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+30. Find the number of days between two input dates.
+
+package Set1;
+import java.text.*;
+import java.util.*;
+public class ClassSet30 {
+public static int dateDifference(String s1,String s2) throws ParseException{
+	SimpleDateFormat sd=new SimpleDateFormat("dd/MM/yyyy");
+	Date d=sd.parse(s1);
+	Calendar c=Calendar.getInstance();
+	c.setTime(d);
+	long d1=c.getTimeInMillis();
+	d=sd.parse(s2);
+	c.setTime(d);
+	long d2=c.getTimeInMillis();
+	int n=Math.abs((int) ((d1-d2)/(1000*3600*24)));
+	return n;
+	}
+public static void main(String[] args) throws ParseException {
+	String s1="27/12/2009";
+	String s2="15/09/2012";
+	System.out.println(dateDifference(s1,s2));
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+							SET-2
+
+---------------------------------------------------------------------------------------------------------
+
+
+15)What will be the DAY of current date in next year
+
+
+
+
+package Set2;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class ClassSet15 {
+public static void main(String[] args) {
+	Date d=new Date();
+	System.out.println(sameDayOnUpcomingYear(d));
+}
+public static String sameDayOnUpcomingYear(Date d) {
+	Date d1=new Date();
+	d1.setYear(d.getYear()+1);
+	SimpleDateFormat sdf=new SimpleDateFormat("EEEE");
+	String s=sdf.format(d1);
+	return s;
+}
+}
+----------------------------------------------------------------------------------------------------------||
+22)no of days in a month in specific year
+
+
+
+
+package Set2;
+import java.util.*;
+public class ClassSET22 {
+public static void main(String[] args){
+	Calendar ca=new GregorianCalendar(2013,Calendar.FEBRUARY,03);
+	System.out.println(noOfDaysInaMonth(ca));
+}
+public static int noOfDaysInaMonth(Calendar ca){
+	int n=ca.getActualMaximum(Calendar.DAY_OF_MONTH);
+   	return n;
+}
+}
+----------------------------------------------------------------------------------------------------------||
+							SET-3
+
+
+48) leap year or not using API?
+
+package Set3;
+import java.util.*;
+public class ClassSeT48 {
+public static void main(String[] args) {
+	String s="2013";
+	System.out.println(leapYear(s));
+}
+public static boolean leapYear(String s) {
+	int n=Integer.parseInt(s);
+	GregorianCalendar c=new GregorianCalendar();
+	boolean b=c.isLeapYear(n);
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+							SILK
+
+1) Given a method with a date string in format dd/mm/yyyy.
+Write code to validate the given date against the given formate.
+if it is a valid date return 1 else return -1.
+Example1:
+Input= 12/06/1987
+output=1
+Example1:
+Input= 03/1/1987
+output=-1
+package com.Packas;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class Dd {
+public static void main(String[] args) {
+String s1="29/02/2006";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+if(s1.matches("[0-9]{2}[/]{1}[0-9]{2}[/]{1}[0-9]{4}"))
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try {
+Date d1=sdf.parse(s1);
+System.out.println(1);
+} catch (ParseException e) {
+System.out.println(-1);
+}
+}
+else
+System.out.println(-1);
+}
+.............................................................................
+14) Given a method with a date string as input.write code to validate if the given date is in any of the following formats:
+dd.mm.yyyy
+dd/mm/yy
+dd-mm-yyyy
+return 1 if it is a valid date else return-1.
+Example:
+input=12.03.2012
+output=1
+import java.util.ArrayList;
+import java.util.Collections;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class Dd {
+public static void main(String[] args) {
+String s="14/09/91";
+getvalues(s);
+}
+public static void getvalues(String s) {
+if(s.matches("[0-9]{2}[.]{1}[0-9]{2}[.]{1}[0-9]{4}"))
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd.MM.yyyy");
+sdf.setLenient(false);
+try
+{
+Date d1=sdf.parse(s);
+System.out.println(1);
+} catch (ParseException e) {
+System.out.println(-1);
+}
+}
+else if(s.matches("[0-9]{2}[/]{1}[0-9]{2}[/][0-9]{2}"))
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try
+{
+Date d1=sdf.parse(s);
+System.out.println(1);
+} catch (ParseException e) {
+System.out.println(-1);
+}
+}
+else if(s.matches("[0-9]{2}[-]{1}[0-9]{2}[-][0-9]{4}"))
+{
+SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+sdf.setLenient(false);
+try
+{
+Date d1=sdf.parse(s);
+System.out.println(1);
+} catch (ParseException e) {
+System.out.println(-1);
+}
+}
+else
+System.out.println(-1);
+}
+}
+......................................................................
+
+17) Given a method with a date string in dd/mm/yyy format.
+Write code to calculate the day which falls on the same date next year and return it as outputNote-return the outout in small case.
+Example.
+input=13/07/2012
+output=saturday
+package com.Packas;
+import java.util.ArrayList;import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+public class Dd {
+public static void main(String[] args) {
+String s1="13/07/2012";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try {
+Date d1=sdf.parse(s1);
+Calendar cal=Calendar.getInstance();
+cal.setTime(d1);
+cal.add(Calendar.YEAR, 1);
+Date d2=cal.getTime();
+SimpleDateFormat sdf1=new SimpleDateFormat("EEEEE");
+String s=sdf1.format(d2);
+System.out.println(s);
+} catch (ParseException e) { e.printStackTrace();
+}
+}
+}
+...........................................................................
+
+18) Given a method with a date string in dd/mm/yyy.Write code to convert the given date to the format dd-mm-yy.
+Example:
+input=12/11/1998
+output=12-11-98
+package com.Packas;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class Dd {
+public static void main(String[] args) {
+String s1="23/5/2014";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try {
+Date d1=sdf.parse(s1);
+SimpleDateFormat sdf1=new SimpleDateFormat("dd-MM-yy");
+String s2=sdf1.format(d1);
+System.out.println(s2);
+} catch (ParseException e) {
+
+System.out.println(-1);
+}
+}
+}
+......................................................................
+
+................................................................
+
+
+59) Given a method with a date string in the format dd/mm/yyyy.
+Write code to convert the given date to the format dd-mm-yy.
+Example:
+input=12/11/1998
+output= 12-11-98
+package shivam;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+public class B {
+public static void main(String[] args) {
+String s1="12/12/1998";
+getvalues(s1);
+}
+public static void getvalues(String s1) {
+SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+sdf.setLenient(false);
+try {
+Date d1=sdf.parse(s1);
+SimpleDateFormat sdf1=new SimpleDateFormat("dd-MM-yy");
+String s2=sdf1.format(d1);
+System.out.println(s2);
+} catch (ParseException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+}
+}
+........................................................................................
+44. Return the number of days in a month, where month and year are given as input.
+
+package Set1;
+import java.util.*;
+public class ClassSet44 {
+	public static void main(String[] args){
+		String s1="02/2011";
+		System.out.println(noOfDaysInAmonth(s1));
+	}
+	public static int noOfDaysInAmonth(String s1){
+		int n=0;
+		StringTokenizer r=new StringTokenizer(s1,"/");
+		int n1=Integer.parseInt(r.nextToken());
+		int n2=Integer.parseInt(r.nextToken());
+		if(n1==1 || n1==3 || n1==5 ||n1==7 || n1==8 || n1==10 || n1==12)
+			n=31;
+		else if(n1==4 || n1==6 || n1==9 || n1==11)
+			n=30;
+		else if(n1==2){
+			if(n2%4==0)
+				n=29;
+			else
+				n=28; }
+		return n;
+	}
+}
+________________________________________________________________________________
+
+
+String shud be in "dd-MM-yyyy" format.Consider leap year conditions as well.
+
+Solution:
+package array;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class met {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws ParseException 
+	 */
+	public static void main(String[] args) throws IOException, ParseException  {
+		// TODO Auto-generated method stub
+	String s1="12/02/2000";
+	SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+	Calendar cal=Calendar.getInstance();
+	Date d1=sdf.parse(s1);
+	cal.setTime(d1);
+	int n=cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+	System.out.println(n);
+	}
+}
+_________________________________________________________________________________
+
+Q6) 2 Strings as input : Input1 : year, Input2 : 5
+Find diff between current year and given year and check if its greater than or equal to input2
+
+Solution:
+package array;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class met {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws ParseException 
+	 */
+	public static void main(String[] args) throws IOException, ParseException  {
+		// TODO Auto-generated method stub
+	String s1="12/06/2009";
+	Date d1=new Date();
+	int n=6;
+	SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+	Date d2=sdf.parse(s1);
+	int n1=d1.getYear();
+	int n2=d2.getYear();
+	if(Math.abs(n1-n2)>n)
+	System.out.println("true");
+	else
+		System.out.println("false");
+	}
+}
+_______________________________________________________________________________________________
+
+5) string input1="13:45:15" input2="15:50:50" both in hh:mm:ss format and orginal hh:mm:ss is 23:59:59. 
+find interval between two inputs and output should be 1:5:36:05.
+
+Solution:
+package array;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class met {
+
+
+	public static void main(String[] args) throws IOException, ParseException  {
+		
+	String s1="13:45:15";
+	String s2="15:50:50";
+	String s3="23:59:59";
+	SimpleDateFormat sdf=new SimpleDateFormat("k:m:s");
+	Date d1=sdf.parse(s1);
+	int n=d1.getHours();
+	int n1=d1.getMinutes();
+	int n2=d1.getSeconds();
+	Date d2=sdf.parse(s2);
+	//System.out.println(n2);
+	int p=d2.getHours();
+	int p1=d2.getMinutes();
+	int p2=d2.getSeconds();
+	int y=(n+p);
+	int y1=(n1+p1);
+	int y2=(n2+p2);
+	
+	Date d3=sdf.parse(s3);
+	int q=d3.getHours();
+	int q1=d3.getMinutes();
+	int q2=d3.getSeconds();
+	int r=Math.abs(q-y);
+	int r1=Math.abs(q1-y1);
+	int r2=Math.abs(q2-y2);
+        StringBuffer sb=new StringBuffer();
+	sb.append("1").append(":").append(r).append(":").append(r1).append(":").append(r2);
+	System.out.println(sb);
+	}
+}
+_______________________________________________________________________________________________________
+Q4) validate a date
+input in a string format(MM/dd/yyyy)
+
+check if month is between 1-12
+
+check if date is between 1-31
+
+year must be 4 digits.
+
+Solution:
+package array;
+import java.util.*;
+
+public class met {
+
+	/**
+	 * @param args
+	 * @throws ParseException 
+	 */
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		String s1="31/12/1997";
+		boolean b=false;
+		StringTokenizer t=new StringTokenizer(s1,"/");
+		String s2=t.nextToken();
+		String s3=t.nextToken();
+		String s4=t.nextToken();
+		int n1=Integer.parseInt(s2);
+		int n2=Integer.parseInt(s3);
+		int n3=Integer.parseInt(s4);
+		
+		if(s4.length()==4)
+		{
+			if(n2>0 && n2<=12 && n1>0 && n1<=31)
+			{
+				b=true;
+		
+			}
+		}
+		if(b)
+			System.out.println("true");
+		else
+			System.out.println("false");
+		}
+}
+__________________________________________________________________________________________
+
+
+
+
+

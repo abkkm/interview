@@ -1,0 +1,26 @@
+Log4j:
+log4j is configured throw a congiguration file
+the configuration file can be written in xml,json,yaml or .properties file format
+
+three main components 
+ 1.Loggers
+ 2.Appenders
+ 3.Layouts
+
+log4j is written in java
+
+log4j 2 is only in operation currently.
+
+Logger logger = LoggerFactory.getLogger();--> for getting the logger instance
+
+
+
+Spring common logging bridge
+Spring jcl
+  spring boot starter logging 
+     spring boot starter web
+
+
+logger.trace("home method accesses")
+
+logging.level.root=TRACE 

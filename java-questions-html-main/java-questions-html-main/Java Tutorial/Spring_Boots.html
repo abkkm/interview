@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boots</title>
+    <style>
+        body{
+            background:#fff;
+            line-height: 1.5em;
+        }
+        h1{
+            background:#f4f4f4;
+            padding:20px 10px;
+            margin:10px;
+            text-align: center;
+        }
+        main{
+            counter-reset: css-counter 0;
+        }
+        main .question{
+            background:#f4f4f4;
+            margin:10px;
+            padding:10px;
+            font-weight: bold;
+            counter-increment: css-counter;
+        }
+
+        main .question:before {
+            content: counter(css-counter) ". "; /* Apply counter before children's content. */
+        }
+
+        .answer{
+            border: 1px solid lightgrey;
+            margin:10px;
+            padding:10px;
+        }
+
+        .answer ul{
+            list-style: none;
+            padding-inline-start: 0px;
+        }
+
+        .article-title {
+            background-image: url(https://www.eclipse.org/community/eclipse_newsletter/assets/public/images/article-title-bg.jpg);
+            background-size: cover;
+            padding: 40px 20px;
+            margin-top: 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="article-title">Spring Boots questions</h1>
+    </header>
+    <main>
+        <div class="question">
+            What are microservices?
+        </div>
+        <div class="answer">
+            Microservices are small, self-contained, ready to run applications. Code is delievered in small manageble pieces
+            which is independent of others. It leads to easier maintainence, improved productivity and better fault tolerance.
+            This is called Microservices architecture.
+        </div>
+
+        <div class="question">
+            Why Spring Boots and what are the uses of Spring Boots?
+        </div>
+        <div class="answer">
+            <ul>
+                <li>Does automatic congiguration. Automatically adds boiler plate code</li>
+                <li>It automatically adds required dependencies</li>
+                <li>Automatically creates some generic beans</li>
+                <li>It automatically adds necessary beans in the application context</li>
+                <li>We can also override the generic beans that the spring boots has added</li>
+            </ul>
+            
+        </div>
+    
+        <div class="question">
+            Advantages of Spring boot - automatic configuration of common beans
+        </div>
+        <div class="answer">
+            <p>
+                In the configuration pom.xml, if spring boot start jdbc is mentioned, then spring boot sees that and automatically creates the jdbc bean.
+            </p>
+            <p>Same way if the datasource is mentioned in pom.xml file, datasource bean will be automatically defined by spring boot</p>
+        </div>
+        
+        <div class="question">
+            Advantages of spring boot - Starter dependencies
+        </div>
+        <div class="answer">
+            If we specify the type of project/application, spring boot will add all the starter dependencies with right and compatible versions
+        </div>     
+        <div class="question">
+            Advantage of spring boot - Actuator
+        </div>
+        <div class="answer">
+            There is an actuator framework used for debugging purpose where you can see the beans configured/environment variables etc., Mainly used for debugging, not to be used in PROD
+        </div>
+
+        <div class="question">
+            How to create a spring boots Rest API application?
+        </div>
+        <div class="answer">
+            <b> Approach1: </b> Go to Spring initializer (or eclipse marketplace plugin can also be used). Specify some properties and the type of project you want, speicify the dependencies that has to be included. 
+            <br/> Spring Initializer will generate a template project. Download that and import it as a maven project (or gradle depending on the option you select in spring initializer)
+            <br/> Then write your own controller with route methods and run the application. Your rest API is ready.
+            <br/>            <br/>
+            <b> Approach2: </b> Install Spring boots plugin in Eclipse Marketplace. Create a new Spring boots project, include Spring Web dependency (To build a RestFUL api project). A demo spring boots project will be created.
+            
+<br/><br/>   After generating the base project, first create a model class (a POJO class with the input parameters of the REST API as class members), then create a resource controller class.
+<br/>HTTP requests are handled by a controller, the controller is identified using the @RestController Annotation.
+        </div>
+
+        <div class="question">
+            What are some of the important annotations of Spring Boots - Rest API?
+        </div>
+        <div class="answer">
+            <ul>
+                <li>@SpringBootApplication - its a meta annotation - it does component scanning, autoconfiguration and property support. @SpringBootApplication = @Configuratio + @EnableAutoCOnfiguration + @Component Scan with their default attributes</li>
+                <li>@RestController - HTTP Requests are handled by a controller. This is the annotation for Controller, Adding this annotation means data returned by all the methods inside this class will be written in to a response body</li>
+                <li>@Controller - different between @RestController and @Controller. @RestController = @Controller + @ResponseBody If we use @RestController, need not explicitly specify @ResponseBody </li>
+                <li>@GetMapping - we can add a GET route for the method inisde this annotation</li>
+                <li>Similar to @GetMapping - @PostMapping, @PutMapping and @DeleteMapping for other HTTP methods</li>
+                <li>@RequestBody - annotation for incoming post request</li>
+                <li>@PathVariable - annotation for incoming path parameter</li>
+                <li>@RequestParam - annotation for incoming query params</li>
+                <li>@ResponseBody - it will make the response to be written in http response body</li>
+                <li>@ResponseEntity - to pack response entity and http status in single entity</li>
+            </ul>
+
+            
+        </div>
+
+        
+        <div class="question">
+            How to associate a method with route?
+        </div>
+
+        <div class="answer">
+            We can use @RequestMapping("/route1, method="RequestMethod.GET")
+            (or) Add @GetMapping annotation or any other corresponding annotation of the HTTP method in the method header. 
+            
+        </div>
+
+        <div class="question">
+            How to pass path parameters to the api?
+        </div>
+        <div class="answer">
+            <pre> 
+                @GetMapping("/greeting/{name}")
+                public String getGreeting(@PathVariable String name){
+                    return "Hello" + name + ". Good Morning!";
+                }
+            </pre>
+        </div>
+
+
+        <div class="question">
+            How to pass query parameters?
+        </div>
+        <div class="answer">
+            <pre>
+                //How to pass queryParams
+                @RequestMapping("/details")
+                public String ageMessage(@RequestParam("age") String ageStr) {
+                    try {
+                        int age = Integer.valueOf(ageStr);
+                    } catch (NumberFormatException e) {
+                        throw e;
+                    }
+                    
+                    return "Glad that you are " + ageStr;
+                }
+            </pre>
+        </div>
+
+        <div class="question">
+            Post Request example?
+        </div>
+        <div class="answer">
+            <pre>
+                @RestController
+                public class StudentController {
+                    
+                    @Autowired
+                    StudentService studentService;
+                    
+                    @PostMapping("/createStudent")
+                    @ResponseBody
+                    public ResponseEntity<String> createStudent(@RequestBody Student student) {
+                        boolean result = studentService.createStudent(student);
+                        
+                        if(StringUtils.isEmpty(student.getName())) {
+                            return new ResponseEntity<String>("Student name is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(StringUtils.isEmpty(student.getGrade())) {
+                            return new ResponseEntity<String>("Student grade is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(student.getSchool().isEmpty()) {
+                            return new ResponseEntity<String>("Student school is missing in input request body", HttpStatus.BAD_REQUEST);
+                        }
+                        if(result) {
+                            return new ResponseEntity<String>("Student created", HttpStatus.CREATED);
+                        }else {
+                            return new ResponseEntity<String>("Student not created", HttpStatus.NOT_ACCEPTABLE);
+                        }
+                    }
+                
+                }
+            </pre>
+        </div>
+
+        <div class="question">
+            How to do exception handling in Spring Boots - Rest API
+        </div>
+        <div class="answer">
+            Add a class with @ControllerAdvice annotation and in a method, add the @ExceptionHandler(EmployeeNotFoundException.class) with the exception class. When this EmployeeNotFoundException
+            is thrown, then the corresponding method in controlleradvice class is called. 
+            <pre>
+                @ControllerAdvice
+                public class ExceptionHandlerClass {
+                    
+                    @ResponseStatus(HttpStatus.BAD_REQUEST)
+                    @ResponseBody
+                    @ExceptionHandler(NumberFormatException.class)
+                    public String exceptionHandler(NumberFormatException e) {
+                        return "Incorrect input - Age should be a number";
+                    }
+                }     
+            </pre>
+        </div>
+
+
+        <div class="question">
+            What to do when the controller is not automtically detected by SpringBootApplication?
+        </div>
+        <div class="answer">
+            One of the reasons will be controller not present in the same package or child package as the SpringBootApplication class (The main class with @SpringBootApplication annotation).
+            <br/> To tell Spring boot where your controllers reside, use @ComponentScan annotation.
+            <br> @ComponentScan({"com.example.test"})- this will resolve the issue of controller not being detected
+            <br> If one controller is given in basePackageClasses, all other controllers in the same package will be automatically detected by Spring boots
+
+        </div>
+        
+        <div class="question">
+            How to deploy and run a Spring Boot application?
+        </div>
+        <div class="answer">
+            Spring boot can be packaged as a jar or war file. The jar file can also run as standalone application without any application server.
+            <br/> Or Spring boot can also be packaged as war file and deployed to tomcat webapps folder and used from inside the tomcat server.
+         </div>
+         <div class="question">
+             How do you autowire a particular class (from a dependent jar)?
+         </div>
+         <div class="answer">
+             @ComponentScan("com.jar.package.name") --> This class  will be created as a bean and automatically configured
+         </div>
+         <div class="question">
+             How to exclude auto configuration of a particular class? 
+         </div>
+         <div class="answer">
+             @EnableAutoConfiguration(exclude={DataSourceConfig.class}) or
+             @SpringBootApplication(exclude={DataSourceConfig.class, OneMoreClass.class}) --> These classes will be excluded from auto configuration
+         </div>
+
+         <div class="question">
+             How to change the port of the embedded tomcat server of spring boots?
+         </div>
+         <div class="answer">
+             An embedded tomcat server comes bundled as part of Spring boot starter web. Change the server.port in application.properties file
+             if server.port=0 is mentioned, it will automatically assign any available port
+         </div>
+
+         <div class="question">
+             How to exclude the embedded tomcat dependency in spring starter web and add some other dependency instead of tomcat?
+         </div>
+         <div class="answer">
+             In the starter web dependency, add a exclude tag with tomcat artifact id, also add dependency for required server
+
+             <dependency>
+                 <groupId>
+
+                 </groupId>
+                 <artifactId>spring-boot-starter-web</artifactId>
+                 <exclusions>
+                     <exclusion>
+                         <artifactId>spring-boot-starter-tomcat</artifactId>
+                     </exclusion>
+                 </exclusions>
+             </dependency>
+         </div>
+
+         <div class="question">
+             How to disable the default web server that comes with spring boots?
+         </div>
+         <div class="answer">
+             spring.main.web-application=none in application.properties file 
+         </div>
+    </main>
+</body>
+</html>

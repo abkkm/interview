@@ -1,0 +1,75 @@
+monolithic
+
+disadv 
+   not flexible cant make with different techs
+   if one system is not working the entire application may be not working
+   blocked features
+
+soa service oriented architech 
+    coarse grained architech
+    
+microservices
+   task level broken
+   
+   
+
+Microservices,Dockers,Kubernets=====Scalable,lightweight,independent
+
+
+In microservices the services became standlone,independent deployable,scalable service and each one it has own data base
+microservice is an architectural design that separates portions of a (usually monolithic) application into small, self-containing services.
+
+drawbacks:::::::
+    complexity
+    inter communication process becomes complicates
+    complexity of testing the distrubutes system
+    complexity of deploying it can be over come by the docker and container engines  
+    
+
+Docker::::::
+    docker file--contains the definitions
+    docker image--it is a container
+
+docker bundles the libraries and setings required to run the software instead of copying wraping the whole operating sysem in case of virtual machines
+
+container is the way of packaging the software and runing it in any platform 
+
+so dockers are
+    light weight 
+    self contained system
+   the software run for the guarante instead of where it is deployed
+
+Kubernetes:::::::
+
+  its a open source for automatic deploying,scaling and managing the containerized applications
+   
+node
+   kubelet
+   contains the pods 
+
+pods 
+  contains 1+ containers
+  Exists on node(kubelet)
+
+services 
+load balancers
+
+
+
+Docker Image
+   FROM 
+    WORKDIR
+      COPY  
+       RUN 
+         COPY
+          EXPOSE 
+             CMD
+
+
+
+deployement file
+protocol=="TCP"
+port==8080
+targetPort==8080
+nodePort==3001
+type==LoadBalancer

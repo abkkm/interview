@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Spring</title>
+<link rel="stylesheet" href="style/style.css" type="text/css">
+</head>
+<body>
+<div class="question">
+<b>
+What is difference between JDK,JRE and JVM?
+</b></div>
+<div class="answer">
+
+JVM is an acronym for Java Virtual Machine, it is an abstract machine which provides the runtime environment in which java bytecode can be executed.
+<br/>JVMs are available for many hardware and software platforms (so JVM is plateform dependent).
+<br/>JVM converts byte code to machine specific code.
+JRE stands for Java Runtime Environment. It is the implementation of JVM and physically exists. For executing any java program, we need JRE<br/>
+JDK is an acronym for Java Development Kit. It physically exists. It contains JRE + development tools. Its the superset. It helps to compile-change source code to byte code
+<br/>
+<br/>JDK - For compiling, compilers reside in JDK
+<br/>JVM - for converting the compiled code to machine understandable code as per the platform in which code has to be executed. Memory management, garbage collection etc., are handled by JVM. Memory can be customized
+<br/>JRE - Implementation of JVM, used for executing any java program.
+</div>
+<div class="question">
+<b>
+How many types of memory areas are allocated by JVM?
+</b></div>
+<div class="answer">
+
+Class(Method) Area <br/>
+    Heap - Objects and instance variables are stored in heap<br/>
+    Stack - local variables are stored in stack. Each thread has its own stack<br/>
+    Program Counter Register - address of the next instruction to be executed in stored in PC Register<br/>
+    Native Method Stack<br/>
+</div>
+<div class="question">
+<b>
+What gives Java its 'write once and run anywhere' nature?
+</b></div>
+<div class="answer">
+
+The bytecode. Java is compiled to be a byte code which is the intermediate language between source code and machine code. This byte code is not platorm specific and hence can be fed to any platform.
+</div>
+<div class="question">
+<b>
+What is classloader?
+</b></div>
+<div class="answer">
+
+The classloader is a subsystem of JVM that is used to load classes and interfaces.There are many types of classloaders e.g. Bootstrap classloader, Extension classloader, System classloader, Plugin classloader etc.
+</div>
+
+<div class="question">
+<b>
+If I do not provide any arguments on the command line, then the String array of Main method will be empty or null?
+</b></div>
+<div class="answer">
+
+Its empty, not null
+</div>
+
+<div class="question">
+<b>
+What is the default value of the local variables?
+</b></div>
+<div class="answer">
+
+The local variables are not initialized to any default value, neither primitives nor object references.
+</div>
+<div class="question">
+<b>
+Few facts about constructor
+</b></div>
+<div class="answer">
+
+It does not explicitly return any value, but implicitly returns the object instance. Thats why constructors cannot have any explicit return type<br/>
+Cannot be final or is not inherited
+</div>
+
+<div class="question">
+<b>
+Few facts about static variables
+</b></div>
+<div class="answer">
+
+Created in class area at the time of class loading, static blocks are executed before the main method. We can execute a program with main method using a static block
+</div>
+<div class="question">
+<b> What is marker interface?</b>
+</div>
+<div class="answer">
+An interface that have no data member and method is known as a marker interface.For example Serializable,Cloneable etc.
+</div>
+
+<div class="question">
+	<b> What is Serialization?</b>
+	</div>
+	<div class="answer">
+	Storing the state of an object in form of a byte stream in memory is called Serialization. In order to make an object serializable, implement the Serializable interface.
+	<br/>Hibernate, JPA and similar ORM frameworks use this serialization feature to store object's state.
+	<br/>Deserialization is the reverse process - converting from byte stream to object state
+	<br/>Adding transient keyword in front of a member variable, will make it not serializable. 
+	</div>
+
+	<div class="question">
+		<b> What is Clonable Interface used for?</b>
+		</div>
+		<div class="answer">
+		We can override clone method to define how an object should be copied. In order to override clone method in a class, the class should first implement the Clonable interface. Otherwise
+		ClassNotClonableException will be thrown.
+		<br/>Also the object's default clone() method only does shallow cloning, in order to do deep cloning, override the clone() method and add code to do deep cloning.
+		</div>
+
+	<div class="question">
+		<b> What is strictfp keyword?</b>
+		</div>
+		<div class="answer">
+		Floating point arithmetic provides different precision in different platforms. Java's strictfp keyword helps in getting the same result in all the platforms.
+		</div>
+
+<div class="question">
+<b> Is Java pass by value or pass by reference? </b>
+</div>
+<div class="answer">
+Java is always pass by value. The object reference value is passed in between the functions.
+primtive datatypes and wrapper classes are always passed by value, so the change in another method is not reflected outside the method. Wrapper classes are immutable so that everytime the value is changed, a new instance is created.
+<br/>When collections are created, the reference to collection is created in stack memory and the objects of the collection are created in heap memory. When an object is created, reference is craeted in stack memory and actual object is created in heap memory.
+<br/>When a collection is passed to another method, a copy of the reference is created and sent. So there are now 2 references pointing to the same set of objects in heap memory. When the collection is modified in another method, it modifies the objects in the heap memory. Thats why when a collection is passed to another method and updated there, the modified value is reflected in the caller method as well
+</div>
+
+<div class="question">
+<b>What is a singleton class and how to create a singleton instance in java</b>
+</div>
+<div class="answer">
+<br/>Only one instance of the class is available per JVM. 
+<br/>To create a singleton class, make the constructor private, add a private static Object instance reference of that class and assign in to null, in a public static method called getInstance, check if the private static instance variable is null and if null create an object instance, if not return the same reference.
+
+<pre>
+public class MyClass{
+private static Myclass myobj = null;
+
+private MyClass(){
+}
+
+public static Myclass getInstance(){
+	if(null == myobj){
+		return new Myclass(); //This is lazy loading singleton pattern, we can also do eager instantiation by initializing the object during declaration itself
+	}else{
+		return myobj;
+	}
+}
+}
+</pre>
+</div>
+<div class="question">
+	<b>How to break a singleton design?</b>
+</div>
+<div class="answer">
+	When we serialize and deserialize an object, the new object that is deserialized will have different hashcode than the first object. so singleton pattern is broken here.
+	<br/>When we clone an object also, the singleton pattern is broken
+</div>
+<div class="question">
+	Whats the difference between NoClassDefFoundError and ClassNotFoundException
+</div>
+<div class="answer">	
+	NoClassDefFoundError is an error thrown by JRE.
+	ClassNotFoundException is an exception thrown when a jar file is not found in the classpath. 
+</div>
+<div class="question">
+	How to make a String mutable?
+</div>
+<div class="answer">
+	You can either use a StringBuilder or a char[] array. Char array is safer to use than Strings for passwords, since anyone can access password from the memory dump since the immutable
+	string stays in the Stringpool until its eligible for garbage collection.
+</div>
+<div class="question">
+	How to create an immutable class in java?
+</div>
+<div class="answer">
+	The class should be final -> So no class can be subclass to this class
+	<br/> All the data members should be -> private (no access outside), final (cannot modify after setting) and no setter method
+	<br>Add a parameterized constructor to initialize the members only when the class is created
+	<br>If there are any objects that are referenced in the class (like a map), in the getting method, do not return that HashMap's reference as is, perform a deep copy and return the copied map, so that the direct reference of the HashMap used by the class is not sent out/not modifiable by the calling method
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+Springboot:::::
+  easy to start spring application
+
+controller
+data layer
+service layer
+end to end flow
+
+Spring--framework
+
+boot--bootstrap
+
+springboot makes it easy to create stand alone,production grade spring based application that you can run just run
+
+
+spring boot is a tool for creating a spring application
+
+problems with spring
+ 
+ need to do whole lot for its deployement
+ multiple build and deployement steps
+
+
+spring boot take care of these steps 
+
+maven single file
+
+pom.xml--dependency management tool and build tool
+
+archetype --  template 
+
+the child project inherits the parent project basic concept of maven
+
+
+pom.xml
+
+parent 
+
+dependencies
+   spring boot starter web
+properties
+
+Annotations
+
+@SpringBootApplication
+SpringApplication.run(source.class,args);
+run static method in spring
+
+@RestController
+@RequestMapping("/hello")
+
+topics.stream().filter(t->t.getId().equals(id)).findFirst().get()
+
+
+Controller maps the url and HTTP METHOD DO SOME FUNCTIONALITY
+
+the url looks for the request and matches to the suitable http method if any of the java methods is able to match the url and httpmethods
+
+@service creates instances of the class when this annotation is detected
+
+
+@RequestMapping(method=RequestMethod.POST,value="/")
+
+@RequestBody--responsible for converting the request instance to the instance of the object
+
+lamda operators
+
+server.port=3000
+
+
+jpa-java persistence api
+spring data jpa
+derby dependencies
+
+@Entity 
+for creating the data base table
+
+@Id primary key
+
+interface CrudRespository<entity,id>
+{
+}
+findAll--convert each rows to instances and give
+save-save 
+findOne (id)
+delete
+
+many to one relation-acting foreign key for the extisting primary key
+
+
+if we finding the  records by a particular field we have to create a method in the crud repository and the name of the methed should br the key find by and property
+
+actuator to observe the state of the project which was written
+
+
+server to client----produces
+
+the server accepts from the client ---consumes
+
+
+ 
+
+
+
+  
+
+
+
+     
+
+
+
+
+
+ 
+
+
+
+ 
+
+

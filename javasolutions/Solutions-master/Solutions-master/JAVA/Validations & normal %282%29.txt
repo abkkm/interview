@@ -1,0 +1,554 @@
+
+33.validate a password 
+i) there should be atleast one digit
+ii) there should be atleast one of '#','@' or '$' .
+iii)the password should be of 6 to 20 characters
+iv) there should be more uppercase letter than lower case.
+v) should start with an upper case and end with lower case
+ 
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet33 {
+public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String st=s.next();
+		boolean b=validatingPassword(st);
+		if(b==true)
+			System.out.println("valid password");
+		else
+			System.out.println("Invalid Password");
+	}
+
+public static boolean validatingPassword(String st) {
+	boolean b1=false,b2=false;
+	if(Character.isUpperCase(st.charAt(0)))
+		if(Character.isLowerCase(st.charAt(st.length()-1)))
+			if(st.length()>=6 && st.length()<=20)
+				for (int i = 0; i < st.length();i++)   
+		    	{   char c = st.charAt(i);   
+		    	    if(Character.isDigit(c)){   
+		    	      b1=true; break; }    	}
+	int x=0,y=0;
+	for(int i = 0; i < st.length(); i++)
+	      if(Character.isUpperCase(st.charAt(i)))
+	        x++;
+	      else if(Character.isLowerCase(st.charAt(i)))
+		    y++;
+	if(b1==true)
+		if(x>y)
+			for (int i = 0; i < st.length();i++)   
+	    	{   char c = st.charAt(i);   
+	    	    if(c=='#' || c=='@' || c=='$'){   
+	    	      b2=true; break; }    	}
+	return b2;
+}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+35.validate the ip address in the form a.b.c.d
+   where a,b,c,d must be between 0and 255
+   if validated return 1 else return 2
+
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet35 {
+	public static void main(String[] args) {
+		String ipAddress="010.230.110.160";
+	    boolean b=validateIpAddress(ipAddress);
+	    if(b==true)
+	    	System.out.println("valid ipAddress");
+	    else
+	    	System.out.println("not a valid ipAddress");
+	}
+	public static boolean validateIpAddress(String ipAddress) {
+		boolean b1=false;
+		StringTokenizer t=new StringTokenizer(ipAddress,".");
+		int a=Integer.parseInt(t.nextToken());
+		int b=Integer.parseInt(t.nextToken());
+		int c=Integer.parseInt(t.nextToken());
+		int d=Integer.parseInt(t.nextToken());
+		if((a>=0 && a<=255)&&(b>=0 && b<=255)&&(c>=0 && c<=255)&&(d>=0 && d<=255))
+			b1=true;
+		return b1;
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								SET-3
+
+4) Email Validation
+   String input1="test@gmail.com"
+                1)@ & . should be present;
+                2)@ & . should not be repeated;
+                3)there should be five charcters between @ and .;
+                4)there should be atleast 3 characters before @ ;
+                5)the end of mail id should be .com;
+
+package Set3;
+import java.util.*;
+public class ClassSeT04 {
+public static void main(String[] args) {
+	String ip="test@gmail.com";
+	boolean b=emailIdValidation(ip);
+	if(b==true)
+		System.out.println("valid mail Id");
+	else
+		System.out.println("not a valid Id");
+}
+public static boolean emailIdValidation(String ip) {
+	int i=0;
+	boolean b=false;
+	StringTokenizer t=new StringTokenizer(ip,"@");
+		String s1=t.nextToken();
+		String s2=t.nextToken();
+	StringTokenizer t1=new StringTokenizer(s2,".");
+		String s3=t1.nextToken();
+		String s4=t1.nextToken();
+	if(ip.contains("@") && ip.contains("."))
+		i++;
+	
+	if(i==1)
+		if(s3.length()==5)
+			if(s1.length()>=3)
+				if(s4.equals("com"))
+					b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+27) Validate Password
+    validation based on following criteria:
+  -> minimum length is 8
+  -> should contain any of these @/_/#
+  -> should not start with number/special chars(@/#/_)
+  -> should not end with special chars
+  -> can contain numbers,letters,special chars
+
+package Set3;
+import java.util.*;
+public class ClassSeT40 {
+public static void main(String[] args) {
+	Scanner s=new Scanner(System.in);
+	String s1=s.next();
+	boolean b=passwordValidation(s1);
+	if(b==true)
+		System.out.println("valid password");
+	else
+		System.out.println("not a valid password");
+}
+public static boolean passwordValidation(String s1) {
+	boolean b=false,b1=false,b2=false;
+	if(s1.length()>=8)
+		if(!Character.isDigit(s1.charAt(0)))
+			if(s1.charAt(0)!='@' && s1.charAt(0)!='_' && s1.charAt(0)!='#')
+				if(s1.charAt(s1.length()-1)!='@' && s1.charAt(s1.length()-1)!='_' && s1.charAt(s1.length()-1)!='#')
+					b1=true;
+	if(b1==true)
+		for(int i=0;i<s1.length();i++)
+			if(Character.isAlphabetic(s1.charAt(i)) || Character.isDigit(s1.charAt(i)) || s1.charAt(i)=='#' || s1.charAt(i)=='@' || s1.charAt(i)=='_')
+				b2=true;
+	if(b2==true)
+		if(s1.contains("#") || s1.contains("@") || s1.contains("_"))
+			b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+28) pan card number validation:
+    all letters shud be in caps,shud be of 8 chars.
+    first three letters must be alphabets.
+    next 4 letters shud be digits and last letter shud be an alphabet
+
+package Set3;
+import java.util.*;
+public class ClassSeT28 {
+public static void main(String[] args) {
+	Scanner s=new Scanner(System.in);
+	String pan=s.next();
+	boolean b=panNumberValidation(pan);
+	if(b==true)
+		System.out.println("valid Pancard Number");
+	else
+		System.out.println("not a valid credential");
+}
+public static boolean panNumberValidation(String pan) {
+	boolean b=false,b1=false,b2=false;
+	String s1=pan.substring(0, 3);
+	String s2=pan.substring(3, 7);
+	if(pan.length()==8)
+		if(Character.isAlphabetic(pan.charAt(pan.length()-1)) && Character.isUpperCase(pan.charAt(pan.length()-1)))
+			b1=true;
+	if(b1==true)
+		for(int i=0;i<s1.length();i++)
+			if(Character.isAlphabetic(s1.charAt(i)) && Character.isUpperCase(s1.charAt(i)))
+				b2=true;
+			else
+				{b2=false;break;}
+	
+	if(b2==true)
+		for(int i=0;i<s2.length();i++)
+			if(Character.isDigit(s2.charAt(i)))
+				b=true;
+			else
+			{b=false;break;}
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+43) Color Code Validation:
+	String should starts with the Character '#'.
+	Length of String is 7. 
+	It should contain 6 Characters after '#' Symbol.
+	It should contain Characters Between 'A-F' and Digits '0-9'.
+	if String is acceptable then Output1=1
+	else  Output1=-1; 
+
+package Set3;
+import java.util.*;
+public class ClassSeT44 {
+public static void main(String[] args) {
+	Scanner s=new Scanner(System.in);
+	String s1=s.next();
+	boolean b=colorCodeValidation(s1);
+	if(b==true)
+		System.out.println("valid color code");
+	else
+		System.out.println("invalid color code");
+}
+public static boolean colorCodeValidation(String s1) {
+	boolean b=false,b1=false;
+	String s2=s1.substring(1,s1.length());
+	if(s1.length()==7)
+		if(s1.charAt(0)=='#')
+			b1=true;
+	
+	if(b1==true)
+		for(int i=0;i<s2.length();i++){
+			char c=s2.charAt(i);
+			if(c!='#'){
+			if((Character.isAlphabetic(c)&& Character.isUpperCase(c)) || Character.isDigit(c))
+				b=true;
+			else{
+				b=false;
+				break;}}}
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+
+
+						NORMAL
+
+
+
+
+4) Given a method with a positive number as input.write a code to
+calculate the sum of squares of individual digiths of given
+number.Return it as output.
+Example:
+Input=321
+output=(3*2+2*2+1*1)=14
+public class D {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+int n=141;
+getvalues(n);
+}
+public static void getvalues(int n) {
+int a=n;
+int rem=0;
+int sum=0;
+while(a!=0)
+{
+rem=a%10;
+sum=sum+(rem*rem);
+a=a/10;
+}
+System.out.println(sum);
+}
+}
+.........................................................................................................
+
+21) Given a method calulateNcr().Write cod to calulate the ways in which r elements can be selected 
+from n population,using nCr formulanCr=n!r!(n-r)! where first input begin n and second input being r.
+Note:n!factorial can be achieved using given formila n!=nx(n-1)x(n-2)x...3x2x1.
+Note2:0!=1.
+Examplle 5!=5x4x3x2x1=120
+package com.Packas;
+public class B {
+public static void main(String[] args) {
+int n=5;
+int r=3;
+getvalues(n,r);
+}
+public static void getvalues(int n, int r) {
+int fact=1,fact1=1,fact2=1;
+for(int i=1;i<=n;i++)
+{
+fact=fact*i;
+}
+System.out.println(fact);
+for(int i=1;i<=r;i++)
+{
+fact1=fact1*i;
+}
+System.out.println(fact1);
+for(int i=1;i<=(n-r);i++)
+{
+fact2=fact2*i;
+}
+System.out.println(fact2);
+int res=fact/(fact1*fact2);
+System.out.println(res);
+}
+}
+...............................................................................
+
+35) Given a method addPalindrome()with two inputs of type int.first input being the lower limit and 
+second input being the higher limit of a range of postive integers.Write a code to calulate the sum of all 
+palindrome numbers in this range including the two numbers.
+if there is no any palindrome number in the given range,return0.
+Note1:A palindrome number is a number which remains same after reversing its digits.
+Note2:A single digit number is not considerd as palindrome.
+Example:
+input1:130
+input2:150
+output:131+141=272
+package com.Packas;
+public class B {
+public static void main(String[] args) {
+int n1=130;
+int n2=150;
+getvalues(n1,n2);
+}
+public static void getvalues(int n1, int n2) {
+int rem=0,rev,sum = 0;
+for(int i=n1;i<=n2;i++)
+{
+rev=0;
+int a=i;
+while(a!=0)
+{
+rem=a%10;
+rev=rev*10+rem;
+a=a/10;
+}
+if(rev==i)
+{
+sum=sum+i;
+}
+}
+System.out.println(sum);
+}
+}
+...............................................................................................
+
+
+
+39) Given a method with an input n of type int. Write code to generate fibonacci series
+and calculate the sum of first n numbers in the series and return it as output.
+Note: First two numbers in a Fibonacci
+are 0,1 and all other subsequent numbers are sum of its previous
+two numbers. Example - 0,1,1,2,3,5...
+Example:
+Input=5
+output = 0+1+1+2+3=7
+package com.Packas;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class A {
+public static int sumOfFibonacci(int n){
+int a=0,b=1,c=0,d=1;
+for(int i=3;i<=n;i++){
+c=a+b;
+a=b; b=c;
+d=d+c;
+}
+return d;
+}
+public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+System.out.println(sumOfFibonacci(n));
+}
+}
+.......................................................................
+44. Return the number of days in a month, where month and year are given as input.
+
+package Set1;
+import java.util.*;
+public class ClassSet44 {
+	public static void main(String[] args){
+		String s1="02/2011";
+		System.out.println(noOfDaysInAmonth(s1));
+	}
+	public static int noOfDaysInAmonth(String s1){
+		int n=0;
+		StringTokenizer r=new StringTokenizer(s1,"/");
+		int n1=Integer.parseInt(r.nextToken());
+		int n2=Integer.parseInt(r.nextToken());
+		if(n1==1 || n1==3 || n1==5 ||n1==7 || n1==8 || n1==10 || n1==12)
+			n=31;
+		else if(n1==4 || n1==6 || n1==9 || n1==11)
+			n=30;
+		else if(n1==2){
+			if(n2%4==0)
+				n=29;
+			else
+				n=28; }
+		return n;
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------
+5) Square root calculation of
+   ((x1+x2)*(x1+x2))+((y1+y2)*(y1+y2))
+   o/p should be rounded of to int;
+
+package Set3;
+public class ClassSeT05 {
+public static void main(String[] args) {
+	int x1=4,x2=8;
+	int y1=3,y2=5;
+	sqrt(x1,x2,y1,y2);
+}
+public 	static void sqrt(int x1, int x2, int y1, int y2) {
+	int op;
+	op=(int) (Math.sqrt((x1+x2)*(x1+x2))+((y1+y2)*(y1+y2)));
+	System.out.println(op);
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+19) input---input1=1;
+            input2=4;
+            input3=1;
+    output1=4;
+    operation--- print the element which is not repeated    
+    if all the inputs r different sum all inputs
+    input---input1=1;
+            input2=2;
+            input3=3;
+    output1=6;
+
+package Set3;
+public class ClassSeT19 {
+public static void main(String[] args) {
+	int ip1=1,ip2=4,ip3=1;
+	//int ip1=1,ip2=2,ip3=3;
+	//int ip1=1,ip2=1,ip3=1;
+	System.out.println(sumOfNonRepeatedChars(ip1,ip2,ip3));
+}
+public static int sumOfNonRepeatedChars(int ip1, int ip2, int ip3){
+	int n=0;
+	if(ip1!=ip2 && ip2!=ip3 && ip3!=ip1)
+		n=ip1+ip2+ip3;
+	else if(ip1==ip2 && ip2==ip3)
+		n=0;
+	else{
+		if(ip1==ip2)
+			n=ip3;
+		else if(ip1==ip3)
+			n=ip2;
+		else if(ip2==ip3)
+			n=ip1;	}
+	return n;
+}
+}
+
+
+
+
+
+
+4
+47) Add elements of digits:9999 
+    output:9+9+9+9=3+6=9;
+
+package Set3;
+public class ClassSeT47 {
+public static void main(String[] args) {
+	int n=9999;
+	System.out.println(conversiontoaSingleDigit(n));
+}
+public static int conversiontoaSingleDigit(int n){
+	loop:
+		while(n>10){
+			int l=0,m=0;
+			while(n!=0){
+				m=n%10;
+				l=l+m;
+				n=n/10; }
+			n=l;
+			continue loop; }
+	return n;
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+49) perfect no or not?
+
+package Set3;
+public class ClassSeT49 {
+public static void main(String[] args) {
+	int n=28;
+	System.out.println(perfectNumber(n));
+}
+public static boolean perfectNumber(int n) {
+	int n1=0;
+	boolean b=false;
+	for(int i=1;i<n;i++)
+		if(n%i==0)
+			n1+=i;
+	//System.out.println(n1);
+	if(n1==n)
+		b=true;
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+
+
+
+
+53) Given amethod calculateElectricityBill() with three inputs.First input is previous reading,second input is current reading bill and last input is nper unit charge.
+Write code to calculate the current bill.
+reading format-XXXXXAAAAA where XXXXX is consumer number and AAAAA is meter reading
+Example:
+input1 = ABC2012345
+input2 = ABC2013660
+input3=4
+Bill = (12660-12345)*4
+ouptut = 315
+package com.Packas;
+public class A {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String s1="ABC2012345";
+String s2="ABC2012660";
+int i=4;
+getvalues(s1,s2,i);
+}
+public static void getvalues(String s1, String s2, int i) {
+int a=Integer.parseInt(s1.substring(s1.length()-5,s1.length()));
+int b=Integer.parseInt(s2.substring(s2.length()-5,s2.length()));
+System.out.println(a);
+System.out.println(b);
+int diff=Math.abs(b-a)*4;
+System.out.println(diff);
+}
+}
+........................................................................
+
+

@@ -1,0 +1,108 @@
+Static variable are not object specific
+ ie class loader memory instead of heap memory 
+
+If it is static variable,then we can use the class name itself to refer it
+
+Multiple Inheritance -->
+       If one class extends two classes if a method present in both the classes,theh it is a failure(ambuigity)
+
+
+Encapsulation Binding the data with the method 
+
+this keyword is used to refer the global variable inside the method
+
+abstract class 
+
+abstract class can contains the method declaration and method definition
+
+when you extends the abstract class then you must define the abstract method in the child class
+
+if I mention a class as final then i can't able to inherit that class
+
+abstract method contains both normal method and the abstract method 
+
+
+Interface 
+
+  Interface contains only method definitions and those methods are public abstract by default 
+
+we cant able to creat the object for the interface but we can creat the annonymous inner classs
+
+we can able to inherit the multiple interface by using the implements keyword
+
+Interace is normally used for the generalization
+
+Annonymous class can be used for the instantion of the Interface 
+
+Normal Interface -->  more than one method
+
+Functional Interface --> only one method
+
+marker Interface --> doesnt have any method(eg: serializible)
+
+putting a variable inside the object is called boxing
+
+and storing back to another variable is called unboxing
+
+Wrapper Class--> indtead of using the primivitive variables using the Class like Interger etc...,
+
+
+Interface eg.,
+
+class pencil implements writer1,writer2
+
+Anonymous Inner class and functional interface lamda Expresion
+
+
+Whenever you create variable inside the interface it will become the constant
+
+Threads
+
+threads can be inplemented directly by extending the thread class or by implementing the runnable interface 
+
+if you use the runnable interface then you have to use the threads referrence also(Thread t1=new Thread ())
+
+join as soon as the theads done ots job and joins with the main
+
+t1.getName
+
+Thread.sleep()
+t1.getPririty
+Thread.min_pririority
+Thread.max_pririority
+
+
+colletion concept
+Collection Interfeace
+collections class ==class
+
+
+arraylist,set,hashmap,map,comparator,comparable
+
+collectiosns api
+
+List -->
+
+allows duplication
+maintains the insertion order 
+
+Set-->Hashset<>()
+
+doestnt allows the duplicates
+
+fetching happens in random manner
+
+
+tress Set  sorted order
+
+map map<k,v>   key value pair 
+
+map has key for every value
+
+
+hashtable synchronized 
+
+
+
+
+

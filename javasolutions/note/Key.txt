@@ -1,0 +1,57 @@
+ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+context.getbean();
+
+
+<beans>
+<bean id="triangle" class=" ">
+<property name="type" value="    "/>
+</bean>
+
+</beans>
+
+
+<contructor-arg value="  "/>
+
+<constructor-arg type="java.lang.integer" value=" "/>
+<bean id=" " class=" "
+<property name=" " value=" "/>
+<property name =" " value=" "/>
+<property naem=" " value=" "/>
+
+<list>
+ 
+  
+<list/>
+ 
+ 
+ 
+ singleton--is the default scope 
+ 
+      when the application context is created all the beans are gets created and kept ready.
+the same bean is been sent for every getbean
+
+prototype--
+the bean is not created for when the appcation context is get initialized.the get bean is get creted is for every bean request  
+
+@Component
+   spring bean
+
+declaring the class as bean 
+
+
+xml-same class with different beans and different meta data
+
+anotation--only possible to have one bean for one class
+
+@Component
+<context:component-scan base-package=" " />
+
+
+
+
+
+
+
+
+

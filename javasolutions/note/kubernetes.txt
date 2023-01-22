@@ -1,0 +1,84 @@
+Inside the node the containers will get launched  
+
+cluster wil have multiple nodes in which one node is goes down you can use the another backup nodes
+
+master reponsible for the orchestration
+
+components of kubernetes while Installing
+
+API server-->acts like a front end user,management devices,command line interfaces talk to the api server to interact with the kubernetes cluster
+Scheduler-->distrubuting the work between the containers across multiple nodes
+Controller-->brain noticing when anything goes down
+Container Runtime-software underlying for running the container ie docker now
+kubelet-->making sure the container are running in the nodes as excepted 
+etcd--it is a distributes reilable key value store used by kubernetes to store all the datas used to manage cluster ie reponsible for lock no conflicts between the master  
+
+kubectl kube controll tool
+
+kubectl run hello-minikube --used to deploy
+kubectl cluster-info -- info about the cluster
+kubectl get nodes--list of nodes in cluster
+
+to run instances kubectl run my webapp --image=my-web-app --replicas=100
+
+kube api server 
+
+
+docker is a container runtime engine 
+
+kubelet run on the each node on the cluster
+
+kubernetes definiton file .yaml
+
+api version:
+kind :
+metadata: 
+
+spec:
+
+must have ones (above)
+
+service types 
+
+node port 
+clusterip
+loadbalancer port
+
+service.yml
+
+ports:
+  -targetPort: 80
+   port: 80
+   nodePort: 30008
+selector:
+    app:myapp
+    type:front-end 
+
+
+
+to run the service.yaml 
+
+kubectl create -f service-definition.yml
+
+kubectl get services
+
+curl http://192.168.1.2:30008
+
+multiple similar pods
+having the same selector
+THEN it will load balance between the 3 pods
+
+
+if we have multiple nodes having the multiple nodes 
+
+the services wil adapt by its own
+
+ingress :: single external url which can be configured throught out the service at the same time ssl encryption
+  (load balancing authetication ssl and url based congigurations also)
+  
+
+ 
+
+
+
+     

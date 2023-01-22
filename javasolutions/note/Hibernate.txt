@@ -1,0 +1,113 @@
+An orm tool
+
+object relational mapping 
+
+storing the custom object in the data base is difficult ie user object  
+
+9 jars to library 
+
+
+Hibernate internally using the jdbc to connect to the database 
+
+without an hibernate 
+
+JDBC database configuration 
+
+the model object
+
+service method to create the model object
+
+datadesign 
+
+dao method to save the object using the sql queriees>>  
+
+hibernate.cfg.xml-default fie name 
+
+<property name="connection.driver.class"> org.postgresql.driver</property>
+ connection.url
+connection.username
+connection.password
+
+dialect its a configuration what kind of language is used to connect the data base
+
+h2 dialect mysql dialect
+
+hbm2ddl.auto create for creating the new schema everytime 
+hbm2ddl.auto" update for inserting the data in the exsisting schema 
+
+SessionFactory sessionFactory = new configuration().congifure().buildSessionFactory()
+takes the configuration file and reads what configuration is needed for sql
+build the session factory
+
+Session session = sessionFactory.openSession();
+session.beginTrasaction();
+session.save(user);
+session.getTrasaction().commit(); 
+
+Entity(name=" ")
+Id
+
+@Basic 
+
+@static and @transient
+
+@transient is used to skip a field from storing in the database
+@temporal(TemporalType.data or time)
+@Lob (large object)
+@clob (character)
+@blob (byteStream)
+
+session.get(classname.class,1);
+
+marking and primary keys does not carry any Business Logic are called surogate key;
+
+login id is not surogate key
+
+@Id
+@GeneratedValue(strategy=Generationtype.AUTO)
+
+Entity will have meaning on its own 
+
+but the value object doesnt have    
+
+Value object will be there inside the Entity
+
+Entity can be inside the other entity also
+
+@Embeddable Value object inside the Entity
+@AttributeOverrides({
+@AttributuOverride (name="street,column=@column(name="Home_STREET_NAME"))
+@AttributuOverride (name="street,column=@column(name="Home_STREET_NAME"))
+@AttributuOverride (name="street,column=@column(name="Home_STREET_NAME"))})
+ 
+
+Embedded object have the primary key at the time we will use the @EmbeddedId
+@ElementCollection is used to make  persist the collection object in database
+
+@JoinTable(name="USER_ADDRESS",joinColumns=@JoinColumn(name="USER_ID") 
+join table hvae the property of join column =@joinColumn();
+(its just to override the default names)
+for having the ids (index)
+
+Hibernate annotations
+@GenericGnerator  (name="hilo-gen",strategy="hilo") 
+@CollectionId(column,generator,type) 
+
+proxy objects and Eager and lazy fetch types
+
+Lazy initialization is that entire object is not initialized in which the first level variable only wil get initializes
+
+proxy user class is between the user class and the data base 
+
+Hiberate is providing the proxy and returns the instance of the proxy 
+one to one mapping 
+@OneToOne
+
+One to many mapping 
+
+@ManyToOne
+
+@ManyToMany 
+
+@NotFound(action=NotFoundAction.Ignore)
+

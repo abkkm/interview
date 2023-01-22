@@ -1,0 +1,15 @@
+JavaScripts
+ 
+    Node is a runtime environment for excuting the javascript code;
+
+let name='Mosh';
+let age=230;
+let isApproved=false;
+let firstName=undefined;
+let selectedColor=null; 
+
+typeof
+
+console.log()
+
+

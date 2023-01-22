@@ -1,0 +1,868 @@
+1. A number is given as input. Find the odd digits in the number, add them and find if the sum is odd or not.if even return -1, if odd return 1
+input:52315
+logic:5+3+1+5=14(even)
+output:-1
+input:1112
+logic:1+1+1=3(odd)
+output:1
+
+
+
+package Set1;
+
+public class ClassSet1 
+{
+	public static int SumOfOddsAndEvens(int n)
+             {
+		int n1,n2=0,n3;
+		 while(n!=0)
+		{
+			n1=n%10;
+			if((n1%2)!=0)
+			a	n2+=n1;
+			n/=10;
+		}
+		if(n2%2==0)
+			n3=-1;
+		else
+			n3=1;
+		
+		return n3;	
+	}
+	public static void main(String[] args) {
+		int n=12346;
+		System.out.println(SumOfOddsAndEvens(n));
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+3.A integer array is given as input. find the difference between each element. Return the index of the largest element which has the largest difference gap.
+input: {2,3,4,2,3}
+logic: 2-3=1,3-4=1,4-2=2,2-3=1
+2 is the max diff between 4 and 2,return the index of 4(2)
+output:2
+
+
+
+package Set1;
+
+public class ClassSet3 {
+	public static int getDiffArray(int[] n1){
+		int n2,n3=0,n4=0,i;
+		for(i=0;i<n1.length-1;i++){
+			n2=Math.abs(n1[i]-n1[i+1]);
+			if(n2>n3){
+				n3=n2;
+				n4=i+1; }}
+		return n4;
+	}
+	public static void main(String[] args) {
+		int[] n1={2,9,4,7,6};
+		System.out.println(getDiffArray(n1));
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.Given two integer arrays. merge the common elements into a new array. find the sum of the elements
+input1:{1,2,3,4}
+input2:{3,4,5,6}
+logic:{3,4}
+output:7
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet4 {
+	public static int mergeArray(int a[],int b[]){
+		List<Integer> l1=new ArrayList<Integer>();
+		List<Integer> l2=new ArrayList<Integer>();
+		int i,d=0;
+		for(i=0;i<a.length;i++)
+			l1.add(a[i]);
+		for(i=0;i<b.length;i++)
+			l2.add(b[i]);
+		l1.retainAll(l2);
+		for(i=0;i<l1.size();i++)
+			d+=(Integer) l1.get(i);
+		return d;
+	}
+	public static void main(String[] args) {
+		int[] a={1,2,3,4};
+		int[] b={3,4,5,6};
+		System.out.println(mergeArray(a,b));
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5.Given two arrayslist. retrieve the odd position elements form first input and even position elemetns from second list. 
+put it into the new arraylist at the same positions from where they are retrieved from.
+(consider 0th position as even position, and two lists are of same size)
+input1:{12,1,32,3}
+input2:{0,12,2,23}
+output:{0,1,2,3}
+
+
+
+
+package Set1;
+
+public class ClassSet5 {
+	public static int[] retrievePosition(int[] a,int[] b){
+		int[] c=new int[a.length];
+		int i;
+		for(i=0;i<a.length;i++){
+			if(i%2==0)
+				c[i]=b[i];
+			if(i%2!=0)
+				c[i]=a[i]; }
+		return c;
+	}
+	public static void main(String[] args) {
+		int[] a={12,1,32,3};
+		int[] b={0,12,2,23};
+		int[] c=retrievePosition(a,b);
+		for(int d:c)
+			System.out.println(d);
+	}
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Sum of fibonaaci series upto given input.
+input:3
+logic:1+1+2
+output:4
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet6 {
+	public static int sumOfFibonacci(int n){
+		int a=-1,b=1,c=0,d=0;
+		for(int i=0;i<=n;i++){
+			c=a+b;
+			a=b; b=c;
+			d+=c;
+		}
+		return d;
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		System.out.println(sumOfFibonacci(n));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Retrieve the odd numbers till given input number. add and subtract it consecutively and return the result.
+Input:9
+Output:1+3-5+7-9=-3
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet7 {
+	public static int consecutiveSumSubofOddNos(int n){
+		List<Integer> l1=new ArrayList<Integer>();
+		for(int i=1;i<=n;i++)
+			if(i%2!=0)
+				l1.add(i);
+		int n1=l1.get(0);
+		for(int i=1;i<l1.size();i++)
+			if(i%2!=0)
+				n1=n1+l1.get(i);
+			else
+				n1=n1-l1.get(i);
+		return n1;
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		System.out.println(consecutiveSumSubofOddNos(n));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+20. Get a integer array as input. Find the average of the elements which are in the position of prime index
+input:{1,2,3,4,5,6,7,8,9,10}
+logic:3+4+6+8(the indeces are prime numbers)
+output:21
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet20 {
+	public static int sumOfPrimeIndices(int[] a,int n){
+		int n1=0;
+		for(int i=2;i<n;i++){
+			int k=0;
+			for(int j=2;j<i;j++)
+				if(i%j==0)
+					k++;
+			if(k==0)
+				n1+=a[i];	}
+		return n1;
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the array limit:");
+		int n=s.nextInt();
+		System.out.println("enter the array elements:");
+		int[] a=new int[n];
+		for(int i=0;i<n;i++)
+			a[i]=s.nextInt();
+		System.out.println(sumOfPrimeIndices(a,n));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+22.Get two integer arrays as input. Find if there are common elements in the arrays. find the number of common elements.
+input1: {1,2,3,4}
+input2: {3,4,5,6}
+output: 4(3,4,3,4)
+
+
+
+
+package Set1;
+public class ClassSet22 {
+	public static int commonElements(int[] a,int[] b){
+		int c=0;
+		for(int i=0;i<a.length;i++)
+			for(int j=0;j<b.length;j++)
+				if(a[i]==b[j])
+					c++;
+		return (2*c);
+	}
+	public static void main(String[] args){
+		int a[]={1,2,3,4,5};
+		int b[]={3,4,5,6,7};
+		System.out.println(commonElements(a,b));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+24. Input a int array. Square the elements in even position and cube the elements in odd position and add them as result.
+input: {1,2,3,4}
+output: 1^3+2^2+3^3+4^2
+
+
+
+
+package Set1;
+public class ClassSet24 {
+public static int squaringAndCubingOfElements(int[] a){
+	int n1=0,n2=0;
+	for(int i=0;i<a.length;i++)
+		if(i%2==0)
+			n1+=(a[i]*a[i]*a[i]);
+		else
+			n2+=(a[i]*a[i]);
+	return (n1+n2);
+}
+public static void main(String[] args) {
+		int a[]={1,2,3,4,5,6};
+		System.out.println(squaringAndCubingOfElements(a));
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+28.An arraylist of Strings is given as input. The count of the String elements that are not of size input2 string is to be returned.
+input1: {"aaa","bb","cccc","d"}
+input2: "bb"
+output: 3("bb"-length:2)
+
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet28 {
+	public static int StringsNotOfGivenLength(List<String> l1,String s1){
+		int n1=s1.length();
+		int c=0;
+		for(int i=0;i<l1.size();i++){
+			int n2=l1.get(i).length();
+			if(n1!=n2)
+				c++;
+		}
+		return c;
+	}
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		System.out.println("enter the no.of elements:");
+		int n=s.nextInt();
+		List<String> l1=new ArrayList<String>();
+		for(int i=0;i<n;i++)
+			l1.add(s.next());
+		System.out.println("enter the input string:");
+		String s1=s.next();
+		System.out.println(StringsNotOfGivenLength(l1,s1));
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+29.An array of integers is given.The given element is removed new array is returned.
+input1:{10,10,20,30,76}
+output: {20,20,76}(10 is asked to remove)
+
+
+
+
+
+package Set1;
+import java.util.*;
+public class ClassSet29 {
+	public static int[] removalOfGivenElementFromArray(int[] a,int c){
+		List<Integer> l1=new ArrayList<Integer>();
+		for(int i=0;i<a.length;i++)
+			if(a[i]!=c)
+				l1.add(a[i]);
+		int b[]=new int[l1.size()];
+		for(int i=0;i<b.length;i++)
+			b[i]=l1.get(i);
+		return b;
+	}
+	public static void main(String[] args) {
+	int a[]={10,10,20,30,40,50};
+	int c=10;
+	int[] b=removalOfGivenElementFromArray(a,c);
+	for(int d:b)
+		System.out.println(d);
+	}
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+34. find the average of the maximum and minimum number in an integer array
+
+package Set1;
+import java.util.*;
+public class ClassSet34 {
+	public static void main(String[] args) {
+		int[] a={10,54,23,14,32,45};
+		System.out.println(avgOfMaxandMinNoinArray(a));
+	}
+	public static int avgOfMaxandMinNoinArray(int[] a) {
+		Arrays.sort(a);
+		int b=a[0];
+		int c=a[a.length-1];
+		return (b+c)/2;
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+43. Retrieve the odd-position digits from input integer array. Multiply them with their index and return their sum.
+
+package Set1;
+public class ClassSet43 {
+	public static void main(String[] args) {
+		int[] a={5,1,6,2,9,4,3,7,8};
+		System.out.println("Sum Of Odd Position Elements Multiplied With Their Index Is:");
+		System.out.println(retrievalOfOddPositionElements(a));
+	}
+	public static int retrievalOfOddPositionElements(int[] a) {
+		int s=0;
+		for(int i=0;i<a.length;i++)
+			if(i%2!=0)
+				s+=a[i]*i;
+		return s;
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------
+46. Retrieve the elements in a array, which is an input, which are greater than a specific input number. Add them and find the reverse of the sum.
+
+package Set1;
+public class ClassSet46 {
+public static void main(String[] args) {
+	int[] a={23,35,11,66,14,32,65,56,55,99};
+	int b=37;
+	System.out.println(additionOfRetrievedElements(a,b));
+	}
+public static int additionOfRetrievedElements(int[] a, int b) {
+	int n=0;
+	for(int i=0;i<a.length;i++)
+		if(a[i]>b)
+			n+=a[i];
+	return n;
+}
+}
+-----------------------------------------------------------------------------------------------------------------------------
+
+						SET-2
+
+
+7)Given array of intergers,print the sum of elements sqaring/cubing as per the power of their indices.         
+//answer=  sum=sum+a[i]^i;
+     eg:input:{2,3,5}
+	Output:29
+
+
+
+
+
+package Set2;
+public class ClassSET7 {
+public static void main(String[] args) {
+	int a[]={2,3,5};
+	System.out.println(sumOfElementsWrtIndices(a));
+	}
+public static int sumOfElementsWrtIndices(int[] a) {
+	int s=0;
+	for(int i=0;i<a.length;i++)
+		s+=(Math.pow(a[i], i));
+	return s;
+}
+}
+--------------------------------------------------------------------------------------------------------||
+8)Given array of string check whether all the elements contains only digits not any alaphabets.
+if condn satisfied print 1 else -1.
+Input:{"123","23.14","522"}
+output:1
+
+Input1:{"asd","123","42.20"}
+output:-1
+
+
+
+
+
+package Set2;
+public class ClassSET8 {
+public static void main(String[] args) {
+	String[] input1={"123","23.14","522"};
+	//String[] input1={"asd","123","42.20"};
+	System.out.println(stringOfDigits(input1));
+}
+public static int stringOfDigits(String[] input1) {
+	int n=0;
+	for(int i=0;i<input1.length;i++){
+		String s1=input1[i];
+		for(int j=0;j<s1.length();j++){
+			char c1=s1.charAt(j);
+			if(Character.isDigit(c1))
+				n=1;
+			else {n=-1;break;} }}
+	return n;
+}
+}
+
+--------------------------------------------------------------------------------------------------------||
+9) int[] a={12,14,2,26,35}
+find the difference b/w max and min values in array
+output:35-2=33.
+
+
+
+
+package Set2;
+import java.util.Arrays;
+public class ClassSET9 {
+public static void main(String[] args) {
+	int a[]={12,14,2,26,35};
+	System.out.println(diffBwMaxAndMin(a));
+}
+public static int diffBwMaxAndMin(int[] a) {
+	Arrays.sort(a);
+	int n=a[a.length-1]-a[0];
+	return n;
+}
+}
+---------------------------------------------------------------------------------------------------------||
+10) Given an array find the largest 'span'(span is the number of elements between two same digits)
+    find their sum.
+	a[]={1,4,2,1,4,1,5}
+	Largest span=5
+
+
+
+
+
+package Set2;
+public class ClassSET10 {
+public static void main(String[] args) {
+	int a[]={1,4,2,1,4,1,5};
+	System.out.println("sum of largest span elements:"+largestSpan(a));
+}
+public static int largestSpan(int[] a) {
+	int max=0;
+	int p1=0;
+	int p2=0;
+	int n=0;
+	int sum=0;
+	for(int i=0;i<a.length-1;i++){			
+		for(int j=i+1;j<a.length;j++)					
+			if(a[i]==a[j])					
+				n=j;
+		if(n-i>max){
+			max=n-i;
+			p1=i;
+			p2=n; }
+	}
+	System.out.println("largest span:"+(p2-p1));
+	for(int i=p1;i<=p2;i++)
+		sum=sum+a[i];
+	return (sum);
+}
+}
+----------------------------------------------------------------------------------------------------------||
+12) arraylist1={ 1,2,3,4,5}
+    arraylist2={ 6,7,8,9,10}
+size of both list should be same 
+output={6,2,8,4,10}
+
+
+
+
+
+package Set2;
+public class ClassSET12 {
+public static void main(String[] args) {
+	int a[]={1,2,3,4,5};
+	int b[]={6,7,8,9,10};
+	int c[]=alternativeIndicesElements(a,b);
+	for(int d:c)
+	System.out.println(d);
+}
+public static int[] alternativeIndicesElements(int[] a, int[] b){
+	int c[]=new int[a.length];
+	if(a.length==b.length)
+		for(int i=0;i<a.length;i++)
+			if(i%2==0)
+				c[i]=b[i];
+			else
+				c[i]=a[i];
+	return c;
+}
+}
+-------------------------------------------------------------------------------------------------------------||
+21) Given an array int a[]. Add the sum at even indexes.do the same with odd indexes.
+	if both the sum is equal return 1 or return -1.
+
+
+
+
+
+
+package Set2;
+public class ClassSET21 {
+public static void main(String[] args) {
+	int a[]={9,8,5,3,2,6,4,7,5,1};	
+	System.out.println(oddEvenIndicesCount(a));
+}
+public static int oddEvenIndicesCount(int[] a) {
+	int n1=0,n2=0,n3=0;
+	for(int i=0;i<a.length;i++)
+		if(i%2==0)
+			n1+=a[i];
+		else
+			n2+=a[i];
+	if(n1==n2)
+		n3=1;
+	else
+		n3=-1;
+	return n3;
+}
+}
+-------------------------------------------------------------------------------------------------------||
+
+						SET-3
+
+16) int[] input={2,1,4,1,2,3,6};
+    check whether the input has the sequence of "1,2,3". if so-
+    output=true;
+    int[] input={1,2,1,3,4,5,8};
+    output=false
+
+package Set3;
+public class ClassSeT16 {
+public static void main(String[] args) {
+	//int[] a={2,1,4,1,2,3,6};
+	int[] a={1,2,1,3,4,5,8};
+	System.out.println(sequenceInArray(a));
+}
+public static boolean sequenceInArray(int[] a) {
+	boolean b=false;
+	int n=0;
+	for(int i=0;i<a.length-1;i++)
+		if((a[i+1]-a[i])==1)
+			n++;
+	if(n==2)
+		b=true;				
+	return b;
+}
+}
+----------------------------------------------------------------------------------------------------||
+38) input1={2,4,3,5,6};
+    if odd  find square 
+    if even find cube
+    finally add it
+    output1=208(4+16+27+125+36)
+
+package Set3;
+public class ClassSeT38 {
+public static void main(String[] args) {
+	int a[]={2,4,3,5,6};
+	System.out.println(summationPattern(a));
+}
+public static int summationPattern(int[] a) {
+	int n1=0,n2=0;
+	for(int i=0;i<a.length;i++)
+		if(a[i]%2==0)
+			n1+=(a[i]*a[i]);
+		else
+			n2+=(a[i]*a[i]*a[i]);
+	return n1+n2;
+}
+}
+----------------------------------------------------------------------------------------------------||
+44) Find the Maximum span of the given array.
+    span is the number of elements between the duplicate element
+    including those 2 repeated numbers.
+    if the array as only one elemnt,then the span is 1.
+	input[]={1,2,1,1,3}
+	output1=4
+	input[]={1,2,3,4,1,1,5}
+	output1=6
+
+package Set3;
+public class ClassSeT45 {
+public static void main(String[] args) {
+	int[]a={1,2,1,1,3};
+	System.out.println(maxSpan(a));
+}
+public static int maxSpan(int[] a) {
+	String s2 = null;
+	int n=0;
+	StringBuffer sb=new StringBuffer();
+	for(int i=0;i<a.length;i++)
+		sb.append(String.valueOf(a[i]));
+	String s1=sb.toString();
+	for(int i=0;i<s1.length();i++)
+		for(int j=i+1;j<s1.length();j++)
+			if(s1.charAt(i)==s1.charAt(j))
+				s2=String.valueOf(s1.charAt(j));
+	int n1=s1.indexOf(s2);
+	int n2=s1.lastIndexOf(s2); 
+	for(int i=n1+1;i<n2;i++)
+		n++;
+	return (n+2);
+}
+}
+----------------------------------------------------------------------------------------------------||
+							SILK
+
+13) Given a method with an int array and a number as input.Write code to add all the elements in the array greater than the given number.Finally reverse the digits of the obtained sum and return it as output.
+Example:{10,15,20,25,30,100}
+input2=15
+sum=20+25+30+100=175
+output=571
+package Final;
+public class M {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+int a[]={10,15,20,25,30,100};
+int b=15;
+getvalues(a,b);
+}
+static void getvalues(int[] a, int b) {
+int sum=0;
+int rem=0;
+int rev=0;
+for(int i=0;i<a.length;i++)
+{
+int c=a[i];
+if(c>b)
+{
+sum=sum+c;
+}
+}
+int d=sum;
+while(d!=0)
+{
+rem=d%10;
+rev=rev*10+rem;
+d=d/10;
+}
+System.out.println(rev);
+}
+}
+..............................................
+
+19) Given a method with two int int array lists of size as input.Write code to fetch the odd index elements from first array list and even index elements from second array list and add them to a new array list according to their index.Return the new array list.
+Note:
+-The index of the first elements is 0.
+-consider 0 as even number
+-Maintain order in the output array list
+Example:
+input1:{12,13,14,15,16}
+input2:{2,3,4,5,6}
+output:{2,13,4,15,6}
+package com.Packas;
+import java.util.Arrays;
+public class Dd {
+public static void main(String[] args) {
+int a[]={12,13,14,15,16};
+int b[]={2,3,4,5,6};
+getvalues(a,b);
+}
+public static void getvalues(int[] a, int[] b)
+{
+int c[]=new int[a.length];
+int k=0;
+for(int i=0;i<a.length;i++)
+{
+if(b[i]%2==0)
+{
+c[k++]=b[i];
+}
+else
+c[k++]=a[i];
+}
+for(int i=0;i<k;i++)
+{
+System.out.print(" "+c[i]);
+}
+}
+}
+......................................................................
+28) Given a method with an int array as input. Write code to remove all 10s from the array, Shift the other element towards the left and fill the trailing empty positions by 0 so that the modified array is of the same length of the given array.
+Example:
+Input= {1,10,20,10,2}
+Output:{1,20,2,0,0}
+package com.Packas;
+import java.util.Arrays;
+public class B {
+/**
+* @param args
+*/
+public static void main(String[] args) {
+int a[]={15,10,11,10,12};
+getvalues(a);
+}
+public static void getvalues(int[] a) {
+int c[]=new int[a.length];
+int k=0;
+for(int i=0;i<a.length;i++)
+{
+if(a[i]!=10)
+c[k++]=a[i];
+}
+System.out.println(Arrays.toString(c));
+}
+}
+...............................................................................
+
+31) Given a method taking an odd positive integer number as input. Write code to evaluate the following series.
+1+3-5+7-9...+/-n.
+Example:
+Input=9
+series= 1+3-5+7-9
+output= -3
+package com.Packas;
+import java.util.Scanner;
+public class A {
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+getvalues(n);
+}
+public static void getvalues(int n)
+{
+int j=0;
+int a[]=new int[10];
+int sump=1,sumn=0;
+for(int i=0;i<=n;i++)
+{
+if(i%2!=0)
+{
+a[j]=i;
+j++;
+}
+}
+for(int l=0;l<a.length;l++)
+{
+System.out.print(a[l]+" ");
+}
+for(int k=1;k<n;k+=2)
+{
+sump = sump+a[k];
+sumn=sumn+a[k+1];
+}
+int diff=0;
+diff=sump-sumn;
+System.out.println();
+System.out.println(diff);
+}
+}
+........................................................................
+32) Given a method with a positive number as input. Write code to calculate the sum of digits at even indexes (say evenSum) and sum of digits at odd indexes (say oddSum). In the given number if both the sums are equal return 1 as output else return -1.
+Example:
+input= 23050
+evenSum=2+0+0= 2
+oddSum= 3+5=8
+outrput=-1
+import java.util.Scanner;
+public class A {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+getvalues(n);
+}
+public static void getvalues(int n) {
+int rem = 0, i = 0;
+int a[] = new int[10];
+while (n > 0) {
+rem = n % 10;
+a[i] = rem;
+n = n / 10;
+i++;
+}
+int sume = 0, sumo = 0;
+for (int j = i - 1; j >= 0; j -= 2) {
+sumo = sumo + a[j];
+}
+for (int j = i - 2; j >= 0; j -= 2) {
+sume = sume + a[j];
+}
+if (sume == sumo) {
+System.out.println(1);
+} else
+System.out.println(-1);
+}
+}
+...........................................................................................................................
+
+
+63) Given a method with an int array. Write code to find the power of each individual element according to its position index, add them up and return as output.
+Example:
+input=-{3,6,2,1}
+output=(3)0+(6)1+(2)2+(1)3=1+6+4+1=12
+package shivam;
+public class B {
+public static void main(String[] args) {
+int a[]={3,6,2,1};
+getvalues(a);
+}
+public static void getvalues(int[] a) {
+int sum=0;
+for(int i=0;i<a.length;i++)
+{
+int b=a[i];
+sum=(int) (sum+Math.pow(b, i));
+}
+System.out.println(sum);
+}
+}
+......................................................................................

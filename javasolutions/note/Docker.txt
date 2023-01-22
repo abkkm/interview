@@ -1,0 +1,34 @@
+Docker is tool designed to make it easier to build deploy and run applications by using containers
+
+Docker is used to make a container having the needed libraries and other dependencies and ship its out as a one package
+
+on top the host the dockerengine will be there which is reponsible for all these operations 
+
+Dockerfile
+
+FROM openjdk:8
+EXPOSE 8080
+ADD target/<name of the jar>.jar
+ENTRYPOINT ["java","-jar","/<name of the jar>"]
+
+commands
+
+cd /c
+cd file name
+
+docker build -t spring-boot-docker.jar .
+
+docker image ls
+
+docker run -p 9090:8080 spring-boot-docker.jar
+
+docker login 
+ 
+username
+password 
+
+docker tag <jar name> somename/<jar name>.jar
+
+
+
+docker push  somename/jarname.jar
